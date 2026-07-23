@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+.gradient-text {
+  @apply bg-linear-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent;
+}
+.gradient-bg {
+  @apply bg-linear-to-r from-emerald-500 to-teal-600;
+} 
