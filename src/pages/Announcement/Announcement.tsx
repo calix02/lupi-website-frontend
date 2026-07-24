@@ -6,6 +6,7 @@ import MayorImage from "@/assets/Mayor.jpg"; // Replace with Mayor Topi's actual
 import AssistanceImg from "@/assets/logos/LGU.jpg";
 import HealthMissionImg from "@/assets/logos/LGU.jpg";
 import RoadProjImg from "@/assets/logos/LGU.jpg";
+import { Link } from "react-router-dom";
 
 export default function Announcement() {
   const announcements = [
@@ -100,7 +101,7 @@ export default function Announcement() {
           y: [0, 30, 0],
         }}
         transition={{ repeat: Infinity, duration: 15, ease: "easeInOut" }}
-        className="absolute bottom-10 right-10 w-[30rem] h-[30rem] bg-teal-200/30 rounded-full blur-3xl pointer-events-none"
+        className="absolute bottom-10 right-10 w-120 h-120 bg-teal-200/30 rounded-full blur-3xl pointer-events-none"
       />
 
       {/* Main Content Container with Repeatable Scroll Animations */}
@@ -119,7 +120,7 @@ export default function Announcement() {
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
             Latest Announcements &{" "}
-            <span className="bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">
               Mayor's Corner
             </span>
           </h2>
@@ -133,7 +134,7 @@ export default function Announcement() {
             variants={itemVariants}
             className="lg:col-span-5 relative flex flex-col justify-between rounded-3xl bg-white p-8 shadow-xl shadow-slate-200/60 border border-slate-200/80 overflow-hidden group hover:border-emerald-400/50 transition-all"
           >
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-emerald-400/10 to-teal-400/20 rounded-bl-full pointer-events-none" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-emerald-400/10 to-teal-400/20 rounded-bl-full pointer-events-none" />
 
             <div>
               <div className="flex items-center gap-2 text-xs font-bold text-emerald-600 uppercase tracking-wider mb-6">
@@ -169,6 +170,16 @@ export default function Announcement() {
 
           {/* Bulletin / Announcements List */}
           <div className="lg:col-span-7 flex flex-col justify-between gap-4">
+             {/* View All Bulletins Link */}
+            <motion.div variants={itemVariants} className="pt-2 text-right">
+              <Link
+              to="/all-announcements"
+                className="inline-flex items-center gap-2 text-sm font-bold text-emerald-600 hover:text-emerald-700 transition-colors"
+              >
+                <span>View All Official Bulletins</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
             {announcements.map((item) => (
               <motion.div
                 key={item.id}
@@ -189,6 +200,7 @@ export default function Announcement() {
 
                 {/* Content */}
                 <div className="flex flex-col justify-between flex-1 space-y-2">
+                    
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <span
@@ -221,17 +233,6 @@ export default function Announcement() {
                 </div>
               </motion.div>
             ))}
-
-            {/* View All Bulletins Link */}
-            <motion.div variants={itemVariants} className="pt-2 text-right">
-              <a
-                href="#all-announcements"
-                className="inline-flex items-center gap-2 text-sm font-bold text-emerald-600 hover:text-emerald-700 transition-colors"
-              >
-                <span>View All Official Bulletins</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </motion.div>
           </div>
 
         </div>

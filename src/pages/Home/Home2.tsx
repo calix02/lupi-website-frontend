@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, ChevronDown, Landmark, Users, MapPin } from "lucide-react";
 import HeroImage from "@/assets/logos/LGU.jpg";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const containerVariants = {
@@ -34,9 +35,9 @@ export default function Home() {
   };
 
   const stats = [
-    { icon: Users, label: "Community Members", value: "35,000+" },
-    { icon: Landmark, label: "Public Services", value: "24/7 Digital" },
-    { icon: MapPin, label: "Tourist Spots", value: "12+ Places" },
+    { icon: Users, label: "Community Members", value: "35,000+", link: "/coming-soon" },
+    { icon: Landmark, label: "Public Services", value: "24/7 Digital", link: "/coming-soon" },
+    { icon: MapPin, label: "Tourist Spots", value: "12+ Places", link: "/coming-soon" },
   ];
 
   return (
@@ -135,7 +136,8 @@ export default function Home() {
             {stats.map((stat, idx) => {
               const Icon = stat.icon;
               return (
-                <div
+                <Link
+                to={stat.link}
                   key={idx}
                   className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md text-left transition-colors hover:border-emerald-500/30 hover:bg-white/10"
                 >
@@ -146,7 +148,7 @@ export default function Home() {
                     <p className="text-lg font-bold text-white">{stat.value}</p>
                     <p className="text-xs text-slate-400">{stat.label}</p>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </motion.div>
