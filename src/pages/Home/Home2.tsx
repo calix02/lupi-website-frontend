@@ -4,22 +4,32 @@ import HeroImage from "@/assets/logos/LGU.jpg";
 
 export default function Home() {
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { 
+      opacity: 0 
+    },
     visible: {
       opacity: 1,
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.2,
+        delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { 
+      opacity: 0, 
+      y: 40,
+      scale: 0.96 
+    },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
+      scale: 1,
+      transition: { 
+        duration: 0.6, 
+        ease: [0.22, 1, 0.36, 1] as const 
+      },
     },
   };
 
@@ -55,12 +65,13 @@ export default function Home() {
       {/* Subtle Glowing Ambient Lights */}
       <div className="absolute top-1/3 left-1/2 z-0 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
 
-      {/* 2. Main Hero Content */}
+      {/* 2. Main Hero Content with Scroll Entrance & Exit */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center text-white my-auto">
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ amount: 0.3 }} // Entrance/Exit triggers when 30% of the section is in view
           className="flex flex-col items-center"
         >
           {/* Animated Badge */}
@@ -145,8 +156,9 @@ export default function Home() {
       {/* 4. Animated Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ amount: 0.3 }}
+        transition={{ delay: 0.6, duration: 0.8 }}
         className="relative z-10 pt-8"
       >
         <a
