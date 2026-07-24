@@ -36,15 +36,19 @@ export default function Home() {
 
   const stats = [
     { icon: Users, label: "Community Members", value: "35,000+", link: "/coming-soon" },
-    { icon: Landmark, label: "Public Services", value: "24/7 Digital", link: "/coming-soon" },
+    { icon: Landmark, label: "Public Services Guide", value: "24/7 Digital", link: "/coming-soon" },
     { icon: MapPin, label: "Tourist Spots", value: "12+ Places", link: "/coming-soon" },
   ];
+
+ 
+  
 
   return (
     <section
       id="home"
       className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden pt-24 pb-16"
     >
+     
       {/* 1. Infinite Ken Burns Zooming Background */}
       <motion.div
         animate={{
