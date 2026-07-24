@@ -6,13 +6,13 @@ import LupiLOgo from "@/assets/logos/lupi_logo.png";
 export default function Header() {
   const navItems = [
     "Home",
+
     "Announcements",
-    "News",
     "Events",
-    "Services",
     "Tourism",
-    "Contact",
+    "Officials",
     "About",
+    "Contact",
   ];
   
   const [activeTab, setActiveTab] = useState("Home");
@@ -37,7 +37,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`sticky top-4 z-50 mx-auto w-[95%] max-w-7xl lg:rounded-full rounded-md border border-white/30 bg-white/40 px-6 py-3 shadow-lg shadow-black/5 backdrop-blur-xl transition-all duration-300 dark:border-white/10 dark:bg-slate-900/40`}>
+    <header className={`fixed top-2 left-1/2 -translate-x-1/2 z-50 mx-auto w-[95%] max-w-7xl lg:rounded-full rounded-md border border-white/30 bg-white/40 px-6 py-3 shadow-lg shadow-black/5 backdrop-blur-xl transition-all duration-300 `}>
       <div className="flex items-center justify-between">
         
         {/* Logo */}
@@ -46,10 +46,17 @@ export default function Header() {
           whileTap={{ scale: 0.95 }}
           className="flex items-center gap-2 cursor-pointer"
         >
-          <img src={LupiLOgo} alt="Lupi Logo" className="h-10 w-auto object-contain" />
-          <span className="text-lg font-bold gradient-text">
-            Lupi
-          </span>
+          <img src={LupiLOgo} alt="Lupi Logo" className="h-15 w-auto object-contain" />
+          <div className="">
+            <div className="text-lg font-bold gradient-text">
+            Municipality of Lupi
+          </div>
+          <div className="text-md font-semibold playfair-400 text-white">
+            Camarines Sur
+          </div>
+
+          </div>
+          
         </motion.div>
 
         {/* Desktop Navigation */}
@@ -63,7 +70,7 @@ export default function Header() {
                     href={`#${item.toLowerCase()}`}
                     onClick={() => setActiveTab(item)}
                     className={`relative z-10 block px-4 py-2 text-sm font-medium transition-colors duration-200 ${
-                      isActive ? "text-white font-semibold" : "text-slate-700 hover:text-slate-900 dark:text-slate-200"
+                      isActive ? "text-white font-semibold" : "text-[#0e0e0e] hover:text-slate-900 "
                     }`}
                   >
                     {item}
