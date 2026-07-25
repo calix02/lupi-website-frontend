@@ -7,6 +7,7 @@ import AssistanceImg from "@/assets/logos/LGU.jpg";
 import HealthMissionImg from "@/assets/logos/LGU.jpg";
 import RoadProjImg from "@/assets/logos/LGU.jpg";
 import { Link } from "react-router-dom";
+import useInOutAnimation from "@/hooks/useInOutAnimation";
 
 export default function Announcement() {
   const announcements = [
@@ -38,7 +39,7 @@ export default function Announcement() {
       image: RoadProjImg,
     },
   ];
-
+/** 
   // Animation variants for entering and exiting
   const containerVariants = {
     hidden: { 
@@ -69,6 +70,9 @@ export default function Announcement() {
       },
     },
   };
+  */
+
+  const animate = useInOutAnimation();
 
   return (
     <section
@@ -106,14 +110,14 @@ export default function Announcement() {
 
       {/* Main Content Container with Repeatable Scroll Animations */}
       <motion.div
-        variants={containerVariants}
+        variants={animate.containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ amount: 0.25 }} // Triggers entrance when 25% visible, exits when scrolled away
         className="relative z-10 max-w-7xl mx-auto w-full flex flex-col gap-12"
       >
         {/* Section Header */}
-        <motion.div variants={itemVariants} className="text-center max-w-2xl mx-auto">
+        <motion.div variants={animate.itemVariants} className="text-center max-w-2xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wide mb-3">
             <Bell className="w-3.5 h-3.5 text-emerald-600 animate-bounce" />
             <span>Public Updates & Advisories</span>
@@ -131,7 +135,7 @@ export default function Announcement() {
           
           {/* Mayor Topi's Message Card */}
           <motion.div
-            variants={itemVariants}
+            variants={animate.itemVariants}
             className="lg:col-span-5 relative flex flex-col justify-between rounded-3xl bg-white p-8 shadow-xl shadow-slate-200/60 border border-slate-200/80 overflow-hidden group hover:border-emerald-400/50 transition-all"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-linear-to-br from-emerald-400/10 to-teal-400/20 rounded-bl-full pointer-events-none" />
@@ -171,7 +175,7 @@ export default function Announcement() {
           {/* Bulletin / Announcements List */}
           <div className="lg:col-span-7 flex flex-col justify-between gap-4">
              {/* View All Bulletins Link */}
-            <motion.div variants={itemVariants} className="pt-2 text-right">
+            <motion.div variants={animate.itemVariants} className="pt-2 text-right">
               <Link
               to="/all-announcements"
                 className="inline-flex items-center gap-2 text-sm font-bold text-emerald-600 hover:text-emerald-700 transition-colors"
@@ -183,7 +187,7 @@ export default function Announcement() {
             {announcements.map((item) => (
               <motion.div
                 key={item.id}
-                variants={itemVariants}
+                variants={animate.itemVariants}
                 whileHover={{ y: -3 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 className="group relative flex flex-col sm:flex-row items-stretch gap-5 rounded-2xl bg-white p-4 sm:p-5 shadow-md shadow-slate-200/50 border border-slate-200/70 hover:shadow-xl hover:border-emerald-300 transition-all cursor-pointer overflow-hidden"

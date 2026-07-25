@@ -7,7 +7,6 @@ export default function Header() {
   const navItems = [
     "Home",
     "Announcements",
-    "Events",
     "Tourism",
     "Officials",
     "About",
