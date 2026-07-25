@@ -1,67 +1,97 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, ChevronDown } from "lucide-react";
+import { ArrowRight, Sparkles, ChevronDown, Landmark, Users, MapPin } from "lucide-react";
 import HeroImage from "@/assets/logos/LGU.jpg";
+import { Link } from "react-router-dom";
 
 export default function Home() {
-  // Animation variants for smooth staggered entrance
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { 
+      opacity: 0 
+    },
     visible: {
       opacity: 1,
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.2,
+        delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 25 },
+    hidden: { 
+      opacity: 0, 
+      y: 40,
+      scale: 0.96 
+    },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+      scale: 1,
+      transition: { 
+        duration: 0.6, 
+        ease: [0.22, 1, 0.36, 1] as const 
+      },
     },
   };
+
+  const stats = [
+    { icon: Users, label: "Community Members", value: "35,000+", link: "/coming-soon" },
+    { icon: Landmark, label: "Public Services Guide", value: "24/7 Digital", link: "/coming-soon" },
+    { icon: MapPin, label: "Tourist Spots", value: "12+ Places", link: "/coming-soon" },
+  ];
+
+ 
+  
 
   return (
     <section
       id="home"
-      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden pt-20"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden pt-24 pb-16"
     >
-      {/* Background Image with Slow Zoom Animation & Gradient Overlay */}
+     
+      {/* 1. Infinite Ken Burns Zooming Background */}
       <motion.div
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 10, ease: "easeOut" }}
+        animate={{
+          scale: [1, 1.15, 1],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut",
+        }}
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${HeroImage})` }}
-      >
-        {/* Dark gradient overlay for visual clarity */}
-        <div className="absolute inset-0 bg-lineart-to-t from-slate-950/90 via-slate-900/60 to-slate-900/40 backdrop-blur-[2px]" />
-      </motion.div>
+      />
 
-      {/* Main Content Container */}
-      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center text-white">
+      {/* Dark Gradient Overlay for High Text Readability */}
+      <div className="absolute inset-0 z-0 bg-linear-to-b from-slate-950/80 via-slate-950/65 to-slate-950/90 backdrop-blur-[1px]" />
+
+      {/* Subtle Glowing Ambient Lights */}
+      <div className="absolute top-1/3 left-1/2 z-0 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
+
+      {/* 2. Main Hero Content with Scroll Entrance & Exit */}
+      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center text-white my-auto">
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ amount: 0.3 }} // Entrance/Exit triggers when 30% of the section is in view
           className="flex flex-col items-center"
         >
           {/* Animated Badge */}
           <motion.div
             variants={itemVariants}
-            className="mb-6 flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium backdrop-blur-md hover:border-white/40 transition-colors"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs sm:text-sm font-medium text-emerald-300 backdrop-blur-md hover:border-emerald-500/50 transition-colors shadow-inner"
           >
-            <Sparkles className="h-4 w-4 text-emerald-400" />
-            <span>Welcome to the Official Lupi Website</span>
+            <Sparkles className="h-4 w-4 text-emerald-400 animate-pulse" />
+            <span>Welcome to the Official Lupi Portal</span>
           </motion.div>
 
           {/* Main Headline */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl font-extrabold tracking-tight sm:text-6xl md:text-7xl leading-tight"
+            className="text-4xl font-extrabold tracking-tight sm:text-6xl md:text-7xl leading-[1.15]"
           >
             Empowering Our Community through{" "}
             <span className="bg-linear-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
@@ -72,9 +102,9 @@ export default function Home() {
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="mt-6 max-w-2xl text-lg text-slate-200 sm:text-xl font-normal leading-relaxed"
+            className="mt-6 max-w-2xl text-base text-slate-300 sm:text-lg md:text-xl font-normal leading-relaxed"
           >
-            Discover municipal updates, public services, tourism spots, and upcoming events—all in one modern digital hub.
+            Discover municipal updates, public services, tourism spots, and upcoming events—all in one unified digital hub.
           </motion.p>
 
           {/* Action Buttons */}
@@ -84,9 +114,9 @@ export default function Home() {
           >
             <motion.a
               href="#services"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="group flex items-center justify-center gap-2 rounded-full bg-emerald-500 px-8 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/25 transition-all hover:bg-emerald-400"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              className="group flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-emerald-500 to-teal-500 px-8 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/25 transition-all hover:shadow-emerald-500/40"
             >
               Explore Services
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -94,26 +124,52 @@ export default function Home() {
 
             <motion.a
               href="#announcements"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-md hover:bg-white/20 hover:border-white/50 transition-all"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.96 }}
+              className="flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-md hover:bg-white/20 hover:border-white/40 transition-all"
             >
               Latest News
             </motion.a>
           </motion.div>
+
+          {/* 3. Floating Stats Cards */}
+          <motion.div
+            variants={itemVariants}
+            className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-3xl"
+          >
+            {stats.map((stat, idx) => {
+              const Icon = stat.icon;
+              return (
+                <Link
+                to={stat.link}
+                  key={idx}
+                  className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md text-left transition-colors hover:border-emerald-500/30 hover:bg-white/10"
+                >
+                  <div className="rounded-xl bg-emerald-500/20 p-2.5 text-emerald-400">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-lg font-bold text-white">{stat.value}</p>
+                    <p className="text-xs text-slate-400">{stat.label}</p>
+                  </div>
+                </Link>
+              );
+            })}
+          </motion.div>
         </motion.div>
       </div>
 
-      {/* Floating Scroll Indicator at Bottom */}
+      {/* 4. Animated Scroll Indicator */}
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ amount: 0.3 }}
+        transition={{ delay: 0.6, duration: 0.8 }}
+        className="relative z-10 pt-8"
       >
         <a
           href="#announcements"
-          className="flex flex-col items-center gap-2 text-xs font-medium text-slate-300 hover:text-white transition-colors"
+          className="flex flex-col items-center gap-2 text-xs font-medium text-slate-400 hover:text-white transition-colors"
         >
           <span>Scroll Down</span>
           <motion.div

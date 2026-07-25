@@ -1,4 +1,4 @@
-import Home2 from "./Home/Home2";
+import Home from "./Home/Home";
 import Header from "@/components/Header/Header";
 import Announcement from "./Announcement/Announcement";
 import { useEffect, useState } from "react";
@@ -21,7 +21,7 @@ export default function LupiWebsite() {
     return(
         <div className="w-screen">
             <Header/>
-            <Home2/>
+            <Home/>
             <Announcement/>
         </div>
 

@@ -43,37 +43,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-  const sections = navItems.map((item) =>
-    document.getElementById(item.toLowerCase())
-  );
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-
-          const active =
-            id.charAt(0).toUpperCase() + id.slice(1);
-
-          setActiveTab(active);
-        }
-      });
-    },
-    {
-      threshold: 0.5,
-      rootMargin: "-80px 0px -40% 0px",
-    }
-  );
-
-  sections.forEach((section) => {
-    if (section) observer.observe(section);
-  });
-
-  return () => observer.disconnect();
-}, []);
-
+// Listen for section intersection to update active tab
 useEffect(() => {
   const sections = document.querySelectorAll("section[id]");
 
@@ -107,10 +77,16 @@ useEffect(() => {
 
   return (
     <header
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-20 w-[92%] max-w-7xl lg:rounded-full rounded-2xl border transition-all duration-500 ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-20 w-[92%] max-w-7xl lg:rounded-full rounded-2xl transition-all duration-500 "border-white/15 bg-white-950/50 backdrop-blur-md py-3.5 px-6
+        ${
+          mobileMenuOpen
+            ? "border-emerald-500/20 bg-slate-950/50 shadow-2xl shadow-emerald-950/20 backdrop-blur-2xl py-2.5 px-6"
+            : " bg-white-950/50 backdrop-blur-md py-3.5 px-6"
+        } 
+        ${
         scrolled
           ? "border-emerald-500/20 bg-white-950/50 shadow-2xl shadow-emerald-950/20 backdrop-blur-2xl py-2.5 px-6"
-          : "border-white/15 bg-slate-950/50 shadow-lg shadow-black/20 backdrop-blur-md py-3.5 px-6"
+          : " bg-white-950/50 backdrop-blur-md py-3.5 px-6"
       }`}
     >
       <div className="flex items-center justify-between">
@@ -184,7 +160,7 @@ useEffect(() => {
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="block lg:hidden rounded-full p-2 text-slate-200 hover:bg-white/10 hover:text-white transition-colors"
+          className="block lg:hidden rounded-full p-2 text-slate-400 hover:bg-white/10 hover:text-emerald-400 transition-colors"
           aria-label="Toggle Navigation"
         >
           {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -213,7 +189,7 @@ useEffect(() => {
                   className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
                     activeTab === item
                       ? "bg-linear-to-r from-emerald-500/20 to-teal-500/20 text-emerald-400 border border-emerald-500/30"
-                      : "text-slate-300 hover:bg-white/5 hover:text-white"
+                      : "text-slate-200 hover:bg-white/5 hover:text-emerald-400"
                   }`}
                 >
                   {item}
