@@ -8,6 +8,7 @@ export default function Header() {
     "Home",
     "Announcements",
     "Tourism",
+    "Weather",
     "Officials",
     "About",
     "Contact",

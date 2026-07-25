@@ -4,6 +4,7 @@ import Announcement from "./Announcement/Announcement";
 import { useEffect, useState } from "react";
 import SplashScreen from "@/components/SplashScreen/SplashScreen";
 import Tourism from "./Tourism/Tourism";
+import Weather from "./Weather/Weather";
 
 export default function LupiWebsite() {
     const [showSplash, setShowSplash] = useState(true);
@@ -25,6 +26,7 @@ export default function LupiWebsite() {
             <Home/>
             <Announcement/>
             <Tourism/>
+            <Weather/>
         </div>
 
     );
