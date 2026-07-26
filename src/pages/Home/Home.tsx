@@ -94,7 +94,7 @@ export default function Home() {
             className="text-4xl font-extrabold tracking-tight sm:text-6xl md:text-7xl leading-[1.15]"
           >
             Empowering Our Community through{" "}
-            <span className="bg-linear-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
+            <span className="gradient1-text">
               Innovation & Service
             </span>
           </motion.h1>
@@ -116,7 +116,7 @@ export default function Home() {
               href="#services"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
-              className="group flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-emerald-500 to-teal-500 px-8 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/25 transition-all hover:shadow-emerald-500/40"
+              className="group flex items-center justify-center gap-2 rounded-full gradient1-bg px-8 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/25 transition-all hover:shadow-emerald-500/40"
             >
               Explore Services
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
