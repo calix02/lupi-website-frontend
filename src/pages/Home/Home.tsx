@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, ChevronDown, Landmark, Users, MapPin } from "lucide-react";
-import HeroImage from "@/assets/logos/LGU.jpg";
+import HeroImage from "@/assets/logos/LGU-NEW.png";
 import { Link } from "react-router-dom";
 
 export default function Home() {
@@ -65,10 +65,10 @@ export default function Home() {
       />
 
       {/* Dark Gradient Overlay for High Text Readability */}
-      <div className="absolute inset-0 z-0 bg-linear-to-b from-slate-950/80 via-slate-950/65 to-slate-950/90 backdrop-blur-[1px]" />
+      <div className="absolute inset-0 z-0 bg-linear-to-b from-slate-950/60 via-slate-950/65 to-slate-950/60 backdrop-blur-[1px]" />
 
       {/* Subtle Glowing Ambient Lights */}
-      <div className="absolute top-1/3 left-1/2 z-0 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-emerald-500/20 blur-3xl pointer-events-none" />
+      <div className="glowing-bg absolute top-1/3 left-1/2 z-0 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full  blur-3xl pointer-events-none" />
 
       {/* 2. Main Hero Content with Scroll Entrance & Exit */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center text-white my-auto">
@@ -82,9 +82,9 @@ export default function Home() {
           {/* Animated Badge */}
           <motion.div
             variants={itemVariants}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs sm:text-sm font-medium text-emerald-300 backdrop-blur-md hover:border-emerald-500/50 transition-colors shadow-inner"
+            className="color1-text mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs sm:text-sm font-medium backdrop-blur-md hover:border-emerald-500/50 transition-colors shadow-inner"
           >
-            <Sparkles className="h-4 w-4 text-emerald-400 animate-pulse" />
+            <Sparkles className="color2-text h-4 w-4 animate-pulse" />
             <span>Welcome to the Official Lupi Portal</span>
           </motion.div>
 
@@ -145,7 +145,7 @@ export default function Home() {
                   key={idx}
                   className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md text-left transition-colors hover:border-emerald-500/30 hover:bg-white/10"
                 >
-                  <div className="rounded-xl bg-emerald-500/20 p-2.5 text-emerald-400">
+                  <div className="color2-text rounded-xl bg-emerald-500/20 p-2.5">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
