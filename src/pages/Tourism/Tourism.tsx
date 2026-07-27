@@ -1,4 +1,4 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 import {
   MapPin,
@@ -77,7 +77,7 @@ const TOURIST_SPOTS: TouristSpot[] = [
     coordinates: { lat: 13.7715, lng: 122.9251 },
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1000",
-  routeInstructions: [
+    routeInstructions: [
       "Head East towards the Municipal Plaza.",
       "Take Riverbank Avenue directly following the Bicol River tributary.",
       "Destination will be on the right past the old Heritage Bridge.",
@@ -103,7 +103,7 @@ export default function TourismSection() {
 
     const interval = setInterval(() => {
       swapCard();
-    }, 2000);
+    }, 2500);
 
     return () => clearInterval(interval);
   }, [isPaused, selectedMapSpot]);
@@ -125,32 +125,42 @@ export default function TourismSection() {
       id="tourism"
       className="relative min-h-screen w-full overflow-hidden bg-slate-950 py-24 text-slate-100 flex flex-col justify-center"
     >
-      {/* ================= 1. SLIGHT DARK AMBIENT BACKGROUND GLOW ================= */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none bg-[radial-gradient(#10b981_1px,transparent_1px)] bg-size-[32px_32px]" />
+      {/* ================= 1. CLEAR DYNAMIC BACKGROUND IMAGE ================= */}
+      <AnimatePresence mode="popLayout">
+        <motion.div
+          key={activeSpot.id}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 0.8, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.98 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none filter blur-[1px]"
+          style={{ backgroundImage: `url(${activeSpot.image})` }}
+        />
+      </AnimatePresence>
 
+      {/* Subtle Overlay gradient just to ensure top & bottom sections blend well */}
+      <div className="absolute inset-0 z-0 bg-linear-to-b from-slate-950/90 via-slate-950/40 to-slate-950/90 pointer-events-none" />
+
+      {/* Dynamic Ambient Color Accents */}
       <motion.div
-        animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.35, 0.2] }}
-        transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
-        className="absolute -top-20 -left-20 h-125 w-125 rounded-full bg-emerald-600/30 blur-[120px] pointer-events-none"
-      />
-      <motion.div
-        animate={{ scale: [1, 1.3, 1], opacity: [0.15, 0.3, 0.15] }}
-        transition={{ repeat: Infinity, duration: 14, ease: "easeInOut" }}
-        className="absolute -bottom-20 -right-20 h-150 w-150 rounded-full bg-teal-500/20 blur-[140px] pointer-events-none"
+        animate={{ opacity: [0.2, 0.4, 0.2] }}
+        transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
+        className="absolute top-10 left-10 h-96 w-96 rounded-full bg-emerald-500/20 blur-[100px] pointer-events-none z-0"
       />
 
       {/* ================= 2. MAIN CONTENT CONTAINER ================= */}
       <motion.div
-       variants={animate.containerVariants}
+        variants={animate.containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ amount: 0.25 }}
-       className="relative z-10 mx-auto w-full max-w-7xl px-6">
+        className="relative z-10 mx-auto w-full max-w-7xl px-6"
+      >
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
           <motion.div
             variants={animate.itemVariants}
-            className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold text-emerald-400 backdrop-blur-md mb-4"
+            className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-slate-950/80 px-4 py-1.5 text-xs font-semibold text-emerald-400 backdrop-blur-md mb-4 shadow-lg"
           >
             <Compass className="h-4 w-4 animate-spin-slow text-emerald-400" />
             <span>Discover Lupi, Camarines Sur</span>
@@ -158,19 +168,19 @@ export default function TourismSection() {
 
           <motion.h2
             variants={animate.itemVariants}
-            className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-white"
+            className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-white drop-shadow-md"
           >
             Explore Our{" "}
-            <span className="bg-linear-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-emerald-300 via-teal-200 to-cyan-300 bg-clip-text text-transparent">
               Tourist Destinations
             </span>
           </motion.h2>
 
           <motion.p
             variants={animate.itemVariants}
-            className="mt-4 max-w-2xl text-base text-slate-400 sm:text-lg"
+            className="mt-4 max-w-2xl text-base text-slate-200 sm:text-lg drop-shadow-sm font-medium bg-slate-950/40 py-1 px-4 rounded-full backdrop-blur-sm border border-white/5"
           >
-            Drag cards to browse or click any destination to launch interactive route navigation from the Town Center.
+            Drag cards to browse destinations or click the button below to launch interactive route navigation.
           </motion.p>
         </div>
 
@@ -178,7 +188,7 @@ export default function TourismSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* LEFT: Interactive Spot Details (5 Columns) */}
-          <motion.div   variants={animate.itemVariants} className="lg:col-span-5 flex flex-col justify-center space-y-6">
+          <motion.div variants={animate.itemVariants} className="lg:col-span-5 flex flex-col justify-center space-y-6">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeSpot.id}
@@ -186,9 +196,9 @@ export default function TourismSection() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.4 }}
-                className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8 backdrop-blur-xl shadow-2xl"
+                className="rounded-3xl border border-white/20 bg-slate-950/80 p-8 backdrop-blur-xl shadow-2xl"
               >
-                <div className="inline-block rounded-lg bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-400 mb-3">
+                <div className="inline-block rounded-lg bg-emerald-500/20 border border-emerald-500/40 px-3 py-1 text-xs font-semibold text-emerald-300 mb-3">
                   {activeSpot.category}
                 </div>
 
@@ -200,11 +210,11 @@ export default function TourismSection() {
                   "{activeSpot.tagline}"
                 </p>
 
-                <p className="mt-4 text-sm text-slate-300 leading-relaxed">
+                <p className="mt-4 text-sm text-slate-200 leading-relaxed">
                   {activeSpot.description}
                 </p>
 
-                <div className="mt-6 flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-400 border-t border-slate-800/80 pt-6">
+                <div className="mt-6 flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-300 border-t border-slate-800/80 pt-6">
                   <div className="flex items-center gap-1.5">
                     <MapPin className="h-4 w-4 text-emerald-400" />
                     <span>{activeSpot.distance}</span>
@@ -217,7 +227,7 @@ export default function TourismSection() {
 
                 <button
                   onClick={() => setSelectedMapSpot(activeSpot)}
-                  className="mt-8 w-full inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-emerald-500 to-teal-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-emerald-900/40 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-500 active:scale-95"
+                  className="mt-8 w-full inline-flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-emerald-500 to-teal-600 px-6 py-3.5 text-sm font-bold text-white shadow-xl shadow-emerald-950/60 transition-all hover:scale-[1.02] hover:from-emerald-400 hover:to-teal-500 active:scale-95"
                 >
                   <Navigation className="h-4 w-4" />
                   <span>Explore Location & Route</span>
@@ -264,11 +274,8 @@ export default function TourismSection() {
                       stiffness: 260,
                       damping: 25,
                     }}
-                    onClick={() => {
-                      if (isFront) setSelectedMapSpot(spot);
-                    }}
-                    className={`absolute inset-0 h-105 w-full overflow-hidden rounded-3xl border border-slate-700/60 bg-slate-900 shadow-2xl cursor-grab active:cursor-grabbing select-none transition-shadow ${
-                      isFront ? "hover:shadow-emerald-950/50 hover:border-emerald-500/50" : ""
+                    className={`absolute inset-0 h-105 w-full overflow-hidden rounded-3xl border border-white/20 bg-slate-900 shadow-2xl cursor-grab active:cursor-grabbing select-none transition-shadow ${
+                      isFront ? "hover:shadow-emerald-900/60 hover:border-emerald-400/60" : ""
                     }`}
                   >
                     {/* Spot Image */}
@@ -278,28 +285,27 @@ export default function TourismSection() {
                       className="h-full w-full object-cover pointer-events-none"
                     />
 
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/40 to-transparent pointer-events-none" />
-
                     {/* Card Content Overlay */}
+                    <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/30 to-transparent pointer-events-none" />
+
                     <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end pointer-events-none">
                       <span className="text-xs font-bold tracking-wider text-emerald-400 uppercase">
                         {spot.category}
                       </span>
-                      <h4 className="text-2xl font-black text-white mt-1">
+                      <h4 className="text-2xl font-black text-white mt-1 drop-shadow-sm">
                         {spot.name}
                       </h4>
-                      <p className="text-xs text-slate-300 mt-1 line-clamp-1">
+                      <p className="text-xs text-slate-200 mt-1 line-clamp-1">
                         {spot.tagline}
                       </p>
 
                       {isFront && (
-                        <div className="mt-4 flex items-center justify-between text-xs text-emerald-400 font-semibold border-t border-slate-800/80 pt-3">
+                        <div className="mt-4 flex items-center justify-between text-xs text-emerald-400 font-semibold border-t border-slate-700/80 pt-3">
                           <span className="flex items-center gap-1">
                             <Sparkles className="h-3.5 w-3.5" /> Drag left/right to swap
                           </span>
-                          <span className="flex items-center gap-1 text-white">
-                            View Map <ChevronRight className="h-3.5 w-3.5" />
+                          <span className="flex items-center gap-1 text-slate-300">
+                            {spots.length} Destinations <ChevronRight className="h-3.5 w-3.5" />
                           </span>
                         </div>
                       )}
@@ -329,7 +335,6 @@ export default function TourismSection() {
               onClick={(e) => e.stopPropagation()}
               className="relative w-full max-w-5xl rounded-3xl overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl text-slate-100 grid grid-cols-1 lg:grid-cols-12"
             >
-              {/* Modal Close Button */}
               <button
                 onClick={() => setSelectedMapSpot(null)}
                 className="absolute top-4 right-4 z-20 rounded-full bg-slate-950/80 p-2 text-slate-400 hover:text-white transition-colors"
@@ -337,9 +342,7 @@ export default function TourismSection() {
                 <X className="h-5 w-5" />
               </button>
 
-              {/* LEFT: Interactive Map Mockup & Live Route View (7 Columns) */}
               <div className="lg:col-span-7 relative min-h-87.5 lg:min-h-125 bg-slate-950 flex flex-col">
-                {/* Embedded Map Canvas View */}
                 <iframe
                   title={`Map showing route to ${selectedMapSpot.name}`}
                   width="100%"
@@ -349,14 +352,12 @@ export default function TourismSection() {
                   src={`https://maps.google.com/maps?q=${selectedMapSpot.coordinates.lat},${selectedMapSpot.coordinates.lng}&z=14&output=embed`}
                 />
 
-                {/* Floating Origin Banner */}
                 <div className="absolute top-4 left-4 z-10 flex items-center gap-2 rounded-xl bg-slate-900/90 backdrop-blur-md border border-slate-700/80 px-3.5 py-2 text-xs font-semibold text-emerald-400 shadow-lg">
                   <Car className="h-4 w-4 text-emerald-400" />
                   <span>Origin: Lupi Municipal Hall</span>
                 </div>
               </div>
 
-              {/* RIGHT: Route Directions & Details (5 Columns) */}
               <div className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between bg-slate-900 border-t lg:border-t-0 lg:border-l border-slate-800">
                 <div>
                   <div className="inline-block rounded-md bg-emerald-500/10 px-2.5 py-1 text-xs font-bold text-emerald-400 mb-2">
@@ -379,7 +380,6 @@ export default function TourismSection() {
                     </div>
                   </div>
 
-                  {/* Step by Step Turn-by-Turn Route Instructions */}
                   <div className="mt-6">
                     <h4 className="text-xs font-extrabold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5 mb-3">
                       <Navigation className="h-3.5 w-3.5" /> Directions from Town Center
@@ -398,7 +398,6 @@ export default function TourismSection() {
                   </div>
                 </div>
 
-                {/* External Maps Redirection */}
                 <div className="mt-8 pt-4 border-t border-slate-800">
                   <a
                     href={`https://www.google.com/maps/dir/?api=1&destination=${selectedMapSpot.coordinates.lat},${selectedMapSpot.coordinates.lng}`}

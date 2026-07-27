@@ -41,8 +41,6 @@ export default function Home() {
   ];
 
  
-  
-
   return (
     <section
       id="home"
@@ -82,7 +80,7 @@ export default function Home() {
           {/* Animated Badge */}
           <motion.div
             variants={itemVariants}
-            className="color1-text mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs sm:text-sm font-medium backdrop-blur-md hover:border-emerald-500/50 transition-colors shadow-inner"
+            className="color1-text color1-border glass1-bg mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium backdrop-blur-md hover:border-emerald-500/50 transition-colors shadow-inner"
           >
             <Sparkles className="color2-text h-4 w-4 animate-pulse" />
             <span>Welcome to the Official Lupi Portal</span>
@@ -145,7 +143,7 @@ export default function Home() {
                   key={idx}
                   className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md text-left transition-colors hover:border-emerald-500/30 hover:bg-white/10"
                 >
-                  <div className="color2-text rounded-xl bg-emerald-500/20 p-2.5">
+                  <div className="color2-text glass1-bg rounded-xl  p-2.5">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -176,7 +174,7 @@ export default function Home() {
             animate={{ y: [0, 6, 0] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
           >
-            <ChevronDown className="h-5 w-5 text-emerald-400" />
+            <ChevronDown className="h-5 w-5 color2-text" />
           </motion.div>
         </a>
       </motion.div>
