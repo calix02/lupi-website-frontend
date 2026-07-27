@@ -162,7 +162,7 @@ export default function TourismSection() {
             variants={animate.itemVariants}
             className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-slate-950/80 px-4 py-1.5 text-xs font-semibold text-emerald-400 backdrop-blur-md mb-4 shadow-lg"
           >
-            <Compass className="h-4 w-4 animate-spin-slow text-emerald-400" />
+            <Compass className="h-4 w-4 animate-spin text-emerald-400" />
             <span>Discover Lupi, Camarines Sur</span>
           </motion.div>
 

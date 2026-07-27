@@ -16,6 +16,7 @@ import {
   ChevronRight,
   Cloud,
 } from "lucide-react";
+import useInOutAnimation from "@/hooks/useInOutAnimation";
 
 // --- LUPI MUNICIPAL COORDINATES ---
 const LUPI_COORDS = { lat: 13.7842, lng: 122.9123 };
@@ -69,7 +70,7 @@ export default function Weather() {
   const [activeOverlay, setActiveOverlay] = useState<"wind" | "rain">("wind");
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [lastUpdated, setLastUpdated] = useState("Just now");
-  const [isLoading, setIsLoading] = useState(true);
+  //const [isLoading, setIsLoading] = useState(true);
 
   // Live weather state populated via Open-Meteo
   const [current, setCurrent] = useState<CurrentWeatherState>({
@@ -159,7 +160,7 @@ export default function Weather() {
       console.error("Error fetching weather data:", error);
     } finally {
       setIsRefreshing(false);
-      setIsLoading(false);
+      //setIsLoading(false);
     }
   };
 
@@ -168,26 +169,29 @@ export default function Weather() {
   }, []);
 
   const mapUrl = `https://embed.windy.com/embed2.html?lat=${LUPI_COORDS.lat}&lon=${LUPI_COORDS.lng}&detailLat=${LUPI_COORDS.lat}&detailLon=${LUPI_COORDS.lng}&width=650&height=450&zoom=10&level=surface&overlay=${activeOverlay}&product=ecmwf&menu=&message=&marker=true&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1`;
-
+   const animate = useInOutAnimation();
   return (
     <section id="weather" className="relative w-full bg-slate-50 py-24 text-slate-800 overflow-hidden font-sans">
       <div className="absolute top-0 right-0 -mr-20 -mt-20 h-96 w-96 rounded-full bg-emerald-200/40 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 -ml-20 -mb-20 h-96 w-96 rounded-full bg-sky-200/50 blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <motion.div  variants={animate.containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.25 }}  className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3.5 py-1 text-xs font-semibold text-emerald-800 mb-3 shadow-sm">
+            <motion.div variants={animate.itemVariants} className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3.5 py-1 text-xs font-semibold text-emerald-800 mb-3 shadow-sm">
               <Compass className="h-3.5 w-3.5 text-emerald-600 animate-spin-slow" />
               <span>Municipal Environmental Monitoring</span>
-            </div>
-            <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
+            </motion.div>
+            <motion.h2 variants={animate.itemVariants} className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
               Weather & <span className="text-emerald-600">Flood Advisory</span>
-            </h2>
-            <p className="mt-2 text-sm text-slate-600 max-w-xl">
+            </motion.h2>
+            <motion.p variants={animate.itemVariants} className="mt-2 text-sm text-slate-600 max-w-xl">
               Live atmospheric data, precipitation probabilities, river basin flood risk levels, and radar for Lupi, Camarines Sur.
-            </p>
+            </motion.p>
           </div>
 
           <div className="flex items-center gap-3">
@@ -213,9 +217,7 @@ export default function Weather() {
             
             {/* HERO CURRENT WEATHER CARD */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+             variants={animate.itemVariants}
               className="relative overflow-hidden rounded-3xl bg-linear-to-br from-emerald-600 via-teal-700 to-slate-900 p-6 sm:p-8 text-white shadow-xl shadow-emerald-900/10"
             >
               <CloudLightning className="absolute -right-6 -bottom-6 h-56 w-56 text-white/10 pointer-events-none" />
@@ -287,7 +289,7 @@ export default function Weather() {
             </motion.div>
 
             {/* KEY METRICS GRID */}
-            <div className="grid grid-cols-3 gap-4">
+            <motion.div variants={animate.itemVariants} className="grid grid-cols-3 gap-4">
               <div className="rounded-2xl bg-white p-4 border border-slate-200/80 shadow-sm flex flex-col justify-between">
                 <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
                   <Wind className="h-4 w-4 text-emerald-600" />
@@ -325,10 +327,10 @@ export default function Weather() {
                   </span>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* HOURLY FORECAST STRIP */}
-            <div className="rounded-3xl bg-white p-6 border border-slate-200/80 shadow-sm">
+            <motion.div variants={animate.itemVariants} className="rounded-3xl bg-white p-6 border border-slate-200/80 shadow-sm">
               <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-4 flex items-center justify-between">
                 <span>Hourly Precipitation Forecast</span>
                 <span className="text-emerald-600 font-bold">Next 7 Hours</span>
@@ -346,15 +348,15 @@ export default function Weather() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
           </div>
 
           {/* RIGHT COLUMN */}
           <div className="lg:col-span-7 flex flex-col gap-6">
             
-            {/* MAP CARD WITH CONTROLS */}
-            <div className="relative overflow-hidden rounded-3xl bg-slate-900 border border-slate-800 shadow-xl flex flex-col h-120">
+            {/* MAP CARD WITH CONTROLS  */}
+            <motion.div variants={animate.itemVariants} className="relative overflow-hidden rounded-3xl bg-slate-900 border border-slate-800 shadow-xl flex flex-col h-120">
               <div className="absolute top-4 left-4 right-4 z-20 flex flex-wrap items-center justify-between gap-2 pointer-events-none">
                 <div className="flex items-center gap-2 rounded-xl bg-slate-900/90 backdrop-blur-md px-3.5 py-2 text-xs font-semibold text-white border border-slate-700/80 shadow-md pointer-events-auto">
                   <Eye className="h-4 w-4 text-emerald-400" />
@@ -405,10 +407,11 @@ export default function Weather() {
                   <ChevronRight className="h-3 w-3" />
                 </a>
               </div>
-            </div>
+            </motion.div>
+           
 
             {/* 5-DAY EXTENDED OUTLOOK */}
-            <div className="rounded-3xl bg-white p-6 border border-slate-200/80 shadow-sm">
+            <motion.div variants={animate.itemVariants} className="rounded-3xl bg-white p-6 border border-slate-200/80 shadow-sm">
               <h3 className="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-4 flex items-center justify-between">
                 <span>5-Day Extended Weather Outlook</span>
                 <span className="text-slate-500 font-medium text-[11px]">Municipality of Lupi</span>
@@ -435,10 +438,10 @@ export default function Weather() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* MUNICIPAL DISASTER RISK REDUCTION NOTICE */}
-            <div className="rounded-2xl bg-amber-50 border border-amber-200/80 p-4 flex items-start gap-3.5">
+            <motion.div variants={animate.itemVariants} className="rounded-2xl bg-amber-50 border border-amber-200/80 p-4 flex items-start gap-3.5">
               <AlertTriangle className="h-5 w-5 text-amber-600 shrink-0 mt-0.5" />
               <div className="text-xs text-amber-900">
                 <span className="font-bold block text-amber-950 mb-0.5">
@@ -446,12 +449,12 @@ export default function Weather() {
                 </span>
                 Residents in riverbank and coastal zones are advised to keep emergency kits ready during heavy rainfall warnings. Call Lupi MDRRMO Hotline: <strong>(054) 881-LUPI</strong>.
               </div>
-            </div>
+            </motion.div>
 
           </div>
 
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
