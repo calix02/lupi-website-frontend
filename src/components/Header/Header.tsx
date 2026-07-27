@@ -10,6 +10,7 @@ export default function Header() {
     "Tourism",
     "Weather",
     "Officials",
+    "Trasparency",
     "About",
     "Contact",
   ];
