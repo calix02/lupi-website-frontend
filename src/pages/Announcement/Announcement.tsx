@@ -3,9 +3,9 @@ import { Calendar, ArrowRight, Quote, ShieldCheck, Bell } from "lucide-react";
 import MayorImage from "@/assets/Mayor.jpg"; // Replace with Mayor Topi's actual photo path
 
 // Import your announcement thumbnail photos
-import AssistanceImg from "@/assets/logos/LGU.jpg";
-import HealthMissionImg from "@/assets/logos/LGU.jpg";
-import RoadProjImg from "@/assets/logos/LGU.jpg";
+import AssistanceImg from "@/assets/logos/LGU-NEW.png";
+import HealthMissionImg from "@/assets/logos/LGU-NEW.png";
+import RoadProjImg from "@/assets/logos/LGU-NEW.png";
 import { Link } from "react-router-dom";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
 

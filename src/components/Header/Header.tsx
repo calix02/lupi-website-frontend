@@ -9,8 +9,7 @@ export default function Header() {
     "Announcements",
     "Tourism",
     "Weather",
-    "Officials",
-    "Trasparency",
+    "Transparency",
     "About",
     "Contact",
   ];
