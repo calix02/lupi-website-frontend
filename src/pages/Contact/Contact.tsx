@@ -122,53 +122,15 @@ export default function Contact() {
             className="lg:col-span-5 flex flex-col justify-between space-y-4"
           >
             {/* Phone Card */}
-            <motion.div
-              variants={itemVariants}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white/80 p-6 backdrop-blur-xl shadow-xl shadow-slate-200/50 flex items-start gap-4"
-            >
-              <div className="absolute top-0 left-0 bottom-0 w-1 bg-emerald-500 group-hover:w-1.5 transition-all" />
-              <div className="h-12 w-12 rounded-2xl bg-emerald-100 border border-emerald-200 flex items-center justify-center text-emerald-700 shrink-0 shadow-sm group-hover:scale-110 transition-transform">
-                <Phone className="h-6 w-6" />
-              </div>
-              <div className="space-y-1">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Call Us</span>
-                <h4 className="text-lg font-bold text-slate-900">Contact Numbers</h4>
-                <p className="text-sm text-slate-600 font-semibold">+63 (054) 123-4567</p>
-                <p className="text-xs text-slate-500">+63 917 123 4567 (Hotline)</p>
-              </div>
-            </motion.div>
+            <SocialCard icon={Phone } borderColor1="bg-emerald-500" borderColor2=" border-emerald-200" backgroundColor="bg-emerald-100" textColor="text-emerald-700" variants={itemVariants} title="Contact Number" kind="Call Us" link="#" nameLink="+63 917 123-4567" tags="+63 917 123-4567(Hotline)"/>
+
 
             {/* Email Card */}
-            <motion.div
-              variants={itemVariants}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white/80 p-6 backdrop-blur-xl shadow-xl shadow-slate-200/50 flex items-start gap-4"
-            >
-              <div className="absolute top-0 left-0 bottom-0 w-1 bg-teal-500 group-hover:w-1.5 transition-all" />
-              <div className="h-12 w-12 rounded-2xl bg-teal-100 border border-teal-200 flex items-center justify-center text-teal-700 shrink-0 shadow-sm group-hover:scale-110 transition-transform">
-                <Mail className="h-6 w-6" />
-              </div>
-              <div className="space-y-1">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Email Us</span>
-                <h4 className="text-lg font-bold text-slate-900">Official Email</h4>
-                <a
-                  href="mailto:info@lupi.gov.ph"
-                  className="block text-sm text-emerald-700 hover:underline font-semibold"
-                >
-                  info@lupi.gov.ph
-                </a>
-                <a
-                  href="mailto:support@lupi.gov.ph"
-                  className="block text-xs text-slate-500 hover:underline"
-                >
-                  support@lupi.gov.ph
-                </a>
-              </div>
-            </motion.div>
+            
+            <SocialCard icon={Mail } borderColor1="bg-teal-500" borderColor2=" border-teal-200" backgroundColor="bg-teal-100" textColor="text-teal-700" variants={itemVariants} title="Official Email" kind="Email Us" link="mailto:support@lupi.gov.ph" nameLink="info@lupi.gov.ph" tags="support@lupi.gov.ph"/>
 
             {/* Facebook Social Card */}
-            <SocialCard variants={itemVariants} title="Facebook Page" kind="Social Media" link="https://www.facebook.com/profile.php?id=100063643063038" nameLink="LGU Municipality of Lupi" tags="Follow us for real-time announcements & updates"/>
+            <SocialCard icon={ExternalLink} borderColor1="bg-blue-600" borderColor2=" border-blue-200" backgroundColor="bg-blue-100" textColor="text-blue-600" variants={itemVariants} title="Facebook Page" kind="Social Media" link="https://www.facebook.com/profile.php?id=100063643063038" nameLink="LGU Municipality of Lupi" tags="Follow us for real-time announcements & updates"/>
             
 
             {/* Address & Hours Info Box */}
