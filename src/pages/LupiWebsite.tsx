@@ -26,6 +26,7 @@ export default function LupiWebsite() {
   
     return(
         <div className="w-screen">
+            
             <Header/>
             <Home/>
             <Announcement/>

@@ -47,9 +47,6 @@ export default function Contact() {
       id="contact"
       className="relative min-h-screen w-full bg-slate-50 text-slate-800 py-24 px-4 sm:px-8 flex flex-col items-center justify-center overflow-hidden font-sans"
     >
-      {/* ================= 1. LIGHT BACKGROUND & PATTERN DESIGN ================= */}
-      {/* Subtle Grid Pattern */}
-      <div className="absolute inset-0 z-0 opacity-40 bg-[linear-gradient(to_right,#cbd5e1_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e1_1px,transparent_1px)] bg-size-[36px_36px] pointer-events-none" />
 
       {/* Animated Glowing Light Orbs */}
       <motion.div
@@ -77,13 +74,6 @@ export default function Contact() {
         }}
         className="absolute bottom-12 left-10 h-100 w-100 rounded-full bg-teal-200/40 blur-[140px] pointer-events-none z-0"
       />
-
-      {/* Decorative Frame Lines & Corners */}
-      <div className="absolute inset-4 sm:inset-8 border border-slate-200 pointer-events-none z-0 rounded-3xl" />
-      <div className="absolute top-4 left-4 h-6 w-6 border-t-2 border-l-2 border-emerald-600 z-10" />
-      <div className="absolute top-4 right-4 h-6 w-6 border-t-2 border-r-2 border-emerald-600 z-10" />
-      <div className="absolute bottom-4 left-4 h-6 w-6 border-b-2 border-l-2 border-emerald-600 z-10" />
-      <div className="absolute bottom-4 right-4 h-6 w-6 border-b-2 border-r-2 border-emerald-600 z-10" />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl flex flex-col items-center">
         {/* ================= 2. SECTION HEADER ================= */}

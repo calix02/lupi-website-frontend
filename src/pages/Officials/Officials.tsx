@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { Building2,  Sparkles, } from "lucide-react";
-import Mayor from "@/assets/Mayor.jpg";
+import Mayor from "@/assets/Official-Mayor.jpg";
 import CircularGallery from "./component/CircularGallery";
-import Card from "./component/Card";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
 
 export default function Officials() {
@@ -38,21 +37,8 @@ export default function Officials() {
   return (
     <section
       id="officials"
-      className="relative min-h-screen w-full bg-slate-50 text-slate-800 py-24 px-4 sm:px-8 flex flex-col items-center justify-center overflow-hidden font-sans"
+      className="relative min-h-screen w-full bg-slate-50 sm:px-8 flex flex-col py-24 items-center justify-center overflow-hidden font-sans"
     >
-      {/* ================= 1. LIGHT BACKGROUND & PATTERN DESIGN ================= */}
-      <div className="absolute inset-0 z-0 opacity-40 bg-[linear-gradient(to_right,#cbd5e1_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e1_1px,transparent_1px)] bg-size-[36px_36px] pointer-events-none" />
-
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 h-96 w-175 rounded-full bg-emerald-200/40 blur-[120px] pointer-events-none z-0" />
-      <div className="absolute bottom-10 right-10 h-80 w-80 rounded-full bg-teal-200/30 blur-[100px] pointer-events-none z-0" />
-
-      {/* Decorative Frame Lines */}
-      <div className="absolute inset-4 sm:inset-8 border border-slate-200 pointer-events-none z-0 rounded-3xl" />
-      <div className="absolute top-4 left-4 h-6 w-6 border-t-2 border-l-2 border-emerald-600 z-10" />
-      <div className="absolute top-4 right-4 h-6 w-6 border-t-2 border-r-2 border-emerald-600 z-10" />
-      <div className="absolute bottom-4 left-4 h-6 w-6 border-b-2 border-l-2 border-emerald-600 z-10" />
-      <div className="absolute bottom-4 right-4 h-6 w-6 border-b-2 border-r-2 border-emerald-600 z-10" />
-
       <motion.div variants={animate.containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -84,14 +70,12 @@ export default function Officials() {
             Dedicated leaders serving with integrity, commitment, and vision.
           </motion.p>
         </motion.div>
+        <div className=" w-full  h-screen">
+          <div className="">
+            <img src={Mayor} alt="Mayor" className="w-60 h-60 rounded-2xl object-cover " />
 
-        {/* ================= 3. MAYOR HIGHLIGHT HERO CARD ================= */}
-        <Card variants={animate.itemVariants} image={Mayor} name="Hon. Christopher Jacinto" position="Municipal Mayor" quote="Committed to transparent governance, rapid progress, and dedicated public service for all residents." email="mayor@lupi.gov.ph" phone="+63 (054) 123-4567" />
-       
-
-        {/* ================= 4. VICE MAYOR HIGHLIGHT CARD ================= */}
-        <Card variants={animate.itemVariants} image={"https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=800"} name="Hon. Juan Dela Cruz" position="Municipal Vice Mayor" quote="Committed to transparent governance, rapid progress, and dedicated public service for all residents." email="vicemayor@lupi.gov.ph" phone="+63 (054) 123-4568" />
-       
+          </div>
+        </div>
 
         {/* ================= 5. COUNCILORS SECTION & CIRCULAR GALLERY ================= */}
         <motion.div

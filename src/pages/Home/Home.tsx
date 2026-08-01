@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, ChevronDown, Landmark, Users, MapPin } from "lucide-react";
 import HeroImage from "@/assets/logos/LGU-NEW.png";
 import { Link } from "react-router-dom";
-
 export default function Home() {
   const containerVariants = {
     hidden: { 
@@ -47,6 +46,8 @@ export default function Home() {
       className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden pt-24 pb-16"
     >
      
+ 
+     
       {/* 1. Infinite Ken Burns Zooming Background */}
       <motion.div
         animate={{
@@ -70,6 +71,7 @@ export default function Home() {
 
       {/* 2. Main Hero Content with Scroll Entrance & Exit */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center text-white my-auto">
+        
         <motion.div
           variants={containerVariants}
           initial="hidden"

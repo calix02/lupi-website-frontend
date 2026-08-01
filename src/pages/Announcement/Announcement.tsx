@@ -149,7 +149,7 @@ export default function Announcement() {
               <Quote className="w-10 h-10 text-emerald-500/20 mb-3" />
 
               <blockquote className="text-slate-700 text-base sm:text-lg leading-relaxed italic font-medium">
-                "Dear fellow Lupinians, true progress is achieved when every family in our municipality feels supported, safe, and empowered. Let us continue to work hand-in-hand toward a transparent, modern, and thriving Lupi."
+                "Mga kapwa kong Lupinyanos, an tunay na progreso nakakamtan kapag an bawat pamilya sa satuyang banwaan nakakabati nin suporta, seguridad, asin oportunidad na mag-uswag. Padagos kitang magtarabangan tangan sa tangan tanganing magin mas malinaw, moderno, asin maunlad an Banwaan kan Lupi."
               </blockquote>
             </div>
 

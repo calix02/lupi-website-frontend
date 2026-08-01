@@ -1,4 +1,5 @@
 import useInOutAnimation from "@/hooks/useInOutAnimation";
+import Pattern from "@/assets/pattern/pattern1.svg";
 import { motion } from "framer-motion";
 import { 
   Compass, 
@@ -12,12 +13,13 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative min-h-screen w-full bg-slate-50 text-slate-800 py-24 px-4 sm:px-8 flex flex-col items-center justify-center overflow-hidden font-sans"
+      className="relative min-h-screen w-full bg-linear-to-br from-emerald-950 via-emerald-900 to-teal-950 text-slate-800 pb-10 px-4 sm:px-8 flex flex-col items-center justify-center overflow-hidden font-sans"
     >
       {/* ================= 1. LIGHT BACKGROUND & PATTERN DESIGN ================= */}
       {/* Subtle Grid Pattern */}
-      <div className="absolute inset-0 z-0 opacity-40 bg-[linear-gradient(to_right,#cbd5e1_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e1_1px,transparent_1px)] bg-size-[36px_36px] pointer-events-none" />
-
+ <div className="relative top-0 w-screen ">
+            <img src={Pattern} alt="Pattern" className="w-full  object-cover" />
+        </div>
       {/* Animated Glowing Light Orbs */}
       <motion.div
         animate={{
@@ -45,12 +47,6 @@ export default function About() {
         className="absolute bottom-10 right-1/4 h-100 w-100 rounded-full bg-teal-200/40 blur-[140px] pointer-events-none z-0"
       />
 
-      {/* Decorative Frame Lines & Corners */}
-      <div className="absolute inset-4 sm:inset-8 border border-slate-200 pointer-events-none z-0 rounded-3xl" />
-      <div className="absolute top-4 left-4 h-6 w-6 border-t-2 border-l-2 border-emerald-600 z-10" />
-      <div className="absolute top-4 right-4 h-6 w-6 border-t-2 border-r-2 border-emerald-600 z-10" />
-      <div className="absolute bottom-4 left-4 h-6 w-6 border-b-2 border-l-2 border-emerald-600 z-10" />
-      <div className="absolute bottom-4 right-4 h-6 w-6 border-b-2 border-r-2 border-emerald-600 z-10" />
 
       <motion.div variants={animate.containerVariants}
         initial="hidden"
@@ -65,14 +61,14 @@ export default function About() {
             <span>Discover Our Identity</span>
           </div>
 
-          <motion.h2 variants={animate.itemVariants} className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-slate-900">
+          <motion.h2 variants={animate.itemVariants} className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-slate-100">
             About the{" "}
             <span className="bg-linear-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
               Municipality of Lupi
             </span>
           </motion.h2>
 
-          <p className="mt-3 max-w-2xl text-base sm:text-lg text-slate-600 font-medium">
+          <p className="mt-3 max-w-2xl text-base sm:text-lg text-slate-200 font-medium">
             Rooted in rich heritage, driven by unified vision, and committed to sustainable progress for every Lupiniang.
           </p>
         </div>

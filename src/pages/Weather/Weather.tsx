@@ -173,7 +173,6 @@ export default function Weather() {
   return (
     <section id="weather" className="relative w-full bg-slate-50 py-24 text-slate-800 overflow-hidden font-sans">
       <div className="absolute top-0 right-0 -mr-20 -mt-20 h-96 w-96 rounded-full bg-emerald-200/40 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 -ml-20 -mb-20 h-96 w-96 rounded-full bg-sky-200/50 blur-3xl pointer-events-none" />
 
       <motion.div  variants={animate.containerVariants}
         initial="hidden"

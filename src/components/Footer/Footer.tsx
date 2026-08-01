@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import Logo from "@/assets/logos/lupi_logo.png";
 import {
-  Building2,
   Mail,
   Phone,
   MapPin,
@@ -12,7 +11,7 @@ import {
   Heart,
   ArrowUp,
 } from "lucide-react";
-import Pattern from "@/assets/pattern/frame1.svg";
+import Pattern from "@/assets/pattern/pattern1.svg";
 
 export default function Footer() {
   const scrollToTop = () => {
