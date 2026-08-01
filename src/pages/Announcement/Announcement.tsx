@@ -79,14 +79,7 @@ export default function Announcement() {
       id="announcements"
       className="relative w-full min-h-screen py-24 px-6 bg-slate-50 overflow-hidden flex flex-col justify-center items-center"
     >
-      {/* Background Dot Grid */}
-      <div 
-        className="absolute inset-0 z-0 opacity-40 pointer-events-none" 
-        style={{
-          backgroundImage: `radial-gradient(#0edb91 0.75px, transparent 0.75px)`,
-          backgroundSize: "24px 24px"
-        }}
-      />
+      
 
       {/* Floating Ambient Glows */}
       <motion.div

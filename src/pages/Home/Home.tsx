@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, ChevronDown, Landmark, Users, MapPin } from "lucide-react";
 import HeroImage from "@/assets/logos/LGU-NEW.png";
+import Pattern from "@/assets/pattern/pattern4.svg";
 import { Link } from "react-router-dom";
 export default function Home() {
   const containerVariants = {
@@ -46,7 +47,11 @@ export default function Home() {
       className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden pt-24 pb-16"
     >
      
- 
+      <div className="absolute bottom-0 z-10 w-screen ">
+            <img src={Pattern} alt="Pattern" className="w-full  object-cover -scale-y-100 " />
+            <div className="w-full  bg-slate-50"></div>
+        </div>
+       
      
       {/* 1. Infinite Ken Burns Zooming Background */}
       <motion.div
@@ -93,7 +98,7 @@ export default function Home() {
             variants={itemVariants}
             className="text-4xl font-extrabold tracking-tight sm:text-6xl md:text-7xl leading-[1.15]"
           >
-            Empowering Our Community through{" "}
+            Progresibong Lupi{" "}
             <span className="gradient1-text">
               Innovation & Service
             </span>
@@ -149,7 +154,7 @@ export default function Home() {
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="text-lg font-bold text-white">{stat.value}</p>
+                    <p className="text-lg font-bold text-slate-100">{stat.value}</p>
                     <p className="text-xs text-slate-400">{stat.label}</p>
                   </div>
                 </Link>
@@ -169,7 +174,7 @@ export default function Home() {
       >
         <a
           href="#announcements"
-          className="flex flex-col items-center gap-2 text-xs font-medium text-slate-400 hover:text-white transition-colors"
+          className="flex flex-col items-center gap-2 text-xs font-medium text-emerald-400 hover:text-white transition-colors"
         >
           <span>Scroll Down</span>
           <motion.div

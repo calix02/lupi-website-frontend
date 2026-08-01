@@ -13,12 +13,12 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative min-h-screen w-full bg-linear-to-br from-emerald-950 via-emerald-900 to-teal-950 text-slate-800 pb-10 px-4 sm:px-8 flex flex-col items-center justify-center overflow-hidden font-sans"
+      className="relative min-h-screen w-full bg-linear-to-br from-emerald-950 via-emerald-900 to-teal-950 text-slate-800 py-24 lg:pt-35  px-4 sm:px-8 flex flex-col items-center justify-center overflow-hidden font-sans"
     >
       {/* ================= 1. LIGHT BACKGROUND & PATTERN DESIGN ================= */}
       {/* Subtle Grid Pattern */}
- <div className="relative top-0 w-screen ">
-            <img src={Pattern} alt="Pattern" className="w-full  object-cover" />
+ <div className="absolute top-0 w-screen ">
+            <img src={Pattern} alt="Pattern" className="w-full  object-cover " />
         </div>
       {/* Animated Glowing Light Orbs */}
       <motion.div
