@@ -11,6 +11,7 @@
   @apply bg-linear-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent;
 }
 
+
 /* Text Colors */
 .color1-border{
   @apply border border-emerald-500/30

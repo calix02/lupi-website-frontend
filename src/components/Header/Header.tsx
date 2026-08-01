@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence, useMotionValueEvent, useScroll } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import LupiLOgo from "@/assets/logos/lupi_logo.png";
 
@@ -74,6 +74,28 @@ useEffect(() => {
     sections.forEach((section) => observer.unobserve(section));
   };
 }, []);
+ // Track visibility state
+  const [isHidden, setIsHidden] = useState(false);
+  const { scrollY } = useScroll();
+
+  // Framer Motion's optimized way to listen to scroll changes
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+
+    // 1. Show if we are near the top
+    if (latest < 50) {
+      setIsHidden(false);
+    }
+    // 2. Hide if scrolling DOWN
+    else if (latest > previous && latest > 150) {
+      setIsHidden(true);
+    }
+    // 3. Show if scrolling UP
+    else if (latest < previous) {
+      setIsHidden(false);
+    }
+  });
+
 
   return (
     <header
@@ -83,6 +105,8 @@ useEffect(() => {
             ? "border-emerald-500/20 bg-slate-950/50 shadow-2xl shadow-emerald-950/20 backdrop-blur-2xl py-2.5 px-6"
             : " bg-white-950/50 backdrop-blur-md py-3.5 px-6"
         } 
+        ${isHidden ? "hidden" : "block"}
+
         ${
         scrolled
           ? "border-emerald-500/20 bg-white-950/50 shadow-2xl shadow-emerald-950/20 backdrop-blur-2xl py-2.5 px-6"
