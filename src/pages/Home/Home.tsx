@@ -1,38 +1,12 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, ChevronDown, Landmark, Users, MapPin } from "lucide-react";
-import HeroImage from "@/assets/logos/LGU-NEW.png";
-import Pattern from "@/assets/pattern/pattern4.svg";
 import { Link } from "react-router-dom";
-export default function Home() {
-  const containerVariants = {
-    hidden: { 
-      opacity: 0 
-    },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1,
-      },
-    },
-  };
+import Pattern from "@/assets/pattern/pattern2.svg";
+import HeroVideo from "@/assets/LGU-Video.mp4"; 
+import useInOutAnimation from "@/hooks/useInOutAnimation";
 
-  const itemVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 40,
-      scale: 0.96 
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { 
-        duration: 0.6, 
-        ease: [0.22, 1, 0.36, 1] as const 
-      },
-    },
-  };
+export default function Home() {
+  const animate = useInOutAnimation();
 
   const stats = [
     { icon: Users, label: "Community Members", value: "35,000+", link: "/coming-soon" },
@@ -40,100 +14,96 @@ export default function Home() {
     { icon: MapPin, label: "Tourist Spots", value: "12+ Places", link: "/coming-soon" },
   ];
 
- 
-
- 
   return (
     <section
       id="home"
-      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden pt-24 pb-16"
+      className="relative flex min-h-screen w-full flex-col items-center justify-between overflow-hidden pt-24 pb-12 sm:pb-16 lg:pt-32"
     >
-     
-      <div className="absolute bottom-0 z-10 w-screen ">
-            <img src={Pattern} alt="Pattern" className="w-full  object-cover -scale-y-100 " />
-            <div className="w-full  bg-slate-50"></div>
-        </div>
-       
-     
-      {/* 1. Infinite Ken Burns Zooming Background */}
-      <motion.div
-        animate={{
-          scale: [1, 1.15, 1],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut",
-        }}
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${HeroImage})` }}
-      />
+      {/* Bottom Decorative Pattern Divider */}
+      <div className="absolute bottom-0 inset-x-0 z-10 pointer-events-none">
+        <img src={Pattern} alt="" className="w-full object-cover -scale-y-100 opacity-90" />
+      </div>
+      {/* 1. Video Background Element */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-full w-full object-cover object-center scale-105"
+        >
+          {/* Replace src with your local video import or video URL */}
+          <source src={HeroVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
-      {/* Dark Gradient Overlay for High Text Readability */}
-      <div className="absolute inset-0 z-0 bg-linear-to-b from-slate-950/60 via-slate-950/65 to-slate-950/60 backdrop-blur-[1px]" />
+        {/* Multi-Layered Dark Gradient Overlays for High Legibility */}
+        <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[0.5px]" />
+        <div className="absolute inset-0 bg-linear-to-b from-slate-950/40 via-slate-950/40 to-slate-950/20" />
+      </div>
 
-      {/* Subtle Glowing Ambient Lights */}
-      <div className="glowing-bg absolute top-1/3 left-1/2 z-0 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full  blur-3xl pointer-events-none" />
+      {/* Subtle Glowing Ambient Glow */}
+      <div className="pointer-events-none absolute top-1/2 left-1/2 z-0 h-120 w-120 -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/10 blur-[120px]" />
 
-      {/* 2. Main Hero Content with Scroll Entrance & Exit */}
-      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center text-white my-auto">
-        
+      {/* 2. Main Hero Content */}
+      <div className="relative z-10 mx-auto my-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center text-white">
         <motion.div
-          variants={containerVariants}
+          variants={animate.containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ amount: 0.3 }} // Entrance/Exit triggers when 30% of the section is in view
+          viewport={{ amount: 0.2, once: true }}
           className="flex flex-col items-center"
         >
           {/* Animated Badge */}
           <motion.div
-            variants={itemVariants}
-            className="color1-text color1-border glass1-bg mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium backdrop-blur-md hover:border-emerald-500/50 transition-colors shadow-inner"
+            variants={animate.itemVariants}
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-950/30 px-4 py-1.5 text-xs sm:text-sm font-medium text-emerald-300 backdrop-blur-md transition-colors hover:border-emerald-500/60 shadow-lg shadow-emerald-950/50"
           >
-            <Sparkles className="color2-text h-4 w-4 animate-pulse" />
+            <Sparkles className="h-4 w-4 text-emerald-400 animate-pulse" />
             <span>Welcome to the Official Lupi Portal</span>
           </motion.div>
 
-          {/* Main Headline */}
+          {/* Headline */}
           <motion.h1
-            variants={itemVariants}
-            className="text-4xl font-extrabold tracking-tight sm:text-6xl md:text-7xl leading-[1.15]"
+            variants={animate.itemVariants}
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.15] text-white"
           >
             Progresibong Lupi{" "}
-            <span className="gradient1-text">
+            <span className="bg-linear-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
               Innovation & Service
             </span>
           </motion.h1>
 
           {/* Subtitle */}
           <motion.p
-            variants={itemVariants}
-            className="mt-6 max-w-2xl text-base text-slate-300 sm:text-lg md:text-xl font-normal leading-relaxed"
+            variants={animate.itemVariants}
+            className="mt-4 sm:mt-6 max-w-2xl text-sm sm:text-lg md:text-xl font-normal text-slate-300 leading-relaxed"
           >
             Discover municipal updates, public services, tourism spots, and upcoming events—all in one unified digital hub.
           </motion.p>
 
-          {/* Action Buttons */}
+          {/* Call to Action Buttons */}
           <motion.div
-            variants={itemVariants}
-            className="mt-8 flex flex-col sm:flex-row gap-4 w-full justify-center sm:w-auto"
+           
+            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
           >
             <motion.a
+            variants={animate.itemVariants}
               href="#services"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              className="group flex items-center justify-center gap-2 rounded-full gradient1-bg px-8 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/25 transition-all hover:shadow-emerald-500/40"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="group flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-linear-to-r from-emerald-500 to-teal-500 px-8 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/25 transition-all hover:shadow-emerald-500/40"
             >
               Explore Services
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </motion.a>
 
             <motion.a
+              variants={animate.itemVariants}
               href="#announcements"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              className="flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-md hover:bg-white/20 hover:border-white/40 transition-all"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-md hover:bg-white/20 hover:border-white/40 transition-all"
             >
               Latest News
             </motion.a>
@@ -141,23 +111,26 @@ export default function Home() {
 
           {/* 3. Floating Stats Cards */}
           <motion.div
-            variants={itemVariants}
-            className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-3xl"
+            variants={animate.itemVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.25 }}
+            className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-3xl"
           >
             {stats.map((stat, idx) => {
               const Icon = stat.icon;
               return (
                 <Link
-                to={stat.link}
+                  to={stat.link}
                   key={idx}
-                  className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md text-left transition-colors hover:border-emerald-500/30 hover:bg-white/10"
+                  className="group flex items-center gap-3.5 rounded-2xl border border-white/10 bg-slate-900/40 p-4 backdrop-blur-lg transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500/40 hover:bg-slate-900/60 hover:shadow-xl hover:shadow-emerald-500/10"
                 >
-                  <div className="color2-text glass1-bg rounded-xl  p-2.5">
+                  <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-2.5 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-colors">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <div>
-                    <p className="text-lg font-bold text-slate-100">{stat.value}</p>
-                    <p className="text-xs text-slate-400">{stat.label}</p>
+                  <div className="text-left">
+                    <p className="text-lg font-bold text-slate-100 leading-none">{stat.value}</p>
+                    <p className="mt-1 text-xs text-slate-400">{stat.label}</p>
                   </div>
                 </Link>
               );
@@ -166,27 +139,29 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* 4. Animated Scroll Indicator */}
+      {/* 4. Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ amount: 0.3 }}
         transition={{ delay: 0.6, duration: 0.8 }}
-        className="relative z-10 pt-8"
+        className="relative z-10 pt-6"
       >
         <a
           href="#announcements"
-          className="flex flex-col items-center gap-2 text-xs font-medium text-emerald-400 hover:text-white transition-colors"
+          className="flex flex-col items-center gap-1.5 text-xs font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
         >
           <span>Scroll Down</span>
           <motion.div
-            animate={{ y: [0, 6, 0] }}
+            animate={{ y: [0, 5, 0] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
           >
-            <ChevronDown className="h-5 w-5 color2-text" />
+            <ChevronDown className="h-4 w-4 text-emerald-400" />
           </motion.div>
         </a>
       </motion.div>
+
+      
     </section>
   );
 }
