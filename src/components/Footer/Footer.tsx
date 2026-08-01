@@ -35,7 +35,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative w-full bg-linear-to-br from-emerald-950 via-emerald-900 to-teal-950 text-white overflow-hidden font-sans border-t border-emerald-800/40">
+    <footer className="relative w-full bg-linear-to-br from-emerald-950 via-emerald-900 to-teal-950 text-white overflow-hidden font-sans">
       {/* ================= 1. GRADIENT GREEN AMBIENT BACKGROUND ================= */}
       {/* Background Decorative Grid */}
         <div className="relative top-0 w-full ">
@@ -44,7 +44,6 @@ export default function Footer() {
     
 
       {/* Top Gradient Highlight Bar */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-400 via-teal-300 to-cyan-400" />
 
       {/* ================= 2. MAIN FOOTER CONTENT ================= */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-8 pt-16 pb-12">

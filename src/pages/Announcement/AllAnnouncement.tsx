@@ -13,7 +13,9 @@ import {
   Clock,
   Maximize2,
   X,
+  ArrowLeft,
 } from "lucide-react";
+import {Link} from "react-router-dom";
 
 // Sample Announcement Data with High-Quality Poster Images
 const ANNOUNCEMENTS = [
@@ -139,6 +141,9 @@ export default function AllAnnouncement() {
       id="all-announcements"
       className="relative flex min-h-screen w-full flex-col bg-white text-slate-800 overflow-hidden pt-28 pb-20 items-center justify-center"
     >
+      <Link to="/" className="absolute top-6 left-6 inline-flex font-bold items-center gap-1.5  px-3 py-2 text-sm font-medium text-slate-900">
+        <ArrowLeft className="h-5 w-5" /> Back to Home
+      </Link>
       {/* ================= 1. BACKGROUND PATTERN & AMBIENT GLOW ================= */}
       <div
         className="absolute inset-0 z-0 opacity-[0.06] pointer-events-none"

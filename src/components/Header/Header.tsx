@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect,  useState } from "react";
 import { motion, AnimatePresence, useMotionValueEvent, useScroll } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import LupiLOgo from "@/assets/logos/lupi_logo.png";

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Building2,  Sparkles, } from "lucide-react";
+import { Building2,  PersonStanding,  Sparkles, } from "lucide-react";
 import Mayor from "@/assets/Official-Mayor.jpg";
 import CircularGallery from "./component/CircularGallery";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
@@ -71,8 +71,13 @@ export default function Officials() {
           </motion.p>
         </motion.div>
         <div className=" w-full  h-screen">
-          <div className="">
+          <div className="flex gap-5">
             <img src={Mayor} alt="Mayor" className="w-60 h-60 rounded-2xl object-cover " />
+            <div className="">
+              <h1 className= "text-3xl font-bold ">Hon. Chritopher V. Jacinto</h1>
+              
+              <h3 className="text-slate-500"> Municipal Mayor</h3>
+            </div>
 
           </div>
         </div>
