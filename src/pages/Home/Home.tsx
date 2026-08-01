@@ -21,7 +21,7 @@ export default function Home() {
     >
       {/* Bottom Decorative Pattern Divider */}
       <div className="absolute bottom-0 inset-x-0 z-10 pointer-events-none">
-        <img src={Pattern} alt="" className="w-full object-cover -scale-y-100 opacity-90" />
+        <img src={Pattern} alt="" className="w-full object-cover -scale-y-100 " />
       </div>
       {/* 1. Video Background Element */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -38,8 +38,7 @@ export default function Home() {
         </video>
 
         {/* Multi-Layered Dark Gradient Overlays for High Legibility */}
-        <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[0.5px]" />
-        <div className="absolute inset-0 bg-linear-to-b from-slate-950/40 via-slate-950/40 to-slate-950/20" />
+        <div className="absolute inset-0 bg-linear-to-b from-slate-950/50 via-slate-950/50 to-slate-950/30" />
       </div>
 
       {/* Subtle Glowing Ambient Glow */}

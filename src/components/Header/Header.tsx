@@ -148,7 +148,7 @@ useEffect(() => {
                     className={`relative z-10 block px-4 py-1.5 text-xs font-semibold tracking-wide transition-colors duration-200 ${
                       isActive
                         ? "text-slate-950"
-                        : "text-slate-500 hover:text-emerald-600 hover:font-semibold"
+                        : "text-slate-300 hover:text-emerald-600 hover:font-semibold"
                     }`}
                   >
                     {item}

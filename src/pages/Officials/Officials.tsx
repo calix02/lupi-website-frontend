@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Building2,  PersonStanding,  Sparkles, } from "lucide-react";
+import { Building2,    Sparkles, } from "lucide-react";
 import Mayor from "@/assets/Official-Mayor.jpg";
 import CircularGallery from "./component/CircularGallery";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
