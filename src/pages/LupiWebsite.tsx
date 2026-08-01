@@ -8,6 +8,7 @@ import Weather from "./Weather/Weather";
 import Officials from "./Officials/Officials";
 import About from "./About/About";
 import Contact from "./Contact/Contact";
+import Footer from "@/components/Footer/Footer";
 
 export default function LupiWebsite() {
     const [showSplash, setShowSplash] = useState(true);
@@ -33,6 +34,7 @@ export default function LupiWebsite() {
             <About/>
             <Officials/>
             <Contact/>
+            <Footer/>
         </div>
 
     );
