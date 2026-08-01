@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
 import Pattern from "@/assets/pattern/pattern4.svg";
+import RoundCarousel from "@/components/Gallery/RoundCarousel";
 
 // Tourist Spot Data Model for Municipality of Lupi
 export interface TouristSpot {
@@ -416,9 +417,14 @@ export default function TourismSection() {
                 </div>
               </div>
             </motion.div>
+             
           </motion.div>
         )}
       </AnimatePresence>
+      <div className="mt-10 w-full h">
+          <RoundCarousel/>
+            
+        </div>
     </section>
   );
 }

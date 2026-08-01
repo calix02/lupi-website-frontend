@@ -75,8 +75,8 @@ export default function Officials() {
             <img src={Mayor} alt="Mayor" className="w-60 h-60 rounded-2xl object-cover " />
             <div className="">
               <h1 className= "text-3xl font-bold ">Hon. Chritopher V. Jacinto</h1>
-              
               <h3 className="text-slate-500"> Municipal Mayor</h3>
+              
             </div>
 
           </div>

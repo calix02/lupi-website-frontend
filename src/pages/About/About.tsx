@@ -9,7 +9,7 @@ import HeroCard from "./component/HeroCard";
 
 export default function About() {
  const animate = useInOutAnimation();
- 
+
   return (
     <section
       id="about"
@@ -90,6 +90,9 @@ export default function About() {
           {/* Vision Card */}
             <Card name="Our Vision" title="A Thriving Lupi" description="To become a model municipality in Camarines Sur, recognized for its sustainable development, empowered communities, and harmonious balance between progress and preservation of its rich cultural and natural heritage." quote="Inspiring Growth & Sustainability" variants={animate.itemVariants} />
         </motion.div>
+        <div className="mt-10 w-full h">
+
+        </div>
       </motion.div>
     </section>
   );
