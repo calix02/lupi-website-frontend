@@ -11,6 +11,7 @@ export default function Header() {
     "Weather",
     "Transparency",
     "About",
+    "Officials",
     "Contact",
   ];
 

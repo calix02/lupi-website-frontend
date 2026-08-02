@@ -4,7 +4,10 @@ import Mayor from "@/assets/Official-Mayor.jpg";
 import CircularGallery from "./component/CircularGallery";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
 import Pattern1 from "@/assets/pattern/pattern1-emerald.svg"
+import Pattern2 from "@/assets/pattern/pattern5.svg"
 import { FaAward } from "react-icons/fa6";
+import ViceMayorCard from "./component/ViceMayorCard";
+
 
 export default function Officials() {
   const animate = useInOutAnimation();
@@ -164,9 +167,12 @@ export default function Officials() {
               </div>
 
               {/* Circular / Custom Gallery Component Container */}
-              <div className="w-full mt-auto rounded-2xl bg-slate-900 p-4 sm:p-6 text-white overflow-hidden relative min-h-55 flex items-center justify-center">
-                <div className="w-full h-full">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-emerald-400 mb-2 text-center">
+              <div className="w-full mt-auto rounded-2xl  bg-slate-900 p-4 sm:p-6 text-white overflow-hidden relative min-h-55 flex items-center justify-center">
+                <div className= "absolute top-0 inset-x-0">
+                  <img src={Pattern2} alt="Pattern 2" className="w-full h-full object-cover" />
+                </div>
+                <div className="w-full h-full z-10">
+                  <p className="text-xs  font-bold uppercase tracking-wider text-slate-900 mb-2 text-center">
                     Project Gallery
                   </p>
                   <CircularGallery />
@@ -177,36 +183,7 @@ export default function Officials() {
         </motion.div>
 
         {/* ================= 3. VICE MAYOR SECTION (CENTERED) ================= */}
-        <motion.div
-          variants={animate.itemVariants}
-          className="w-full max-w-2xl mx-auto mb-20 text-center"
-        >
-          <div className="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50 flex flex-col items-center relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-teal-500 to-cyan-500" />
-
-            <div className="relative mb-4">
-              <img
-                src={viceMayor.image}
-                alt={viceMayor.name}
-                className="w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover shadow-md border-4 border-emerald-50"
-              />
-            </div>
-
-            <span className="text-xs font-bold uppercase tracking-wider text-teal-600 bg-teal-50 px-3 py-1 rounded-full mb-2">
-              Presiding Officer
-            </span>
-            <h3 className="text-2xl font-bold text-slate-900">
-              {viceMayor.name}
-            </h3>
-            <p className="text-sm font-semibold text-teal-700 mt-0.5 mb-4">
-              {viceMayor.title}
-            </p>
-
-            <p className="text-sm text-slate-600 italic max-w-lg leading-relaxed">
-              "{viceMayor.message}"
-            </p>
-          </div>
-        </motion.div>
+      <ViceMayorCard variants={animate.itemVariants} viceMayor={viceMayor} pattern={Pattern1}/>
 
         {/* ================= 4. COUNCILORS SECTION (GRID OF 3) ================= */}
         <motion.div variants={animate.itemVariants} className="w-full">
