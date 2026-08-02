@@ -9,7 +9,9 @@ import {
   X, 
   MapPin, 
   Clock, 
-  Tag 
+  Tag,
+  Pin,
+  FileText
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
@@ -18,6 +20,21 @@ import useInOutAnimation from "@/hooks/useInOutAnimation";
 import AssistanceImg from "@/assets/logos/LGU-NEW.png";
 import HealthMissionImg from "@/assets/logos/LGU-NEW.png";
 import RoadProjImg from "@/assets/logos/LGU-NEW.png";
+
+export interface AnnouncementItem {
+  id: number;
+  tag: string;
+  title: string;
+  dateKey: string;
+  dateDisplay: string;
+  time: string;
+  location: string;
+  desc: string;
+  urgent: boolean;
+  isPinned: boolean;
+  pinnedNote?: string;
+  image: string;
+}
 
 export default function Announcement() {
   const animate = useInOutAnimation();
@@ -29,7 +46,7 @@ export default function Announcement() {
   const [currentDate, setCurrentDate] = useState(new Date(2026, 6, 1)); // July 2026
 
   // Announcements and Events Dataset
-  const announcements = [
+  const announcements: AnnouncementItem[] = [
     {
       id: 1,
       tag: "Urgent Advisory",
@@ -40,6 +57,8 @@ export default function Announcement() {
       location: "Lupi Covered Court",
       desc: "All qualified beneficiaries are advised to report to the Lupi Covered Court starting at 8:00 AM. Please bring valid IDs and registration stubs.",
       urgent: true,
+      isPinned: true,
+      pinnedNote: "Bring 2 valid IDs and original registration stub. Distribution starts strictly at 8:00 AM.",
       image: AssistanceImg,
     },
     {
@@ -52,6 +71,8 @@ export default function Announcement() {
       location: "Barangay Napolidan Multi-Purpose Hall",
       desc: "In partnership with the Rural Health Unit, medical checkups, dental checkups, and basic prescription medicines will be provided free of charge.",
       urgent: false,
+      isPinned: true,
+      pinnedNote: "Priority slots are reserved for senior citizens, PWDs, and pregnant mothers during morning hours.",
       image: HealthMissionImg,
     },
     {
@@ -64,6 +85,8 @@ export default function Announcement() {
       location: "Municipal Session Hall",
       desc: "Join us at the Session Hall as we present the upcoming farm-to-market road developments and municipal infrastructure projects.",
       urgent: false,
+      isPinned: false,
+      pinnedNote: "Open to all residents, business owners, and local transport operators.",
       image: RoadProjImg,
     },
   ];
@@ -111,7 +134,7 @@ export default function Announcement() {
       className="relative w-full min-h-screen py-20 sm:py-24 px-4 sm:px-8 bg-slate-50 overflow-hidden flex flex-col justify-center items-center"
     >
       {/* Background Decor */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-160 h-160 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Main Container */}
       <motion.div
@@ -119,7 +142,7 @@ export default function Announcement() {
         initial="hidden"
         whileInView="visible"
         viewport={{ amount: 0.15 }}
-        className="relative z-10 max-w-7xl mx-auto w-full flex flex-col gap-10"
+        className="relative z-10 max-w-7xl mx-auto w-full flex flex-col gap-12"
       >
         {/* Section Header */}
         <motion.div variants={animate.itemVariants} className="text-center max-w-2xl mx-auto">
@@ -129,7 +152,7 @@ export default function Announcement() {
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
             Latest Announcements &{" "}
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
               Municipal Calendar
             </span>
           </h2>
@@ -138,166 +161,202 @@ export default function Announcement() {
           </p>
         </motion.div>
 
-        {/* Two-Column Grid: Calendar + Announcements */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          {/* ================= 1. INTERACTIVE CALENDAR ================= */}
-          <motion.div
-            variants={animate.itemVariants}
-            className="lg:col-span-5 bg-white border border-slate-200/80 rounded-3xl p-6 shadow-xl shadow-slate-200/50 flex flex-col"
-          >
-            {/* Calendar Header Controls */}
-            <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
-              <div className="flex items-center gap-2">
-                <div className="p-2 bg-emerald-50 text-emerald-600 rounded-xl">
-                  <CalendarIcon className="w-5 h-5" />
-                </div>
-                <h3 className="text-lg font-bold text-slate-900">
+        {/* ================= 1. MODERN FULL-WIDTH CALENDAR ================= */}
+        <motion.div
+          variants={animate.itemVariants}
+          className="w-full bg-white/90 backdrop-blur-xl border border-slate-200/90 rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/40 flex flex-col gap-6"
+        >
+          {/* Calendar Header Controls */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+            <div className="flex items-center gap-3">
+              <div className="p-3 bg-linear-to-br from-emerald-500 to-teal-600 text-white rounded-2xl shadow-md shadow-emerald-500/20">
+                <CalendarIcon className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
                   {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
                 </h3>
-              </div>
-              <div className="flex items-center gap-1">
-                <button
-                  onClick={prevMonth}
-                  className="p-2 rounded-xl hover:bg-slate-100 text-slate-600 transition-colors"
-                  aria-label="Previous Month"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={nextMonth}
-                  className="p-2 rounded-xl hover:bg-slate-100 text-slate-600 transition-colors"
-                  aria-label="Next Month"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
+                <p className="text-xs text-slate-500 font-medium">
+                  Interactive Event Schedule & Important Dates
+                </p>
               </div>
             </div>
 
-            {/* Weekday Labels */}
-            <div className="grid grid-cols-7 gap-1 text-center text-xs font-bold text-slate-400 mb-2">
-              <span>Sun</span>
-              <span>Mon</span>
-              <span>Tue</span>
-              <span>Wed</span>
-              <span>Thu</span>
-              <span>Fri</span>
-              <span>Sat</span>
+            <div className="flex items-center gap-2 self-end sm:self-auto">
+              <button
+                onClick={prevMonth}
+                className="p-2.5 rounded-2xl border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 text-slate-600 hover:text-emerald-700 transition-all shadow-xs"
+                aria-label="Previous Month"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={nextMonth}
+                className="p-2.5 rounded-2xl border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 text-slate-600 hover:text-emerald-700 transition-all shadow-xs"
+                aria-label="Next Month"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
             </div>
+          </div>
 
-            {/* Calendar Days Grid */}
-            <div className="grid grid-cols-7 gap-1.5 sm:gap-2">
-              {/* Empty leading slots for offset */}
-              {Array.from({ length: firstDayOfMonth }).map((_, index) => (
-                <div key={`empty-${index}`} className="h-10 sm:h-11 rounded-xl" />
-              ))}
+          {/* Weekday Header Grid */}
+          <div className="grid grid-cols-7 gap-2 text-center">
+            {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
+              <div
+                key={day}
+                className="py-2 rounded-xl bg-slate-50 text-xs font-bold text-slate-500 tracking-wider uppercase"
+              >
+                {day}
+              </div>
+            ))}
+          </div>
 
-              {/* Day numbers */}
-              {Array.from({ length: daysInMonth }).map((_, dayIndex) => {
-                const dayNum = dayIndex + 1;
-                const formattedDate = getFormattedDateKey(dayNum);
-                const hasEvent = announcements.some((a) => a.dateKey === formattedDate);
+          {/* Calendar Days Grid */}
+          <div className="grid grid-cols-7 gap-2 sm:gap-3">
+            {/* Empty leading slots */}
+            {Array.from({ length: firstDayOfMonth }).map((_, index) => (
+              <div key={`empty-${index}`} className="h-14 sm:h-16 rounded-2xl bg-slate-50/40" />
+            ))}
 
-                return (
-                  <button
-                    key={dayNum}
-                    onClick={() => hasEvent && setSelectedDate(formattedDate)}
-                    disabled={!hasEvent}
-                    className={`relative h-10 sm:h-11 rounded-xl flex items-center justify-center text-xs sm:text-sm font-semibold transition-all ${
-                      hasEvent
-                        ? "bg-emerald-600 text-white shadow-md shadow-emerald-500/25 hover:bg-emerald-700 hover:scale-105 cursor-pointer"
-                        : "text-slate-700 hover:bg-slate-100 cursor-default"
-                    }`}
-                  >
-                    {dayNum}
-                    {hasEvent && (
-                      <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-300"></span>
+            {/* Day Cells */}
+            {Array.from({ length: daysInMonth }).map((_, dayIndex) => {
+              const dayNum = dayIndex + 1;
+              const formattedDate = getFormattedDateKey(dayNum);
+              const hasEvent = announcements.some((a) => a.dateKey === formattedDate);
+              const matchedEvent = announcements.find((a) => a.dateKey === formattedDate);
+
+              return (
+                <button
+                  key={dayNum}
+                  onClick={() => hasEvent && setSelectedDate(formattedDate)}
+                  disabled={!hasEvent}
+                  className={`relative h-14 sm:h-16 rounded-2xl flex flex-col items-center justify-between p-2 text-xs sm:text-sm font-bold transition-all duration-300 ${
+                    hasEvent
+                      ? "bg-linear-to-br from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-600/20 hover:scale-105 hover:shadow-xl cursor-pointer"
+                      : "bg-slate-50/80 text-slate-700 hover:bg-slate-100/80 cursor-default"
+                  }`}
+                >
+                  <span className="self-start text-xs font-semibold opacity-90">{dayNum}</span>
+
+                  {hasEvent && matchedEvent && (
+                    <div className="w-full flex items-center justify-between gap-1 mt-auto">
+                      <span className="hidden sm:inline-block truncate text-[10px] font-medium bg-white/20 backdrop-blur-xs px-1.5 py-0.5 rounded-md">
+                        {matchedEvent.tag}
                       </span>
-                    )}
-                  </button>
-                );
-              })}
+                      <span className="relative flex h-2 w-2 shrink-0">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-200 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                      </span>
+                    </div>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Calendar Footer Legend */}
+          <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-emerald-600 inline-block" />
+              <span>Highlighted dates contain scheduled public events</span>
+            </div>
+            <span className="font-semibold text-slate-700">{announcements.length} Total Events</span>
+          </div>
+        </motion.div>
+
+        {/* ================= 2. BULLETIN ANNOUNCEMENTS - SQUARE CARDS WITH IMAGES ================= */}
+        <div className="flex flex-col gap-6">
+          <motion.div variants={animate.itemVariants} className="flex justify-between items-center">
+            <div>
+              <h3 className="text-2xl font-extrabold text-slate-900 tracking-tight">Official Bulletins</h3>
+              <p className="text-xs text-slate-500">Pinned notices and municipal advisories</p>
             </div>
 
-            {/* Calendar Legend */}
-            <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-emerald-600 inline-block" />
-                <span>Scheduled Event (Click to view)</span>
-              </div>
-              <span>{announcements.length} Events</span>
-            </div>
+            <Link
+              to="/all-announcements"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-600 hover:text-emerald-700 transition-colors bg-emerald-50 hover:bg-emerald-100/80 px-4 py-2 rounded-xl"
+            >
+              <span>View All Bulletins</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </motion.div>
 
-          {/* ================= 2. BULLETIN ANNOUNCEMENTS LIST ================= */}
-          <div className="lg:col-span-7 flex flex-col justify-between gap-4">
-            <motion.div variants={animate.itemVariants} className="flex justify-between items-center pb-2">
-              <h3 className="text-xl font-bold text-slate-900">Official Bulletins</h3>
-              <Link
-                to="/all-announcements"
-                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-600 hover:text-emerald-700 transition-colors"
-              >
-                <span>View All Bulletins</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </motion.div>
-
+          {/* Square Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {announcements.map((item) => (
               <motion.div
                 key={item.id}
                 variants={animate.itemVariants}
-                whileHover={{ y: -2 }}
+                whileHover={{ y: -6 }}
                 onClick={() => setSelectedDate(item.dateKey)}
-                className="group relative flex flex-col sm:flex-row items-stretch gap-4 rounded-2xl bg-white p-4 sm:p-5 shadow-md shadow-slate-200/50 border border-slate-200/80 hover:shadow-xl hover:border-emerald-300 transition-all cursor-pointer overflow-hidden"
+                className="group relative flex flex-col justify-between aspect-square rounded-3xl bg-white shadow-lg shadow-slate-200/50 border border-slate-200/80 hover:shadow-2xl hover:border-emerald-300 transition-all duration-300 cursor-pointer overflow-hidden"
               >
-                {/* Thumbnail Image */}
-                <div className="relative w-full sm:w-36 h-36 sm:h-auto shrink-0 rounded-xl overflow-hidden bg-slate-100">
+                {/* Image Header with Overlay Badges */}
+                <div className="relative h-40 sm:h-44 w-full overflow-hidden bg-slate-100 shrink-0">
                   <img
                     src={item.image}
                     alt={item.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-slate-950/10 group-hover:bg-transparent transition-colors" />
-                </div>
+                  <div className="absolute inset-0 bg-linear-to-t from-slate-950/70 via-slate-950/20 to-transparent" />
 
-                {/* Card Content */}
-                <div className="flex flex-col justify-between flex-1 space-y-2">
-                  <div className="space-y-2">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span
-                        className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full ${
-                          item.urgent
-                            ? "bg-rose-100 text-rose-700 border border-rose-200"
-                            : "bg-emerald-100 text-emerald-700 border border-emerald-200"
-                        }`}
-                      >
-                        {item.tag}
-                      </span>
-                      <span className="flex items-center gap-1 text-xs font-medium text-slate-400">
-                        <CalendarIcon className="w-3.5 h-3.5" />
-                        {item.dateDisplay}
-                      </span>
-                    </div>
+                  {/* Badges Overlay */}
+                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 z-10">
+                    <span
+                      className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border shadow-2xs backdrop-blur-md ${
+                        item.urgent
+                          ? "bg-rose-500/90 text-white border-rose-400"
+                          : "bg-emerald-600/90 text-white border-emerald-400"
+                      }`}
+                    >
+                      {item.tag}
+                    </span>
 
-                    <h4 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition-colors leading-snug">
-                      {item.title}
-                    </h4>
-                    <p className="text-xs sm:text-sm text-slate-600 line-clamp-2">
-                      {item.desc}
-                    </p>
+                    {item.isPinned && (
+                      <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/90 text-white shadow-xs backdrop-blur-md">
+                        <Pin className="w-3 h-3 fill-white" />
+                        Pinned
+                      </span>
+                    )}
                   </div>
 
-                  <div className="flex items-center gap-1 text-xs font-bold text-emerald-600 group-hover:text-emerald-700 pt-1">
-                    <span>View Event Details</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                  {/* Date Badge on Image */}
+                  <div className="absolute bottom-2.5 left-3 flex items-center gap-1 text-[11px] font-semibold text-white/90">
+                    <CalendarIcon className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>{item.dateDisplay}</span>
+                  </div>
+                </div>
+
+                {/* Card Content Section */}
+                <div className="p-4 sm:p-5 flex flex-col justify-between flex-1 space-y-2">
+                  <div className="space-y-1.5">
+                    <h4 className="text-sm sm:text-base font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors leading-snug line-clamp-2">
+                      {item.title}
+                    </h4>
+
+                    <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                      {item.desc}
+                    </p>
+
+                    {/* Pinned Note Callout Box */}
+                    {item.pinnedNote && (
+                      <div className="p-2 rounded-xl bg-amber-50/80 border border-amber-200/80 flex items-start gap-1.5 text-[10px] sm:text-[11px] text-amber-900">
+                        <FileText className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
+                        <p className="line-clamp-1 font-medium">{item.pinnedNote}</p>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Card Footer Action */}
+                  <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-600 group-hover:text-emerald-700">
+                    <span>View Details</span>
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
-
         </div>
       </motion.div>
 
@@ -321,7 +380,7 @@ export default function Announcement() {
               {/* Close Button */}
               <button
                 onClick={() => setSelectedDate(null)}
-                className="absolute top-4 right-4 p-2 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+                className="absolute top-4 right-4 z-20 p-2 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
@@ -336,15 +395,23 @@ export default function Announcement() {
                         alt={event.title}
                         className="w-full h-full object-cover"
                       />
-                      <span
-                        className={`absolute top-3 left-3 text-xs font-bold px-3 py-1 rounded-full backdrop-blur-md shadow-sm ${
-                          event.urgent
-                            ? "bg-rose-500 text-white"
-                            : "bg-emerald-600 text-white"
-                        }`}
-                      >
-                        {event.tag}
-                      </span>
+                      <div className="absolute top-3 left-3 flex items-center gap-2">
+                        <span
+                          className={`text-xs font-bold px-3 py-1 rounded-full backdrop-blur-md shadow-xs ${
+                            event.urgent
+                              ? "bg-rose-500 text-white"
+                              : "bg-emerald-600 text-white"
+                          }`}
+                        >
+                          {event.tag}
+                        </span>
+                        {event.isPinned && (
+                          <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full bg-amber-500 text-white shadow-xs">
+                            <Pin className="w-3 h-3 fill-white" />
+                            Pinned
+                          </span>
+                        )}
+                      </div>
                     </div>
 
                     <div>
@@ -367,6 +434,17 @@ export default function Announcement() {
                         <span>{event.location}</span>
                       </div>
                     </div>
+
+                    {/* Detailed Pinned Note inside Modal */}
+                    {event.pinnedNote && (
+                      <div className="p-3 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
+                        <Pin className="w-4 h-4 text-amber-600 shrink-0 mt-0.5 fill-amber-600" />
+                        <div>
+                          <p className="font-bold mb-0.5">Pinned Note:</p>
+                          <p>{event.pinnedNote}</p>
+                        </div>
+                      </div>
+                    )}
 
                     <p className="text-sm text-slate-600 leading-relaxed">
                       {event.desc}
