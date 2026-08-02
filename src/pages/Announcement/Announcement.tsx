@@ -79,27 +79,7 @@ export default function Announcement() {
       id="announcements"
       className="relative w-full min-h-screen py-24 px-6 bg-slate-50 overflow-hidden flex flex-col justify-center items-center"
     >
-      
 
-      {/* Floating Ambient Glows */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          x: [0, 30, 0],
-          y: [0, -20, 0],
-        }}
-        transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
-        className="absolute top-10 left-10 w-96 h-96 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none"
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.3, 1],
-          x: [0, -40, 0],
-          y: [0, 30, 0],
-        }}
-        transition={{ repeat: Infinity, duration: 15, ease: "easeInOut" }}
-        className="absolute bottom-10 right-10 w-120 h-120 bg-teal-200/30 rounded-full blur-3xl pointer-events-none"
-      />
 
       {/* Main Content Container with Repeatable Scroll Animations */}
       <motion.div

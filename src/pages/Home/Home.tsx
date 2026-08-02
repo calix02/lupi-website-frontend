@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, ChevronDown, Landmark, Users, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
-import Pattern from "@/assets/pattern/pattern2.svg";
+import Pattern from "@/assets/pattern/pattern7.svg";
 import HeroVideo from "@/assets/LGU-Video.mp4"; 
 import useInOutAnimation from "@/hooks/useInOutAnimation";
 
