@@ -7,6 +7,7 @@ import Pattern1 from "@/assets/pattern/pattern1-emerald.svg"
 import Pattern2 from "@/assets/pattern/pattern5.svg"
 import { FaAward } from "react-icons/fa6";
 import ViceMayorCard from "./component/ViceMayorCard";
+import CouncilorCard from "./component/CouncilorCard";
 
 
 export default function Officials() {
@@ -198,24 +199,7 @@ export default function Officials() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {councilorItems.map((councilor, idx) => (
-              <div
-                key={idx}
-                className="group bg-white rounded-2xl border border-slate-200/80 p-5 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col items-center text-center"
-              >
-                <div className="overflow-hidden rounded-xl w-full h-64 mb-4 bg-slate-100">
-                  <img
-                    src={councilor.image}
-                    alt={councilor.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <h4 className="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
-                  {councilor.name}
-                </h4>
-                <p className="text-xs font-medium text-slate-500 mt-1">
-                  {councilor.title}
-                </p>
-              </div>
+             <CouncilorCard councilor={councilor} key={idx} />
             ))}
           </div>
         </motion.div>
