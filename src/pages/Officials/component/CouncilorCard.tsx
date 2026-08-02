@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 type CardProps = {
     councilor: {
         image: string;
@@ -8,7 +9,8 @@ type CardProps = {
   };
 export default function CouncilorCard({councilor, variants}: CardProps) {
     return(
-        <div
+        <motion.div
+          variants={variants}
                 className="group bg-white rounded-2xl border border-slate-200/80 p-5 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col items-center text-center"
               >
                 <div className="overflow-hidden rounded-xl w-full h-64 mb-4 bg-slate-100">
@@ -24,6 +26,6 @@ export default function CouncilorCard({councilor, variants}: CardProps) {
                 <p className="text-xs font-medium text-slate-500 mt-1">
                   {councilor.title}
                 </p>
-              </div>
+              </motion.div>
     );
 }

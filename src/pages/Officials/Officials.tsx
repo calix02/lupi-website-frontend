@@ -80,30 +80,30 @@ export default function Officials() {
           variants={animate.itemVariants}
           className="flex flex-col items-center text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-100/80 px-4 py-1.5 text-xs font-semibold text-emerald-800 shadow-sm backdrop-blur-md mb-3">
+          <motion.div variants={animate.itemVariants} className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-100/80 px-4 py-1.5 text-xs font-semibold text-emerald-800 shadow-sm backdrop-blur-md mb-3">
             <Building2 className="h-4 w-4 text-emerald-600" />
             <span>Municipal Administration</span>
-          </div>
+          </motion.div>
 
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900">
+          <motion.h2 variants={animate.itemVariants} className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900">
             Meet Our{" "}
             <span className="bg-linear-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
               Local Leadership
             </span>
-          </h2>
+          </motion.h2>
 
-          <p className="mt-3 max-w-xl text-base text-slate-600 font-medium">
+          <motion.p variants={animate.itemVariants} className="mt-3 max-w-xl text-base text-slate-600 font-medium">
             Dedicated leaders serving Lupi with integrity, commitment, and vision.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* ================= 2. MAYOR SECTION & GALLERY ================= */}
-        <motion.div variants={animate.itemVariants} className="w-full mb-20">
+        <div  className="w-full mb-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             {/* Left Side: Mayor Profile */}
-            <div className="lg:col-span-5 flex flex-col items-center text-center lg:items-start lg:text-left  p-6 sm:p-8 relative overflow-hidden">
+            <div  className="lg:col-span-5 flex flex-col items-center text-center lg:items-start lg:text-left  p-6 sm:p-8 relative overflow-hidden">
               
-              <div className="relative mb-6 group">
+              <motion.div variants={animate.itemVariants} className="relative mb-6 group">
                 <img
                   src={Mayor}
                   alt="Municipal Mayor"
@@ -112,29 +112,26 @@ export default function Officials() {
                 <div className="absolute -bottom-3 -right-3  text-emerald-700 rounded-2xl ">
                   <FaAward className="h-10 w-10" />
                 </div>
-              </div>
+              </motion.div>
 
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full mb-2">
-                Chief Executive
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+              <motion.h3 variants={animate.itemVariants} className="text-2xl sm:text-3xl font-extrabold text-slate-900">
                 Hon. Christopher V. Jacinto
-              </h3>
-              <p className="text-base font-semibold text-emerald-700 mt-1">
+              </motion.h3>
+              <motion.p variants={animate.itemVariants} className="text-base font-semibold text-emerald-700 mt-1">
                 Municipal Mayor
-              </p>
+              </motion.p>
 
               {/* Mayor's Message */}
-              <div className="mt-6 pt-6 border-t border-slate-100 relative">
+              <motion.div variants={animate.itemVariants} className="mt-6 pt-6 border-t border-slate-100 relative">
                 <Quote className="h-8 w-8 text-emerald-200 absolute -top-4 left-0 z-0" />
                 <p className="text-sm sm:text-base text-slate-600 italic leading-relaxed relative z-10">
                   "Ang ating layunin ay maghatid ng tapat, mabilis, at de-kalidad na serbisyo para sa bawat pamilyang Lupinian. Samahan ninyo kami sa pagbuo ng mas progresibong bayan."
                 </p>
-              </div>
+              </motion.div>
             </div>
 
             {/* Right Side: Mayor's Achievements & Interactive Gallery */}
-            <div className="lg:col-span-7 relative flex flex-col justify-between overflow-hidden bg-white border border-slate-200/80 rounded-3xl p-10 sm:p-8 shadow-xl shadow-slate-200/50">
+            <motion.div variants={animate.itemVariants} className="lg:col-span-7 relative flex flex-col justify-between overflow-hidden bg-white border border-slate-200/80 rounded-3xl p-10 sm:p-8 shadow-xl shadow-slate-200/50">
             <div className= "absolute top-0 inset-x-0">
               <img src={Pattern1} alt="Pattern 1" className="w-full h-full object-cover" />
 
@@ -179,27 +176,30 @@ export default function Officials() {
                   <CircularGallery />
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
 
         {/* ================= 3. VICE MAYOR SECTION (CENTERED) ================= */}
-      <ViceMayorCard variants={animate.itemVariants} viceMayor={viceMayor} pattern={Pattern1}/>
-
+        <ViceMayorCard variants={animate.itemVariants} viceMayor={viceMayor} pattern={Pattern1}/>
         {/* ================= 4. COUNCILORS SECTION (GRID OF 3) ================= */}
-        <motion.div variants={animate.itemVariants} className="w-full">
+        <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{amount: 0.25}}
+         variants={animate.containerVariants} className="w-full">
           <div className="text-center mb-10">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+            <motion.h3 variants={animate.itemVariants} className="text-2xl sm:text-3xl font-extrabold text-slate-900">
               Sangguniang Bayan Members
-            </h3>
-            <p className="text-slate-600 text-sm mt-1">
+            </motion.h3>
+            <motion.p variants={animate.itemVariants} className="text-slate-600 text-sm mt-1">
               Dedicated councilors working for legislative excellence.
-            </p>
+            </motion.p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {councilorItems.map((councilor, idx) => (
-             <CouncilorCard councilor={councilor} key={idx} />
+             <CouncilorCard councilor={councilor} key={idx} variants={animate.itemVariants} />
             ))}
           </div>
         </motion.div>
