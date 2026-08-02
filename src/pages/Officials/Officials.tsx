@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
-import { Building2, Quote, Award, Sparkles, CheckCircle2 } from "lucide-react";
+import { Building2, Quote, Sparkles, CheckCircle2 } from "lucide-react";
 import Mayor from "@/assets/Official-Mayor.jpg";
 import CircularGallery from "./component/CircularGallery";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
+import Pattern1 from "@/assets/pattern/pattern1-emerald.svg"
+import { FaAward } from "react-icons/fa6";
 
 export default function Officials() {
   const animate = useInOutAnimation();
@@ -81,7 +83,7 @@ export default function Officials() {
 
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900">
             Meet Our{" "}
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
               Local Leadership
             </span>
           </h2>
@@ -95,17 +97,16 @@ export default function Officials() {
         <motion.div variants={animate.itemVariants} className="w-full mb-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             {/* Left Side: Mayor Profile */}
-            <div className="lg:col-span-5 flex flex-col items-center text-center lg:items-start lg:text-left bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-emerald-500 to-teal-500" />
+            <div className="lg:col-span-5 flex flex-col items-center text-center lg:items-start lg:text-left  p-6 sm:p-8 relative overflow-hidden">
               
               <div className="relative mb-6 group">
                 <img
                   src={Mayor}
                   alt="Municipal Mayor"
-                  className="w-56 h-72 sm:w-64 sm:h-80 rounded-2xl object-cover shadow-lg transition-transform duration-300 group-hover:scale-[1.02]"
+                  className="w-56 h-72 sm:w-64 sm:h-80 rounded-2xl object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                 />
-                <div className="absolute -bottom-3 -right-3 bg-emerald-600 text-white p-3 rounded-2xl shadow-md">
-                  <Award className="h-6 w-6" />
+                <div className="absolute -bottom-3 -right-3  text-emerald-700 rounded-2xl ">
+                  <FaAward className="h-10 w-10" />
                 </div>
               </div>
 
@@ -121,7 +122,7 @@ export default function Officials() {
 
               {/* Mayor's Message */}
               <div className="mt-6 pt-6 border-t border-slate-100 relative">
-                <Quote className="h-8 w-8 text-emerald-200 absolute -top-4 left-0 -z-0" />
+                <Quote className="h-8 w-8 text-emerald-200 absolute -top-4 left-0 z-0" />
                 <p className="text-sm sm:text-base text-slate-600 italic leading-relaxed relative z-10">
                   "Ang ating layunin ay maghatid ng tapat, mabilis, at de-kalidad na serbisyo para sa bawat pamilyang Lupinian. Samahan ninyo kami sa pagbuo ng mas progresibong bayan."
                 </p>
@@ -129,11 +130,15 @@ export default function Officials() {
             </div>
 
             {/* Right Side: Mayor's Achievements & Interactive Gallery */}
-            <div className="lg:col-span-7 flex flex-col justify-between bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50">
+            <div className="lg:col-span-7 relative flex flex-col justify-between overflow-hidden bg-white border border-slate-200/80 rounded-3xl p-10 sm:p-8 shadow-xl shadow-slate-200/50">
+            <div className= "absolute top-0 inset-x-0">
+              <img src={Pattern1} alt="Pattern 1" className="w-full h-full object-cover" />
+
+            </div>
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <Sparkles className="h-5 w-5 text-emerald-600" />
-                  <h4 className="text-xl font-bold text-slate-900">
+                  <h4 className="text-xl font-bold lg:mt-10 text-slate-900">
                     Key Accomplishments & Vision
                   </h4>
                 </div>
@@ -159,7 +164,7 @@ export default function Officials() {
               </div>
 
               {/* Circular / Custom Gallery Component Container */}
-              <div className="w-full mt-auto rounded-2xl bg-slate-900 p-4 sm:p-6 text-white overflow-hidden relative min-h-[220px] flex items-center justify-center">
+              <div className="w-full mt-auto rounded-2xl bg-slate-900 p-4 sm:p-6 text-white overflow-hidden relative min-h-55 flex items-center justify-center">
                 <div className="w-full h-full">
                   <p className="text-xs font-semibold uppercase tracking-wider text-emerald-400 mb-2 text-center">
                     Project Gallery
@@ -177,7 +182,7 @@ export default function Officials() {
           className="w-full max-w-2xl mx-auto mb-20 text-center"
         >
           <div className="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/50 flex flex-col items-center relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-teal-500 to-cyan-500" />
+            <div className="absolute top-0 left-0 w-full h-2 bg-linear-to-r from-teal-500 to-cyan-500" />
 
             <div className="relative mb-4">
               <img
