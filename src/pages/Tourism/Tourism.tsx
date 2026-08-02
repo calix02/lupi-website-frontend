@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
 import Pattern from "@/assets/pattern/pattern4.svg";
+import Pattern2 from "@/assets/pattern/pattern1.svg";
+
 import RoundCarousel from "@/components/Gallery/RoundCarousel";
 
 // Tourist Spot Data Model for Municipality of Lupi
@@ -123,12 +125,16 @@ export default function TourismSection() {
   const activeSpot = spots[0];
 
   return (
-    <section
+    <motion.section
       id="tourism"
-      className="relative min-h-screen w-full overflow-hidden bg-slate-950 py-24 text-slate-100 flex flex-col justify-center"
+      className="relative min-h-screen w-full overflow-hidden bg-slate-950 py-30 text-slate-100 flex flex-col justify-center"
     >
         <div className="absolute top-0 z-10 w-screen ">
             <img src={Pattern} alt="Pattern" className="w-full  object-cover  " />
+            <div className="w-full  bg-slate-50"></div>
+        </div>
+        <div className="absolute bottom-0 z-10 w-screen ">
+            <img src={Pattern2} alt="Pattern" className="w-full  object-cover -scale-y-100  " />
             <div className="w-full  bg-slate-50"></div>
         </div>
       {/* ================= 1. CLEAR DYNAMIC BACKGROUND IMAGE ================= */}
@@ -421,10 +427,13 @@ export default function TourismSection() {
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="mt-10 w-full h">
+      <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}className="mt-10 w-full h">
           <RoundCarousel/>
             
-        </div>
-    </section>
+        </motion.div>
+    </motion.section>
   );
 }
