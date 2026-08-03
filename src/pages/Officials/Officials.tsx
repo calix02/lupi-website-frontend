@@ -8,6 +8,7 @@ import Pattern2 from "@/assets/pattern/pattern5.svg"
 import { FaAward } from "react-icons/fa6";
 import ViceMayorCard from "./component/ViceMayorCard";
 import CouncilorCard from "./component/CouncilorCard";
+import BackHomeButton from "@/components/Buttons/BackHome";
 
 
 export default function Officials() {
@@ -68,6 +69,7 @@ export default function Officials() {
       id="officials"
       className="relative min-h-screen w-full bg-slate-50 px-4 sm:px-8 flex flex-col py-16 sm:py-24 items-center justify-center overflow-hidden font-sans"
     >
+      <BackHomeButton/>
       <motion.div
         variants={animate.containerVariants}
         initial="hidden"

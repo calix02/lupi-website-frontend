@@ -1,14 +1,11 @@
 import Home from "./Home/Home";
-import Header from "@/components/Header/Header";
 import Announcement from "./Announcement/Announcement";
 import { useEffect, useState } from "react";
 import SplashScreen from "@/components/SplashScreen/SplashScreen";
 import Tourism from "./Tourism/Tourism";
 import Weather from "./Weather/Weather";
-import Officials from "./Officials/Officials";
-import About from "./About/About";
-import Contact from "./Contact/Contact";
 import Footer from "@/components/Footer/Footer";
+import Header2 from "@/components/Header/Header2";
 
 export default function LupiWebsite() {
     const [showSplash, setShowSplash] = useState(true);
@@ -27,14 +24,11 @@ export default function LupiWebsite() {
     return(
         <div className="w-screen">
             
-            <Header/>
+            <Header2/>
             <Home/>
             <Announcement/>
             <Tourism/>
             <Weather/>
-            <About/>
-            <Officials/>
-            <Contact/>
             <Footer/>
         </div>
 

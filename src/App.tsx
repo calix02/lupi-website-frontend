@@ -4,6 +4,7 @@ import AllAnnouncements from "./pages/Announcement/AllAnnouncement";
 import ComingSoon from "./components/ComingSoon";
 import Transparency from "@/pages/Transparency/Transparency";
 import RootLayout from "./layout/RootLayout";
+import Officials from "./pages/Officials/Officials";
  
 function App() { 
   const router = createBrowserRouter([ 
@@ -18,6 +19,10 @@ function App() {
     { 
       path: "/all-announcements", 
       Component: AllAnnouncements, 
+    }, 
+     { 
+      path: "/officials", 
+      Component: Officials, 
     }, 
      { 
       path: "/transparency", 
