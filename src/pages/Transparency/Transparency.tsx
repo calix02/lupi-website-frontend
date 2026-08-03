@@ -8,16 +8,17 @@ import {
   DollarSign,
   Search,
   Filter,
-  ArrowUpRight,
   ChevronLeft,
   ChevronRight,
   ShieldCheck,
   Building2,
-  FileSpreadsheet
+  FileSpreadsheet,
+  Layers,
+  ArrowUpRight
 } from "lucide-react";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
 import BackHomeButton from "@/components/Buttons/BackHome";
-
+import Footer from "@/components/Footer/Footer";
 
 export interface ProjectItem {
   id: number;
@@ -114,37 +115,34 @@ export default function Transparency() {
     return { total, completed, ongoing, planning, totalInvestment };
   }, [projectsData]);
 
-  // Analytics Bar Data for Visual 3D Graph
+  // 3D Bar Colors & Heights
   const chartData = [
     {
       label: "Completed",
       value: analytics.completed,
       percentage: Math.round((analytics.completed / analytics.total) * 100),
-      color: "from-emerald-500 to-teal-600",
       frontColor: "bg-emerald-500",
-      topColor: "bg-emerald-400",
-      sideColor: "bg-emerald-700",
-      glowColor: "shadow-emerald-500/30",
+      topColor: "bg-emerald-300",
+      sideColor: "bg-emerald-600",
+      glowColor: "shadow-emerald-500/20",
     },
     {
       label: "On-going",
       value: analytics.ongoing,
       percentage: Math.round((analytics.ongoing / analytics.total) * 100),
-      color: "from-amber-500 to-orange-600",
       frontColor: "bg-amber-500",
-      topColor: "bg-amber-400",
-      sideColor: "bg-amber-700",
-      glowColor: "shadow-amber-500/30",
+      topColor: "bg-amber-300",
+      sideColor: "bg-amber-600",
+      glowColor: "shadow-amber-500/20",
     },
     {
       label: "Planning",
       value: analytics.planning,
       percentage: Math.round((analytics.planning / analytics.total) * 100),
-      color: "from-sky-500 to-blue-600",
       frontColor: "bg-sky-500",
-      topColor: "bg-sky-400",
-      sideColor: "bg-sky-700",
-      glowColor: "shadow-sky-500/30",
+      topColor: "bg-sky-300",
+      sideColor: "bg-sky-600",
+      glowColor: "shadow-sky-500/20",
     },
   ];
 
@@ -163,7 +161,7 @@ export default function Transparency() {
     });
   }, [searchTerm, statusFilter, projectsData]);
 
-  // Pagination Logic
+  // Pagination
   const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
   const paginatedProjects = useMemo(() => {
     const start = (currentPage - 1) * itemsPerPage;
@@ -179,14 +177,14 @@ export default function Transparency() {
   };
 
   return (
+    <>
     <section
       id="transparency"
-      className="relative w-full min-h-screen py-20 sm:py-24 px-4 sm:px-8 bg-slate-900 text-slate-100 overflow-hidden flex flex-col justify-center items-center"
+      className="relative w-full min-h-screen py-20 sm:py-24 px-4 sm:px-8 bg-slate-50 text-slate-800 overflow-hidden flex flex-col justify-center items-center"
     >
-        <BackHomeButton />
-      {/* Dynamic Background Effects */}
-      <div className="absolute top-0 left-1/4 w-[30rem] h-[30rem] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-10 right-1/4 w-[35rem] h-[35rem] bg-teal-500/10 rounded-full blur-[140px] pointer-events-none" />
+        <BackHomeButton/>
+      {/* Soft Light Background Lighting Accent */}
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[50rem] h-[30rem] bg-gradient-to-tr from-emerald-200/40 via-teal-100/30 to-sky-200/40 rounded-full blur-3xl pointer-events-none" />
 
       {/* Main Container */}
       <motion.div
@@ -194,156 +192,158 @@ export default function Transparency() {
         initial="hidden"
         whileInView="visible"
         viewport={{ amount: 0.15 }}
-        className="relative z-10 max-w-7xl mx-auto w-full flex flex-col gap-12 sm:gap-16"
+        className="relative z-10 max-w-7xl mx-auto w-full flex flex-col gap-10 sm:gap-14"
       >
-        {/* Section Header */}
-        <motion.div variants={animate.itemVariants} className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-wider uppercase backdrop-blur-md">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+        {/* Header Section */}
+        <motion.div variants={animate.itemVariants} className="text-center max-w-3xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200/80 text-emerald-800 text-xs font-semibold tracking-wider uppercase backdrop-blur-md shadow-xs">
+            <ShieldCheck className="w-4 h-4 text-emerald-600" />
             <span>Public Governance & Financial Accountability</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white">
-            Municipal Projects &{" "}
-            <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
-              Budget Analytics
+          <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900">
+            Municipal Budget &{" "}
+            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
+              Project Transparency
             </span>
           </h2>
 
-          <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
-            Real-time tracking of infrastructure development, budget allocation, contractor status, and total investment for open and transparent governance.
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Real-time public reporting on capital expenditures, contractor allocations, and ongoing infrastructure projects for the municipality.
           </p>
         </motion.div>
 
-        {/* ================= 1. ANALYTICS & 3D GRAPH SECTION ================= */}
+        {/* ================= 1. FINANCIAL SUMMARY & 3D ANALYTICS ================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Stat Cards Column (5 Cols) */}
+          
+          {/* Left Side Stat Cards (5 Cols) */}
           <motion.div variants={animate.itemVariants} className="lg:col-span-5 flex flex-col gap-4">
-            {/* Total Budget Card */}
-            <div className="p-6 rounded-3xl bg-slate-800/80 border border-slate-700/80 shadow-xl backdrop-blur-xl relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all duration-500" />
+            {/* Main Total Investment Card */}
+            <div className="p-6 rounded-3xl bg-white border border-slate-200/90 shadow-xl shadow-slate-200/50 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all duration-500" />
+              
               <div className="flex items-center gap-4">
-                <div className="p-3.5 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-500/25">
+                <div className="p-4 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-500/25">
                   <DollarSign className="w-6 h-6" />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">Total Capital Investment</p>
-                  <h3 className="text-2xl sm:text-3xl font-black text-white mt-0.5">
+                  <p className="text-xs font-bold uppercase tracking-wider text-slate-500">Total Capital Investment</p>
+                  <h3 className="text-2xl sm:text-3xl font-black text-slate-900 mt-0.5">
                     {formatCurrency(analytics.totalInvestment)}
                   </h3>
                 </div>
               </div>
-              <div className="mt-4 pt-4 border-t border-slate-700/60 flex items-center justify-between text-xs text-slate-400">
-                <span className="inline-flex items-center gap-1 text-emerald-400 font-medium">
-                  <TrendingUp className="w-3.5 h-3.5" /> 100% Allocated
+
+              <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                <span className="inline-flex items-center gap-1 text-emerald-600 font-semibold">
+                  <TrendingUp className="w-4 h-4" /> 100% Budget Utilization
                 </span>
-                <span>Fiscal Year 2026</span>
+                <span className="font-medium text-slate-400">Fiscal Year 2026</span>
               </div>
             </div>
 
-            {/* Sub Metric Grid */}
+            {/* Grid Metrics */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="p-5 rounded-3xl bg-slate-800/80 border border-slate-700/80 shadow-lg backdrop-blur-xl">
+              <div className="p-5 rounded-3xl bg-white border border-slate-200/80 shadow-md shadow-slate-200/40">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-medium text-slate-400">Total Projects</span>
-                  <Briefcase className="w-4 h-4 text-sky-400" />
+                  <span className="text-xs font-semibold text-slate-500">Total Projects</span>
+                  <Briefcase className="w-4 h-4 text-sky-600" />
                 </div>
-                <p className="text-2xl sm:text-3xl font-black text-white">{analytics.total}</p>
-                <p className="text-[11px] text-slate-500 mt-1">Across all categories</p>
+                <p className="text-2xl sm:text-3xl font-black text-slate-900">{analytics.total}</p>
+                <p className="text-[11px] text-slate-400 mt-1">Monitored developments</p>
               </div>
 
-              <div className="p-5 rounded-3xl bg-slate-800/80 border border-slate-700/80 shadow-lg backdrop-blur-xl">
+              <div className="p-5 rounded-3xl bg-white border border-slate-200/80 shadow-md shadow-slate-200/40">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-medium text-slate-400">Completed</span>
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <span className="text-xs font-semibold text-slate-500">Completed</span>
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                 </div>
-                <p className="text-2xl sm:text-3xl font-black text-emerald-400">{analytics.completed}</p>
-                <p className="text-[11px] text-slate-500 mt-1">Successfully turned over</p>
+                <p className="text-2xl sm:text-3xl font-black text-emerald-600">{analytics.completed}</p>
+                <p className="text-[11px] text-slate-400 mt-1">Fully turned over</p>
               </div>
 
-              <div className="p-5 rounded-3xl bg-slate-800/80 border border-slate-700/80 shadow-lg backdrop-blur-xl">
+              <div className="p-5 rounded-3xl bg-white border border-slate-200/80 shadow-md shadow-slate-200/40">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-medium text-slate-400">On-going</span>
-                  <Clock className="w-4 h-4 text-amber-400" />
+                  <span className="text-xs font-semibold text-slate-500">On-going</span>
+                  <Clock className="w-4 h-4 text-amber-600" />
                 </div>
-                <p className="text-2xl sm:text-3xl font-black text-amber-400">{analytics.ongoing}</p>
-                <p className="text-[11px] text-slate-500 mt-1">Under construction</p>
+                <p className="text-2xl sm:text-3xl font-black text-amber-600">{analytics.ongoing}</p>
+                <p className="text-[11px] text-slate-400 mt-1">Active construction</p>
               </div>
 
-              <div className="p-5 rounded-3xl bg-slate-800/80 border border-slate-700/80 shadow-lg backdrop-blur-xl">
+              <div className="p-5 rounded-3xl bg-white border border-slate-200/80 shadow-md shadow-slate-200/40">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-medium text-slate-400">Planning</span>
-                  <Building2 className="w-4 h-4 text-cyan-400" />
+                  <span className="text-xs font-semibold text-slate-500">Planning</span>
+                  <Building2 className="w-4 h-4 text-cyan-600" />
                 </div>
-                <p className="text-2xl sm:text-3xl font-black text-cyan-400">{analytics.planning}</p>
-                <p className="text-[11px] text-slate-500 mt-1">Bidding & preparation</p>
+                <p className="text-2xl sm:text-3xl font-black text-cyan-600">{analytics.planning}</p>
+                <p className="text-[11px] text-slate-400 mt-1">Bidding stage</p>
               </div>
             </div>
           </motion.div>
 
-          {/* Animated 3D Bar Graph Card (7 Cols) */}
+          {/* Right Side Animated 3D Isometric Bar Graph (7 Cols) */}
           <motion.div
             variants={animate.itemVariants}
-            className="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-slate-800/90 border border-slate-700/80 shadow-2xl backdrop-blur-xl flex flex-col justify-between"
+            className="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-white border border-slate-200/90 shadow-xl shadow-slate-200/50 flex flex-col justify-between"
           >
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-4">
               <div>
-                <h3 className="text-lg sm:text-xl font-extrabold text-white">Project Status Analytics</h3>
-                <p className="text-xs text-slate-400">Interactive 3D visual breakdown of development stages</p>
+                <h3 className="text-lg sm:text-xl font-extrabold text-slate-900">Project Status Analytics</h3>
+                <p className="text-xs text-slate-500">Animated 3D visual breakdown of municipal projects</p>
               </div>
-              <span className="p-2 rounded-xl bg-slate-700/50 text-slate-400 border border-slate-600/50 text-xs font-mono">
-                3D Graph
+              <span className="px-3 py-1 rounded-xl bg-slate-100 text-slate-600 border border-slate-200 text-xs font-bold">
+                3D Analytics
               </span>
             </div>
 
-            {/* 3D Bar Visual Container */}
-            <div className="w-full h-64 sm:h-72 flex items-end justify-around gap-4 sm:gap-8 pt-10 pb-4 px-2 border-b border-slate-700/60 perspective-1000">
+            {/* Isometric 3D Bar Graph Canvas */}
+            <div className="w-full h-64 sm:h-72 flex items-end justify-around gap-6 pt-12 pb-2 border-b border-slate-100 relative">
               {chartData.map((bar, index) => {
-                const heightPercent = Math.max((bar.value / analytics.total) * 100, 15);
+                const heightPercent = Math.max((bar.value / analytics.total) * 100, 18);
 
                 return (
                   <div key={bar.label} className="relative flex-1 flex flex-col items-center h-full justify-end group">
-                    {/* Hover Value Badge */}
+                    {/* Floating Value Pill */}
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 + index * 0.1 }}
-                      className="mb-3 px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-700 text-xs font-bold text-white shadow-md text-center"
+                      className="mb-4 px-3 py-1 rounded-xl bg-slate-900 text-white text-xs font-extrabold shadow-md text-center z-30"
                     >
                       <span>{bar.value} Units</span>
-                      <span className="block text-[10px] text-slate-400 font-normal">{bar.percentage}%</span>
+                      <span className="block text-[10px] text-slate-300 font-normal">{bar.percentage}%</span>
                     </motion.div>
 
-                    {/* 3D Column Assembly */}
-                    <div className="relative w-12 sm:w-16 flex flex-col justify-end transition-transform duration-300 group-hover:scale-105 group-hover:-translate-y-1">
-                      {/* Animated Height Container */}
+                    {/* 3D Bar Assembly */}
+                    <div className="relative w-14 sm:w-20 flex flex-col justify-end transition-transform duration-300 group-hover:scale-105">
                       <motion.div
                         initial={{ height: "0%" }}
                         whileInView={{ height: `${heightPercent}%` }}
                         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: index * 0.15 }}
                         className="relative w-full"
                       >
-                        {/* Top Face of 3D Bar */}
+                        {/* 3D Top Face */}
                         <div
-                          className={`absolute -top-3 left-0 w-full h-4 ${bar.topColor} rounded-t-sm transform -skew-x-12 origin-bottom-left shadow-xs z-20 opacity-90`}
+                          className={`absolute -top-3 left-0 w-full h-4 ${bar.topColor} rounded-t-sm transform -skew-x-12 origin-bottom-left shadow-xs z-20`}
                         />
 
-                        {/* Side Face of 3D Bar (Depth) */}
+                        {/* 3D Side Face (Depth) */}
                         <div
-                          className={`absolute top-0 -right-3 w-3 h-full ${bar.sideColor} transform skew-y-12 origin-top-left z-10 opacity-80`}
+                          className={`absolute top-0 -right-3 w-3 h-full ${bar.sideColor} transform skew-y-12 origin-top-left z-10 opacity-95`}
                         />
 
-                        {/* Front Face of 3D Bar */}
+                        {/* 3D Front Face */}
                         <div
-                          className={`w-full h-full ${bar.frontColor} bg-gradient-to-t ${bar.color} rounded-b-sm shadow-xl ${bar.glowColor} relative z-10 overflow-hidden`}
+                          className={`w-full h-full ${bar.frontColor} rounded-b-sm shadow-xl ${bar.glowColor} relative z-10 overflow-hidden`}
                         >
-                          <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-black/20" />
+                          <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-transparent to-black/10" />
                         </div>
                       </motion.div>
                     </div>
 
-                    {/* X-Axis Label */}
-                    <span className="mt-4 text-xs font-bold text-slate-300 tracking-wide text-center">
+                    {/* Label */}
+                    <span className="mt-4 text-xs font-extrabold text-slate-700 tracking-wide">
                       {bar.label}
                     </span>
                   </div>
@@ -352,43 +352,42 @@ export default function Transparency() {
             </div>
 
             {/* Graph Legend */}
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-400 pt-2">
+            <div className="mt-4 flex items-center justify-center gap-6 text-xs text-slate-500 font-semibold pt-2">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-sm bg-emerald-500 shadow-xs" />
-                <span>Completed ({analytics.completed})</span>
+                <span>Completed</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-sm bg-amber-500 shadow-xs" />
-                <span>On-going ({analytics.ongoing})</span>
+                <span>On-going</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-sm bg-sky-500 shadow-xs" />
-                <span>Planning ({analytics.planning})</span>
+                <span>Planning</span>
               </div>
             </div>
           </motion.div>
         </div>
 
-        {/* ================= 2. TRANSPARENCY PROJECT TABLE ================= */}
+        {/* ================= 2. TRANSPARENCY PROJECT DATA TABLE ================= */}
         <motion.div
           variants={animate.itemVariants}
-          className="rounded-3xl bg-slate-800/80 border border-slate-700/80 shadow-2xl backdrop-blur-xl p-6 sm:p-8 flex flex-col gap-6"
+          className="rounded-3xl bg-white border border-slate-200/90 shadow-xl shadow-slate-200/50 p-6 sm:p-8 flex flex-col gap-6"
         >
-          {/* Table Control Header */}
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b border-slate-700/60">
+          {/* Table Header Controls */}
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b border-slate-100">
             <div>
-              <div className="flex items-center gap-2 text-emerald-400 font-semibold text-xs uppercase tracking-wider mb-1">
+              <div className="flex items-center gap-2 text-emerald-600 font-bold text-xs uppercase tracking-wider mb-1">
                 <FileSpreadsheet className="w-4 h-4" />
                 <span>Open Data Portal</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+              <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
                 Municipal Projects Directory
               </h3>
             </div>
 
-            {/* Search & Filter Controls */}
+            {/* Search and Filters */}
             <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
-              {/* Search Bar */}
               <div className="relative w-full sm:w-64">
                 <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                 <input
@@ -399,11 +398,10 @@ export default function Transparency() {
                     setSearchTerm(e.target.value);
                     setCurrentPage(1);
                   }}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-slate-900/90 border border-slate-700 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/20 transition-all"
                 />
               </div>
 
-              {/* Status Filter Dropdown */}
               <div className="relative w-full sm:w-40">
                 <Filter className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 pointer-events-none" />
                 <select
@@ -412,7 +410,7 @@ export default function Transparency() {
                     setStatusFilter(e.target.value);
                     setCurrentPage(1);
                   }}
-                  className="w-full pl-9 pr-8 py-2.5 rounded-2xl bg-slate-900/90 border border-slate-700 text-xs text-slate-200 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 appearance-none cursor-pointer transition-all"
+                  className="w-full pl-9 pr-8 py-2.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/20 appearance-none cursor-pointer transition-all"
                 >
                   <option value="All">All Statuses</option>
                   <option value="Completed">Completed</option>
@@ -423,11 +421,11 @@ export default function Transparency() {
             </div>
           </div>
 
-          {/* Table Responsive Wrapper */}
-          <div className="w-full overflow-x-auto rounded-2xl border border-slate-700/60 bg-slate-900/50">
+          {/* Table Element */}
+          <div className="w-full overflow-x-auto rounded-2xl border border-slate-200/80 bg-slate-50/50">
             <table className="w-full text-left border-collapse min-w-[800px]">
               <thead>
-                <tr className="border-b border-slate-700/80 bg-slate-900/80 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                <tr className="border-b border-slate-200/80 bg-slate-100/70 text-[11px] font-bold uppercase tracking-wider text-slate-500">
                   <th className="py-4 px-5">Project Details</th>
                   <th className="py-4 px-5">Contractor</th>
                   <th className="py-4 px-5">Cost / Budget</th>
@@ -435,7 +433,7 @@ export default function Transparency() {
                   <th className="py-4 px-5">Completion Date</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800 text-xs sm:text-sm">
+              <tbody className="divide-y divide-slate-200/70 text-xs sm:text-sm bg-white">
                 <AnimatePresence mode="wait">
                   {paginatedProjects.length > 0 ? (
                     paginatedProjects.map((project) => (
@@ -445,51 +443,51 @@ export default function Transparency() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="hover:bg-slate-800/50 transition-colors group"
+                        className="hover:bg-slate-50 transition-colors group"
                       >
                         {/* Project Name & Description */}
                         <td className="py-4 px-5 max-w-xs">
                           <div className="flex flex-col gap-1">
-                            <span className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">
+                            <span className="text-[10px] font-bold text-emerald-700 uppercase tracking-wider">
                               {project.category}
                             </span>
-                            <h4 className="font-bold text-white group-hover:text-emerald-300 transition-colors leading-snug">
+                            <h4 className="font-extrabold text-slate-900 group-hover:text-emerald-600 transition-colors leading-snug">
                               {project.name}
                             </h4>
-                            <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                            <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
                               {project.description}
                             </p>
                           </div>
                         </td>
 
                         {/* Contractor */}
-                        <td className="py-4 px-5 font-medium text-slate-300 whitespace-nowrap">
+                        <td className="py-4 px-5 font-semibold text-slate-700 whitespace-nowrap">
                           {project.contractor}
                         </td>
 
                         {/* Cost */}
-                        <td className="py-4 px-5 font-extrabold text-white whitespace-nowrap">
+                        <td className="py-4 px-5 font-extrabold text-slate-900 whitespace-nowrap">
                           {formatCurrency(project.cost)}
                         </td>
 
                         {/* Status Badge */}
                         <td className="py-4 px-5 whitespace-nowrap">
                           <span
-                            className={`inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full border ${
+                            className={`inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full border shadow-2xs ${
                               project.status === "Completed"
-                                ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/30"
+                                ? "bg-emerald-50 text-emerald-700 border-emerald-200"
                                 : project.status === "On-going"
-                                ? "bg-amber-500/10 text-amber-400 border-amber-500/30"
-                                : "bg-sky-500/10 text-sky-400 border-sky-500/30"
+                                ? "bg-amber-50 text-amber-700 border-amber-200"
+                                : "bg-sky-50 text-sky-700 border-sky-200"
                             }`}
                           >
                             <span
                               className={`w-1.5 h-1.5 rounded-full ${
                                 project.status === "Completed"
-                                  ? "bg-emerald-400"
+                                  ? "bg-emerald-500"
                                   : project.status === "On-going"
-                                  ? "bg-amber-400 animate-pulse"
-                                  : "bg-sky-400"
+                                  ? "bg-amber-500 animate-pulse"
+                                  : "bg-sky-500"
                               }`}
                             />
                             {project.status}
@@ -497,15 +495,15 @@ export default function Transparency() {
                         </td>
 
                         {/* Completion Date */}
-                        <td className="py-4 px-5 text-slate-400 font-medium whitespace-nowrap">
+                        <td className="py-4 px-5 text-slate-600 font-medium whitespace-nowrap">
                           {project.completionDate}
                         </td>
                       </motion.tr>
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={5} className="py-12 text-center text-slate-500">
-                        <p className="text-sm font-medium">No projects found matching your search criteria.</p>
+                      <td colSpan={5} className="py-12 text-center text-slate-400">
+                        <p className="text-sm font-semibold">No municipal projects match your search.</p>
                       </td>
                     </tr>
                   )}
@@ -514,19 +512,19 @@ export default function Transparency() {
             </table>
           </div>
 
-          {/* Table Pagination Controls */}
+          {/* Table Pagination */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-between pt-2 text-xs text-slate-400">
+            <div className="flex items-center justify-between pt-2 text-xs text-slate-500">
               <span>
-                Showing page <strong className="text-white">{currentPage}</strong> of{" "}
-                <strong className="text-white">{totalPages}</strong>
+                Showing page <strong className="text-slate-800">{currentPage}</strong> of{" "}
+                <strong className="text-slate-800">{totalPages}</strong>
               </span>
 
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                   disabled={currentPage === 1}
-                  className="p-2 rounded-xl bg-slate-900 border border-slate-700 hover:bg-slate-800 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+                  className="p-2 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 hover:bg-slate-200 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
                   aria-label="Previous Page"
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -534,7 +532,7 @@ export default function Transparency() {
                 <button
                   onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
                   disabled={currentPage === totalPages}
-                  className="p-2 rounded-xl bg-slate-900 border border-slate-700 hover:bg-slate-800 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+                  className="p-2 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 hover:bg-slate-200 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
                   aria-label="Next Page"
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -545,5 +543,8 @@ export default function Transparency() {
         </motion.div>
       </motion.div>
     </section>
+    <Footer/>
+    </>
+    
   );
 }
