@@ -27,7 +27,6 @@ export default function Header() {
 
   const [activeTab, setActiveTab] = useState("Home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [hoveredDropdown, setHoveredDropdown] = useState<string | null>(null);
   const [mobileExpandedItem, setMobileExpandedItem] = useState<string | null>(null);
 
@@ -42,19 +41,7 @@ export default function Header() {
     return () => mediaQuery.removeEventListener("change", handleScreenChange);
   }, []);
 
-  // Listen for scroll to elevate glass backdrop effect dynamically
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 30) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Listen for section intersection to update active tab
   useEffect(() => {
@@ -113,7 +100,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-20 w-[92%] max-w-7xl lg:rounded-full rounded-2xl transition-all duration-500 border border-white/15 bg-slate-950/60 backdrop-blur-xl py-3.5 px-6 shadow-xl shadow-slate-950/20 ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-20 w-[92%] max-w-7xl lg:rounded-full rounded-2xl transition-all duration-500 border border-white/15 bg-white-950/50 backdrop-blur-md py-3.5 px-6 shadow-xl shadow-slate-950/20 ${
         isHidden ? "hidden" : "block"
       }`}
     >
@@ -131,7 +118,7 @@ export default function Header() {
             className="h-11 w-auto object-contain drop-shadow-md"
           />
           <div className="flex flex-col leading-tight">
-            <span className="text-base sm:text-lg font-extrabold tracking-wide bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
+            <span className="text-base sm:text-lg font-extrabold tracking-wide bg-linear-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
               Municipality of Lupi
             </span>
             <span className="text-xs font-medium text-slate-400 tracking-wider">
@@ -177,7 +164,7 @@ export default function Header() {
                   {isActive && (
                     <motion.div
                       layoutId="activePill"
-                      className="absolute inset-0 z-0 rounded-full bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 shadow-sm"
+                      className="absolute inset-0 z-0 rounded-full bg-linear-to-r from-emerald-400 via-teal-300 to-cyan-400 shadow-sm"
                       transition={{ type: "spring", stiffness: 400, damping: 32 }}
                     />
                   )}
@@ -225,7 +212,7 @@ export default function Header() {
         <div className="hidden lg:flex items-center">
           <Link
             to="transparency"
-            className="group flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-5 py-2 text-xs font-bold text-slate-950 shadow-md shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all"
+            className="group flex items-center gap-2 rounded-full bg-linear-to-r from-emerald-500 to-teal-500 px-5 py-2 text-xs font-bold text-slate-950 shadow-md shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all"
           >
             <span>Transparency</span>
             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -270,7 +257,7 @@ export default function Header() {
                       }}
                       className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-semibold transition-all cursor-pointer ${
                         activeTab === item
-                          ? "bg-gradient-to-r from-emerald-500/20 to-teal-500/20 text-emerald-400 border border-emerald-500/30"
+                          ? "bg-linear-to-r from-emerald-500/20 to-teal-500/20 text-emerald-400 border border-emerald-500/30"
                           : "text-slate-200 hover:bg-white/5 hover:text-emerald-400"
                       }`}
                     >
@@ -320,7 +307,7 @@ export default function Header() {
               <Link
                 to="transparency"
                 onClick={() => setMobileMenuOpen(false)}
-                className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-2.5 text-sm font-bold text-slate-950 shadow-md shadow-emerald-500/20"
+                className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-emerald-500 to-teal-500 px-4 py-2.5 text-sm font-bold text-slate-950 shadow-md shadow-emerald-500/20"
               >
                 <span>Transparency</span>
                 <ArrowRight className="h-4 w-4" />

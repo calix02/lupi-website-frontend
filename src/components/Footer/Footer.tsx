@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import Logo from "@/assets/logos/lupi_logo.png";
 import {
   Mail,
@@ -19,7 +20,7 @@ export default function Footer() {
   };
 
   const quickLinks = [
-    { name: "Home", href: "#home" },
+    { name: "Home", href: "/" },
     { name: "About Lupi", href: "#about" },
     { name: "Leadership & Officials", href: "#officials" },
     { name: "Services", href: "#services" },
@@ -92,13 +93,13 @@ export default function Footer() {
             <ul className="space-y-2.5 text-xs sm:text-sm font-medium">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-emerald-100/70 hover:text-white hover:translate-x-1 flex items-center gap-1.5 transition-all"
                   >
                     <ChevronRight className="h-3 w-3 text-emerald-400" />
                     <span>{link.name}</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

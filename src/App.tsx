@@ -5,6 +5,7 @@ import ComingSoon from "./components/ComingSoon";
 import Transparency from "@/pages/Transparency/Transparency";
 import RootLayout from "./layout/RootLayout";
 import Officials from "./pages/Officials/Officials";
+import Contact from "./pages/Contact/Contact";
  
 function App() { 
   const router = createBrowserRouter([ 
@@ -24,6 +25,10 @@ function App() {
       path: "/officials", 
       Component: Officials, 
     }, 
+    { 
+      path: "/contact", 
+      Component: Contact, 
+    },
      { 
       path: "/transparency", 
       Component: Transparency, 

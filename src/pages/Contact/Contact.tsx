@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import SocialCard from "./component/SocialCard";
+import Footer from "@/components/Footer/Footer";
+import BackHomeButton from "@/components/Buttons/BackHome";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -43,10 +45,12 @@ export default function Contact() {
   };
 
   return (
+    <>
     <section
       id="contact"
       className="relative min-h-screen w-full  bg-slate-50 text-slate-800 py-24 px-4 sm:px-8 flex flex-col items-center justify-center overflow-hidden font-sans"
     >
+      <BackHomeButton/>
 
       {/* Animated Glowing Light Orbs */}
       <motion.div
@@ -270,5 +274,7 @@ export default function Contact() {
         </div>
       </div>
     </section>
+    <Footer/>
+    </>
   );
 }
