@@ -2,6 +2,7 @@ import { useEffect,  useState } from "react";
 import { motion, AnimatePresence, useMotionValueEvent, useScroll } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import LupiLOgo from "@/assets/logos/lupi_logo.png";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const navItems = [
@@ -9,7 +10,6 @@ export default function Header() {
     "Announcements",
     "Tourism",
     "Weather",
-    "Transparency",
     "About",
     "Officials",
     "Contact",
@@ -171,15 +171,14 @@ useEffect(() => {
 
         {/* Action Button */}
         <div className="hidden lg:flex items-center">
-          <motion.a
-            href="#services"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <Link
+            to="transparency"
+            
             className="group flex items-center gap-2 rounded-full bg-linear-to-r from-emerald-500 to-teal-500 px-5 py-2 text-xs font-bold text-slate-950 shadow-md shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all"
           >
-            <span>Explore Services</span>
+            <span>Transparency</span>
             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-          </motion.a>
+          </Link>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -220,14 +219,14 @@ useEffect(() => {
                   {item}
                 </a>
               ))}
-              <a
-                href="#services"
+              <Link
+                to="transparency"
                 onClick={() => setMobileMenuOpen(false)}
                 className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-emerald-500 to-teal-500 px-4 py-2.5 text-sm font-bold text-slate-950 shadow-md shadow-emerald-500/20"
               >
-                <span>Explore Services</span>
+                <span>Transparency</span>
                 <ArrowRight className="h-4 w-4" />
-              </a>
+              </Link>
             </nav>
           </motion.div>
         )}

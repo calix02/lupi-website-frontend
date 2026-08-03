@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import LupiWebsite from "./pages/LupiWebsite";
 import AllAnnouncements from "./pages/Announcement/AllAnnouncement";
 import ComingSoon from "./components/ComingSoon";
+import Transparency from "@/pages/Transparency/Transparency";
 import RootLayout from "./layout/RootLayout";
  
 function App() { 
@@ -14,9 +15,13 @@ function App() {
       path: "/", 
       Component: LupiWebsite, 
     }, 
-        { 
+    { 
       path: "/all-announcements", 
       Component: AllAnnouncements, 
+    }, 
+     { 
+      path: "/transparency", 
+      Component: Transparency, 
     }, 
         { 
       path: "/coming-soon", 
