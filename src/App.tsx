@@ -6,6 +6,8 @@ import Transparency from "@/pages/Transparency/Transparency";
 import RootLayout from "./layout/RootLayout";
 import Officials from "./pages/Officials/Officials";
 import Contact from "./pages/Contact/Contact";
+import About from "./pages/About/About";
+import SangguniangBayan from "./pages/SangguniangBayan/SangguniangBayan";
  
 function App() { 
   const router = createBrowserRouter([ 
@@ -32,6 +34,14 @@ function App() {
      { 
       path: "/transparency", 
       Component: Transparency, 
+    }, 
+     { 
+      path: "/sangguniangbayan", 
+      Component: SangguniangBayan, 
+    }, 
+     { 
+      path: "/about", 
+      Component: About, 
     }, 
         { 
       path: "/coming-soon", 

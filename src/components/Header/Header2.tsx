@@ -8,7 +8,7 @@ export default function Header() {
   const navItems = [
     "Home",
     "Government",
-    "Transparency",
+    "Projects",
     "About",
     "Contact",
   ];
@@ -18,8 +18,8 @@ export default function Header() {
    
     Government: [
       { label: "Elected Officials", link: "officials", desc: "Important notices and suspensions" },
-      { label: "Sanguniang Bayan", link: "#announcements", desc: "Active government contracts & transparency" },
-      { label: "Citizen Charter", link: "#announcements", desc: "Active government contracts & transparency" },
+      { label: "Sanguniang Bayan", link: "sangguniangbayan", desc: "Active government contracts & transparency" },
+      { label: "Citizen's Charter", link: "#announcements", desc: "Active government contracts & transparency" },
 
     ],
   
@@ -100,7 +100,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-20 w-[92%] max-w-7xl lg:rounded-full rounded-2xl transition-all duration-500 border border-white/15 bg-white-950/50 backdrop-blur-md py-3.5 px-6 shadow-xl shadow-slate-950/20 ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-20 w-[92%] max-w-7xl lg:rounded-full rounded-2xl transition-all duration-500 border border-white/15 lg:bg-white/5 bg-slate-950/50 backdrop-blur-md py-3.5 px-6 shadow-xl shadow-slate-950/20 ${
         isHidden ? "hidden" : "block"
       }`}
     >
@@ -239,7 +239,7 @@ export default function Header() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden lg:hidden"
           >
-            <nav className="flex flex-col gap-1.5 pt-4 pb-2 border-t border-white/10 mt-3 max-h-[70vh] overflow-y-auto pr-1">
+            <nav className="flex flex-col gap-1.5 pt-4 pb-2 border-t  border-white/10 mt-3 max-h-[70vh] overflow-y-auto pr-1">
               {navItems.map((item) => {
                 const hasDropdown = navDropdownData[item] && navDropdownData[item].length > 0;
                 const isExpanded = mobileExpandedItem === item;
