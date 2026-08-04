@@ -8,6 +8,7 @@ import Officials from "./pages/Officials/Officials";
 import Contact from "./pages/Contact/Contact";
 import About from "./pages/About/About";
 import SangguniangBayan from "./pages/SangguniangBayan/SangguniangBayan";
+import Government from "./pages/Government/Governement";
  
 function App() { 
   const router = createBrowserRouter([ 
@@ -19,6 +20,12 @@ function App() {
       path: "/", 
       Component: LupiWebsite, 
     }, 
+     { 
+      path: "/government", 
+      Component: Government, 
+    }, 
+    
+    
     { 
       path: "/all-announcements", 
       Component: AllAnnouncements, 
