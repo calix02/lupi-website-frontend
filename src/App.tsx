@@ -37,7 +37,8 @@ function App() {
     }, 
      { 
       path: "/sangguniangbayan", 
-      Component: SangguniangBayan, 
+      Component: SangguniangBayan
+      , 
     }, 
      { 
       path: "/about", 

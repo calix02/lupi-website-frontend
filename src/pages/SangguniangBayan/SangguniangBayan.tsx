@@ -225,8 +225,8 @@ export default function SangguniangBayan() {
       className="relative w-full min-h-screen py-20 sm:py-28 px-4 sm:px-8 bg-slate-50 text-slate-800 overflow-hidden flex flex-col items-center"
     >
       {/* Background Soft Lighting Gradients */}
-      <div className="absolute top-0 right-1/4 w-[40rem] h-[30rem] bg-emerald-200/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-[35rem] h-[35rem] bg-teal-100/50 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-160 h-120 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-140 h-140 bg-teal-100/50 rounded-full blur-3xl pointer-events-none" />
 
       <motion.div
         variants={animate.containerVariants}
@@ -244,7 +244,7 @@ export default function SangguniangBayan() {
 
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900">
             Sangguniang Bayan &{" "}
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
               Legislative Portal
             </span>
           </h2>
@@ -257,7 +257,7 @@ export default function SangguniangBayan() {
         {/* Vice Mayor Message Banner */}
         <motion.div
           variants={animate.itemVariants}
-          className="rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-950 text-white p-8 sm:p-10 shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center gap-8"
+          className="rounded-3xl bg-linear-to-br from-slate-900 via-slate-800 to-emerald-950 text-white p-8 sm:p-10 shadow-2xl relative overflow-hidden flex flex-col lg:flex-row items-center gap-8"
         >
           <div className="absolute -right-10 -bottom-10 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -312,7 +312,7 @@ export default function SangguniangBayan() {
                     alt={member.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-linear-to-t from-slate-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
 
                 <h4 className="font-extrabold text-slate-900 text-sm group-hover:text-emerald-600 transition-colors leading-tight">

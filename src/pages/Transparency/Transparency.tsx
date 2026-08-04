@@ -184,7 +184,7 @@ export default function Transparency() {
     >
         <BackHomeButton/>
       {/* Soft Light Background Lighting Accent */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[50rem] h-[30rem] bg-gradient-to-tr from-emerald-200/40 via-teal-100/30 to-sky-200/40 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-200 h-120 bg-linear-to-tr from-emerald-200/40 via-teal-100/30 to-sky-200/40 rounded-full blur-3xl pointer-events-none" />
 
       {/* Main Container */}
       <motion.div
@@ -203,7 +203,7 @@ export default function Transparency() {
 
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900">
             Municipal Budget &{" "}
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
               Project Transparency
             </span>
           </h2>
@@ -223,7 +223,7 @@ export default function Transparency() {
               <div className="absolute top-0 right-0 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all duration-500" />
               
               <div className="flex items-center gap-4">
-                <div className="p-4 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-500/25">
+                <div className="p-4 rounded-2xl bg-linear-to-br from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-500/25">
                   <DollarSign className="w-6 h-6" />
                 </div>
                 <div>
@@ -337,7 +337,7 @@ export default function Transparency() {
                         <div
                           className={`w-full h-full ${bar.frontColor} rounded-b-sm shadow-xl ${bar.glowColor} relative z-10 overflow-hidden`}
                         >
-                          <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-transparent to-black/10" />
+                          <div className="absolute inset-0 bg-linear-to-r from-white/30 via-transparent to-black/10" />
                         </div>
                       </motion.div>
                     </div>
@@ -423,7 +423,7 @@ export default function Transparency() {
 
           {/* Table Element */}
           <div className="w-full overflow-x-auto rounded-2xl border border-slate-200/80 bg-slate-50/50">
-            <table className="w-full text-left border-collapse min-w-[800px]">
+            <table className="w-full text-left border-collapse min-w-200">
               <thead>
                 <tr className="border-b border-slate-200/80 bg-slate-100/70 text-[11px] font-bold uppercase tracking-wider text-slate-500">
                   <th className="py-4 px-5">Project Details</th>
