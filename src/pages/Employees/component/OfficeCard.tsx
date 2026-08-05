@@ -5,15 +5,13 @@ import { BsBank } from "react-icons/bs";
 
 interface OfficeCardProps {
   title?: string;
-  label?: string;
   value?: number;
   icon?: React.ReactNode;
 }
 
 export default function OfficeCard({
-  title = "Office of the Mayor",
-  label = "Total Employees",
-  value = 20,
+  title ,
+  value = 0 ,
   icon,
 }: OfficeCardProps) {
   const [count, setCount] = useState(0);
@@ -65,7 +63,7 @@ export default function OfficeCard({
         <div className="officecard-seal-ring absolute inset-0 rounded-full border border-dashed border-emerald-800/20" />
         <div className="absolute inset-3 rounded-full border border-emerald-800/10" />
         {icon ?? (
-          <BsBank className="h-16 w-16 text-emerald-800/25 transition-colors duration-500 group-hover:text-emerald-800/40" />
+          <BsBank className="h-20 w-20 text-emerald-800/25 transition-colors duration-500 group-hover:text-emerald-800/40" />
         )}
       </div>
 
@@ -74,7 +72,7 @@ export default function OfficeCard({
           {title}
         </h1>
         <p className="mt-1 text-xs font-medium uppercase tracking-[0.2em] text-slate-500">
-          {label}
+          Total Employees
         </p>
         <p className="officecard-rise mt-5 ml-1 text-5xl font-bold tabular-nums text-emerald-800">
           {count}
