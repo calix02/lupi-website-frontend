@@ -9,54 +9,41 @@ import Contact from "./pages/Contact/Contact";
 import About from "./pages/About/About";
 import SangguniangBayan from "./pages/SangguniangBayan/SangguniangBayan";
 import Government from "./pages/Government/Governement";
+import PublicLayout from "./layout/PublicLayout";
+import AuthLayout from "./layout/AuthLayout";
+import LogIn from "@/pages/Auth/Login";
  
 function App() { 
   const router = createBrowserRouter([ 
     {
       Component: RootLayout,
       children: [
-        
-           { 
-      path: "/", 
-      Component: LupiWebsite, 
-    }, 
-     { 
-      path: "/government", 
-      Component: Government, 
-    }, 
+         {
+     Component: PublicLayout,
+     children: [
+      {index: true, Component: LupiWebsite},
+      {path: "/government", Component: Government},
+      {path: "/sangguniangbayan", Component: SangguniangBayan},
+      {path: "/officials", Component: Officials},
+      {path: "/project", Component: Transparency},
+      {path: "/coming-soon", Component: ComingSoon},
+      {path: "/about", Component: About},
+      {path: "/all-annoucement", Component: AllAnnouncements},
+      {path: "/contact", Component: Contact},
+
     
-    
-    { 
-      path: "/all-announcements", 
-      Component: AllAnnouncements, 
-    }, 
-     { 
-      path: "/officials", 
-      Component: Officials, 
-    }, 
-    { 
-      path: "/contact", 
-      Component: Contact, 
+     ]
     },
-     { 
-      path: "/transparency", 
-      Component: Transparency, 
-    }, 
-     { 
-      path: "/sangguniangbayan", 
-      Component: SangguniangBayan
-      , 
-    }, 
-     { 
-      path: "/about", 
-      Component: About, 
-    }, 
-        { 
-      path: "/coming-soon", 
-      Component: ComingSoon, 
-    }, 
-      ],
-    },
+    {
+      Component: AuthLayout,
+      children: [
+        {path: "/login", Component: LogIn }
+      ]
+    }
+
+      ]
+    }
+   
     
    
   ]); 
