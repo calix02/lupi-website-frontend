@@ -15,8 +15,6 @@ import useInOutAnimation from "@/hooks/useInOutAnimation";
 import Pattern from "@/assets/pattern/pattern4.svg";
 import Pattern2 from "@/assets/pattern/pattern1.svg";
 
-import RoundCarousel from "@/components/Gallery/RoundCarousel";
-
 // Tourist Spot Data Model for Municipality of Lupi
 export interface TouristSpot {
   id: string;

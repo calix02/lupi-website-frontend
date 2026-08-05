@@ -12,6 +12,7 @@ import Government from "./pages/Government/Governement";
 import PublicLayout from "./layout/PublicLayout";
 import AuthLayout from "./layout/AuthLayout";
 import LogIn from "@/pages/Auth/Login";
+import Employees from "./pages/Employees/Employees";
  
 function App() { 
   const router = createBrowserRouter([ 
@@ -25,6 +26,7 @@ function App() {
       {path: "/government", Component: Government},
       {path: "/sangguniangbayan", Component: SangguniangBayan},
       {path: "/officials", Component: Officials},
+      {path: "/employees", Component: Employees},
       {path: "/project", Component: Transparency},
       {path: "/coming-soon", Component: ComingSoon},
       {path: "/about", Component: About},

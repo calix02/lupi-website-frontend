@@ -17,11 +17,28 @@ export default function Header() {
   const navDropdownData: Record<string, { label: string; link: string; desc: string }[]> = {
    
     Government: [
-      { label: "Elected Officials", link: "officials", desc: "Important notices and suspensions" },
-      { label: "Sanguniang Bayan", link: "sangguniangbayan", desc: "Active government contracts & transparency" },
-      { label: "Citizen's Charter", link: "#announcements", desc: "Active government contracts & transparency" },
-
-    ],
+  {
+    label: "Elected Officials",
+    link: "officials",
+    desc: "Profiles of the municipality's elected leaders."
+  },
+  {
+    label: "Sangguniang Bayan",
+    link: "sangguniangbayan",
+    desc: "Municipal Council members, ordinances, and resolutions."
+  },
+  {
+    label: "Citizen's Charter",
+    link: "#citizens-charter",
+    desc: "Service standards, requirements, fees, and processing times."
+  },
+{
+  label: "LGU Employees",
+  link: "employees",
+  desc: "View the list of municipal personnel, departments, and designated roles."
+}
+],
+  
   };
 
   const [activeTab, setActiveTab] = useState("Home");

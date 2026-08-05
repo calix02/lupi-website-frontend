@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import SplashScreen from "@/components/SplashScreen/SplashScreen";
 import Tourism from "./Tourism/Tourism";
 import Weather from "./Weather/Weather";
-import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 
 export default function LupiWebsite() {
