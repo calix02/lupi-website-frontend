@@ -423,17 +423,10 @@ export default function TourismSection() {
                 </div>
               </div>
             </motion.div>
-             
           </motion.div>
         )}
       </AnimatePresence>
-      <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}className="mt-10 w-full h">
-          <RoundCarousel/>
-            
-        </motion.div>
+      
     </motion.section>
   );
 }

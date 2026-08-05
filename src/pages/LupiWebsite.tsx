@@ -28,7 +28,6 @@ export default function LupiWebsite() {
             <Announcement/>
             <Tourism/>
             <Weather/>
-            <Footer/>
         </div>
 
     );

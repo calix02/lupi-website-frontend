@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import SocialCard from "./component/SocialCard";
-import Footer from "@/components/Footer/Footer";
 import BackHomeButton from "@/components/Buttons/BackHome";
 
 export default function Contact() {
@@ -274,7 +273,6 @@ export default function Contact() {
         </div>
       </div>
     </section>
-    <Footer/>
     </>
   );
 }

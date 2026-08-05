@@ -24,7 +24,6 @@ export default function PublicLayout() {
             <main>
                 <Outlet />
             </main>
-
             <Footer />
         </>
     );
