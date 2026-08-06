@@ -117,7 +117,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-20 w-[92%] max-w-7xl lg:rounded-full rounded-2xl transition-all duration-500 border border-white/15 lg:bg-white/5 bg-slate-950/50 backdrop-blur-md py-3.5 px-6 shadow-xl shadow-slate-950/20 ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-20 w-[92%] max-w-7xl lg:rounded-full rounded-2xl transition-all duration-500 border border-white/15  bg-slate-950/20 backdrop-blur-md py-3.5 px-6 shadow-xl shadow-slate-950/20 ${
         isHidden ? "hidden" : "block"
       }`}
     >
@@ -164,7 +164,7 @@ export default function Header() {
                     className={`relative z-10 flex items-center gap-1 px-4 py-1.5 text-xs font-semibold tracking-wide transition-colors duration-200 ${
                       isActive
                         ? "text-slate-950"
-                        : "text-slate-300 hover:text-emerald-400"
+                        : "text-slate-100 hover:text-emerald-400"
                     }`}>
                  
                     <span>{item}</span>

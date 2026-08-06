@@ -12,6 +12,7 @@ import {
   ChevronLeft,
 } from "lucide-react";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
+import BackHomeButton from "@/components/Buttons/BackHome";
 
 // Interfaces based on CSC standard job posting form
 export interface JobVacancy {
@@ -66,11 +67,11 @@ export default function JobVacanciesSection() {
       eligibility: "Career Service (Professional) / Second Level Eligibility",
       competency: "Systems Administration, Web Development, Database Management",
       placeOfAssignment: "Office of the Municipal Mayor",
-      companyName: "Municipality of Pulilan",
-      address: "Poblacion, Pulilan, Bulacan",
+      companyName: "Municipality of Lupi",
+      address: "Poblacion Lupi Camarines Sur",
       contactPerson: "Elena C. Esguerra",
       contactNumber: "(044) 769-1206",
-      emailAddress: "hrmo@pulilan.gov.ph",
+      emailAddress: "hrmo@lupi.gov.ph",
       noOfPersonRequired: 1,
       deadline: "August 17, 2026",
       postedDate: "August 1, 2026",
@@ -91,11 +92,11 @@ export default function JobVacanciesSection() {
       eligibility: "Career Service (Professional) / Second Level Eligibility",
       competency: "Personnel Administration, Talent Acquisition, CSC Compliance",
       placeOfAssignment: "Human Resource Management Office",
-      companyName: "Municipality of Pulilan",
-      address: "Poblacion, Pulilan, Bulacan",
+      companyName: "Municipality of Lupi",
+      address: "Poblacion Lupi Camarines Sur",
       contactPerson: "Elena C. Esguerra",
       contactNumber: "(044) 769-1206",
-      emailAddress: "hrmo@pulilan.gov.ph",
+      emailAddress: "hrmo@lupi.gov.ph",
       noOfPersonRequired: 1,
       deadline: "August 20, 2026",
       postedDate: "August 2, 2026",
@@ -115,11 +116,11 @@ export default function JobVacanciesSection() {
       eligibility: "Career Service (Professional) / Second Level Eligibility",
       competency: "Emergency Response, Hazard Mapping, Disaster Planning",
       placeOfAssignment: "MDRRMO Operations Center",
-      companyName: "Municipality of Pulilan",
-      address: "Poblacion, Pulilan, Bulacan",
+      companyName: "Municipality of Lupi",
+      address: "Poblacion Lupi Camarines Sur",
       contactPerson: "Elena C. Esguerra",
       contactNumber: "(044) 769-1206",
-      emailAddress: "hrmo@pulilan.gov.ph",
+      emailAddress: "hrmo@lupi.gov.ph",
       noOfPersonRequired: 2,
       deadline: "August 25, 2026",
       postedDate: "August 5, 2026",
@@ -139,11 +140,11 @@ export default function JobVacanciesSection() {
       eligibility: "RA 1080 (CPA)",
       competency: "Government Accounting, Auditing, Financial Reconciliation",
       placeOfAssignment: "Office of the Municipal Accountant",
-      companyName: "Municipality of Pulilan",
-      address: "Poblacion, Pulilan, Bulacan",
+      companyName: "Municipality of Lupi",
+      address: "Poblacion Lupi Camarines Sur",
       contactPerson: "Elena C. Esguerra",
       contactNumber: "(044) 769-1206",
-      emailAddress: "hrmo@pulilan.gov.ph",
+      emailAddress: "hrmo@lupi.gov.ph",
       noOfPersonRequired: 1,
       deadline: "August 28, 2026",
       postedDate: "August 6, 2026",
@@ -164,11 +165,11 @@ export default function JobVacanciesSection() {
       eligibility: "Career Service (Subprofessional) / First Level Eligibility",
       competency: "Data Entry, Records Management",
       placeOfAssignment: "Office of the Municipal Mayor",
-      companyName: "Municipality of Pulilan",
-      address: "Poblacion, Pulilan, Bulacan",
+      companyName: "Municipality of Lupi",
+      address: "Poblacion Lupi Camarines Sur",
       contactPerson: "Elena C. Esguerra",
       contactNumber: "(044) 769-1206",
-      emailAddress: "hrmo@pulilan.gov.ph",
+      emailAddress: "hrmo@lupi.gov.ph",
       noOfPersonRequired: 1,
       deadline: "August 30, 2026",
       postedDate: "August 7, 2026",
@@ -208,6 +209,7 @@ export default function JobVacanciesSection() {
       id="careers"
       className="relative w-full min-h-screen py-20 sm:py-28 px-4 sm:px-8 bg-slate-50 text-slate-800 overflow-hidden flex flex-col items-center"
     >
+      <BackHomeButton/>
       {/* Background Soft Lighting Gradients */}
       <div className="absolute top-0 right-1/4 w-160 h-120 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-140 h-140 bg-teal-100/50 rounded-full blur-3xl pointer-events-none" />
@@ -281,7 +283,7 @@ export default function JobVacanciesSection() {
                     </span>
                     <span className="text-xs font-semibold text-slate-400 flex items-center gap-1">
                       <Clock className="w-3.5 h-3.5" />
-                      Apply by: {job.deadline}
+                      Apply until: {job.deadline}
                     </span>
                   </div>
 
