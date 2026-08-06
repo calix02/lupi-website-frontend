@@ -137,13 +137,13 @@ export default function Home() {
             className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-950/30 px-4 py-1.5 text-xs sm:text-sm font-medium text-emerald-300 backdrop-blur-md transition-colors hover:border-emerald-500/60 shadow-lg shadow-emerald-950/50"
           >
             <Sparkles className="h-4 w-4 text-emerald-400 animate-pulse" />
-            <span>Official Portal · Municipality of Lupi</span>
+            <span>Official Website · Municipality of Lupi</span>
           </motion.div>
 
           {/* Headline */}
           <motion.h1
             variants={animate.itemVariants}
-            className="font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.15] text-white"
+            className="font-sans text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.15] text-white"
           >
             Progresibong Lupi{" "}
             <span className="bg-linear-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">

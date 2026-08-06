@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Calendar as CalendarIcon, 
-  ArrowRight, 
-  Bell, 
-  ChevronLeft, 
-  ChevronRight, 
-  X, 
-  MapPin, 
-  Clock, 
+import {
+  Calendar as CalendarIcon,
+  ArrowRight,
+  Bell,
+  ChevronLeft,
+  ChevronRight,
+  X,
+  MapPin,
+  Clock,
   Tag,
   Pin,
-  FileText
+  FileText,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
@@ -128,13 +128,40 @@ export default function Announcement() {
   // Find events for selected modal popup
   const activeEvents = announcements.filter((item) => item.dateKey === selectedDate);
 
+  // --- Presentational-only helpers (do not affect state or behavior) ---
+  const today = new Date();
+  const isCurrentMonthShown =
+    today.getFullYear() === currentDate.getFullYear() &&
+    today.getMonth() === currentDate.getMonth();
+  const monthKey = `${currentDate.getFullYear()}-${currentDate.getMonth()}`;
+
   return (
     <section
       id="announcements"
       className="relative w-full min-h-screen py-20 sm:py-24 px-4 sm:px-8 bg-slate-50 overflow-hidden flex flex-col justify-center items-center"
     >
+      <style>{`
+        @keyframes cell-in {
+          from { opacity: 0; transform: translateY(6px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .cell-in { animation: cell-in 0.4s ease-out both; }
+        @media (prefers-reduced-motion: reduce) {
+          .cell-in { animation: none !important; }
+        }
+      `}</style>
+
       {/* Background Decor */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-160 h-160 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-[8%] w-72 h-72 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.35] [mask-image:radial-gradient(ellipse_at_center,black_0%,transparent_70%)]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, rgba(16,185,129,0.15) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
 
       {/* Main Container */}
       <motion.div
@@ -147,10 +174,10 @@ export default function Announcement() {
         {/* Section Header */}
         <motion.div variants={animate.itemVariants} className="text-center max-w-2xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wide mb-3">
-            <Bell className="w-3.5 h-3.5 text-emerald-600 animate-bounce" />
+            <Bell className="w-3.5 h-3.5 text-emerald-600 animate-pulse" />
             <span>Public Updates & Events</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-5xl font-bold text-slate-900 tracking-tight">
             Latest Announcements &{" "}
             <span className="bg-linear-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
               Municipal Calendar
@@ -173,9 +200,18 @@ export default function Announcement() {
                 <CalendarIcon className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                  {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
-                </h3>
+                <AnimatePresence mode="wait">
+                  <motion.h3
+                    key={monthKey}
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    transition={{ duration: 0.2 }}
+                    className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight"
+                  >
+                    {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
+                  </motion.h3>
+                </AnimatePresence>
                 <p className="text-xs text-slate-500 font-medium">
                   Interactive Event Schedule & Important Dates
                 </p>
@@ -185,14 +221,14 @@ export default function Announcement() {
             <div className="flex items-center gap-2 self-end sm:self-auto">
               <button
                 onClick={prevMonth}
-                className="p-2.5 rounded-2xl border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 text-slate-600 hover:text-emerald-700 transition-all shadow-xs"
+                className="p-2.5 rounded-2xl border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 text-slate-600 hover:text-emerald-700 transition-all shadow-xs active:scale-95"
                 aria-label="Previous Month"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={nextMonth}
-                className="p-2.5 rounded-2xl border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 text-slate-600 hover:text-emerald-700 transition-all shadow-xs"
+                className="p-2.5 rounded-2xl border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 text-slate-600 hover:text-emerald-700 transition-all shadow-xs active:scale-95"
                 aria-label="Next Month"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -200,66 +236,106 @@ export default function Announcement() {
             </div>
           </div>
 
-          {/* Weekday Header Grid */}
-          <div className="grid grid-cols-7 gap-2 text-center">
-            {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-              <div
-                key={day}
-                className="py-2 rounded-xl bg-slate-50 text-xs font-bold text-slate-500 tracking-wider uppercase"
-              >
-                {day}
+          {/* Weekday Header + Days Grid (animated together per month) */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={monthKey}
+              initial={{ opacity: 0, x: 14 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -14 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="flex flex-col gap-2 sm:gap-3"
+            >
+              {/* Weekday Header Grid */}
+              <div className="grid grid-cols-7 gap-2 text-center">
+                {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
+                  <div
+                    key={day}
+                    className="py-2 rounded-xl bg-slate-50 text-xs font-bold text-slate-500 tracking-wider uppercase"
+                  >
+                    {day}
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
 
-          {/* Calendar Days Grid */}
-          <div className="grid grid-cols-7 gap-2 sm:gap-3">
-            {/* Empty leading slots */}
-            {Array.from({ length: firstDayOfMonth }).map((_, index) => (
-              <div key={`empty-${index}`} className="h-14 sm:h-16 rounded-2xl bg-slate-50/40" />
-            ))}
+              {/* Calendar Days Grid */}
+              <div className="grid grid-cols-7 gap-2 sm:gap-3">
+                {/* Empty leading slots */}
+                {Array.from({ length: firstDayOfMonth }).map((_, index) => (
+                  <div key={`empty-${index}`} className="h-14 sm:h-16 rounded-2xl bg-slate-50/40" />
+                ))}
 
-            {/* Day Cells */}
-            {Array.from({ length: daysInMonth }).map((_, dayIndex) => {
-              const dayNum = dayIndex + 1;
-              const formattedDate = getFormattedDateKey(dayNum);
-              const hasEvent = announcements.some((a) => a.dateKey === formattedDate);
-              const matchedEvent = announcements.find((a) => a.dateKey === formattedDate);
+                {/* Day Cells */}
+                {Array.from({ length: daysInMonth }).map((_, dayIndex) => {
+                  const dayNum = dayIndex + 1;
+                  const formattedDate = getFormattedDateKey(dayNum);
+                  const hasEvent = announcements.some((a) => a.dateKey === formattedDate);
+                  const matchedEvent = announcements.find((a) => a.dateKey === formattedDate);
+                  const isToday = isCurrentMonthShown && dayNum === today.getDate();
 
-              return (
-                <button
-                  key={dayNum}
-                  onClick={() => hasEvent && setSelectedDate(formattedDate)}
-                  disabled={!hasEvent}
-                  className={`relative h-14 sm:h-16 rounded-2xl flex flex-col items-center justify-between p-2 text-xs sm:text-sm font-bold transition-all duration-300 ${
-                    hasEvent
-                      ? "bg-linear-to-br from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-600/20 hover:scale-105 hover:shadow-xl cursor-pointer"
-                      : "bg-slate-50/80 text-slate-700 hover:bg-slate-100/80 cursor-default"
-                  }`}
-                >
-                  <span className="self-start text-xs font-semibold opacity-90">{dayNum}</span>
+                  return (
+                    <button
+                      key={dayNum}
+                      onClick={() => hasEvent && setSelectedDate(formattedDate)}
+                      disabled={!hasEvent}
+                      style={{ animationDelay: `${Math.min(dayIndex * 10, 200)}ms` }}
+                      className={`cell-in relative h-14 sm:h-16 rounded-2xl flex flex-col items-center justify-between p-2 text-xs sm:text-sm font-bold transition-all duration-300 ${
+                        hasEvent
+                          ? `bg-linear-to-br ${
+                              matchedEvent?.urgent
+                                ? "from-rose-500 to-rose-600 shadow-rose-600/20"
+                                : "from-emerald-600 to-teal-600 shadow-emerald-600/20"
+                            } text-white shadow-lg hover:scale-105 hover:shadow-xl cursor-pointer`
+                          : "bg-slate-50/80 text-slate-700 hover:bg-slate-100/80 cursor-default"
+                      } ${
+                        isToday
+                          ? hasEvent
+                            ? "ring-2 ring-white ring-offset-2 ring-offset-emerald-600"
+                            : "ring-2 ring-emerald-400/70 text-emerald-700 bg-emerald-50"
+                          : ""
+                      }`}
+                    >
+                      <span className="self-start text-xs font-semibold opacity-90">{dayNum}</span>
 
-                  {hasEvent && matchedEvent && (
-                    <div className="w-full flex items-center justify-between gap-1 mt-auto">
-                      <span className="hidden sm:inline-block truncate text-[10px] font-medium bg-white/20 backdrop-blur-xs px-1.5 py-0.5 rounded-md">
-                        {matchedEvent.tag}
-                      </span>
-                      <span className="relative flex h-2 w-2 shrink-0">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-200 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
-                      </span>
-                    </div>
-                  )}
-                </button>
-              );
-            })}
-          </div>
+                      {hasEvent && matchedEvent && (
+                        <div className="w-full flex items-center justify-between gap-1 mt-auto">
+                          <span className="hidden sm:inline-block truncate text-[10px] font-medium bg-white/20 backdrop-blur-xs px-1.5 py-0.5 rounded-md">
+                            {matchedEvent.tag}
+                          </span>
+                          <span className="relative flex h-2 w-2 shrink-0">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white/70 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                          </span>
+                        </div>
+                      )}
+
+                      {isToday && !hasEvent && (
+                        <span className="text-[9px] font-bold uppercase tracking-wide text-emerald-600">
+                          Today
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </AnimatePresence>
 
           {/* Calendar Footer Legend */}
-          <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
-            <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-emerald-600 inline-block" />
-              <span>Highlighted dates contain scheduled public events</span>
+          <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-slate-500 font-medium">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 inline-block" />
+                <span>Community / Development</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block" />
+                <span>Urgent Advisory</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Pin className="w-3 h-3 text-amber-500 fill-amber-500" />
+                <span>Pinned Notice</span>
+              </div>
             </div>
             <span className="font-semibold text-slate-700">{announcements.length} Total Events</span>
           </div>
@@ -275,10 +351,10 @@ export default function Announcement() {
 
             <Link
               to="/all-announcements"
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-600 hover:text-emerald-700 transition-colors bg-emerald-50 hover:bg-emerald-100/80 px-4 py-2 rounded-xl"
+              className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-600 hover:text-emerald-700 transition-colors bg-emerald-50 hover:bg-emerald-100/80 px-4 py-2 rounded-xl"
             >
               <span>View All Bulletins</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>
 
@@ -297,7 +373,7 @@ export default function Announcement() {
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-slate-950/70 via-slate-950/20 to-transparent" />
 
@@ -375,12 +451,12 @@ export default function Announcement() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 10 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-lg rounded-3xl bg-white p-6 sm:p-8 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto"
+              className="relative w-full max-w-3xl rounded-3xl bg-white shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto"
             >
               {/* Close Button */}
               <button
                 onClick={() => setSelectedDate(null)}
-                className="absolute top-4 right-4 z-20 p-2 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+                className="absolute top-4 right-4 z-20 p-2 rounded-full text-slate-400 hover:text-slate-600 hover:bg-white/80 bg-white/60 backdrop-blur-sm transition-colors"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
@@ -388,13 +464,15 @@ export default function Announcement() {
 
               {activeEvents.length > 0 ? (
                 activeEvents.map((event) => (
-                  <div key={event.id} className="space-y-5">
-                    <div className="relative w-full h-44 rounded-2xl overflow-hidden bg-slate-100">
+                  <div key={event.id} className="flex flex-col md:flex-row">
+                    {/* Image column */}
+                    <div className="relative w-full md:w-2/5 h-52 md:h-auto shrink-0 bg-slate-100">
                       <img
                         src={event.image}
                         alt={event.title}
                         className="w-full h-full object-cover"
                       />
+                      <div className="absolute inset-0 bg-linear-to-t md:bg-linear-to-r from-slate-950/50 via-transparent to-transparent" />
                       <div className="absolute top-3 left-3 flex items-center gap-2">
                         <span
                           className={`text-xs font-bold px-3 py-1 rounded-full backdrop-blur-md shadow-xs ${
@@ -414,54 +492,55 @@ export default function Announcement() {
                       </div>
                     </div>
 
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+                    {/* Details column */}
+                    <div className="flex-1 p-6 sm:p-8 space-y-5">
+                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug pr-8">
                         {event.title}
                       </h3>
-                    </div>
 
-                    <div className="space-y-2.5 py-3 border-y border-slate-100 text-xs sm:text-sm">
-                      <div className="flex items-center gap-2 text-slate-600">
-                        <CalendarIcon className="w-4 h-4 text-emerald-600 shrink-0" />
-                        <span className="font-semibold">{event.dateDisplay}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-slate-600">
-                        <Clock className="w-4 h-4 text-emerald-600 shrink-0" />
-                        <span>{event.time}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-slate-600">
-                        <MapPin className="w-4 h-4 text-emerald-600 shrink-0" />
-                        <span>{event.location}</span>
-                      </div>
-                    </div>
-
-                    {/* Detailed Pinned Note inside Modal */}
-                    {event.pinnedNote && (
-                      <div className="p-3 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
-                        <Pin className="w-4 h-4 text-amber-600 shrink-0 mt-0.5 fill-amber-600" />
-                        <div>
-                          <p className="font-bold mb-0.5">Pinned Note:</p>
-                          <p>{event.pinnedNote}</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                        <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 bg-slate-50 rounded-xl px-3 py-2">
+                          <CalendarIcon className="w-4 h-4 text-emerald-600 shrink-0" />
+                          <span className="font-semibold">{event.dateDisplay}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 bg-slate-50 rounded-xl px-3 py-2">
+                          <Clock className="w-4 h-4 text-emerald-600 shrink-0" />
+                          <span>{event.time}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 bg-slate-50 rounded-xl px-3 py-2">
+                          <MapPin className="w-4 h-4 text-emerald-600 shrink-0" />
+                          <span className="truncate">{event.location}</span>
                         </div>
                       </div>
-                    )}
 
-                    <p className="text-sm text-slate-600 leading-relaxed">
-                      {event.desc}
-                    </p>
+                      {/* Detailed Pinned Note inside Modal */}
+                      {event.pinnedNote && (
+                        <div className="p-3 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
+                          <Pin className="w-4 h-4 text-amber-600 shrink-0 mt-0.5 fill-amber-600" />
+                          <div>
+                            <p className="font-bold mb-0.5">Pinned Note:</p>
+                            <p>{event.pinnedNote}</p>
+                          </div>
+                        </div>
+                      )}
 
-                    <div className="pt-2">
-                      <button
-                        onClick={() => setSelectedDate(null)}
-                        className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold transition-colors shadow-lg shadow-emerald-600/25"
-                      >
-                        Close & Continue
-                      </button>
+                      <p className="text-sm text-slate-600 leading-relaxed">
+                        {event.desc}
+                      </p>
+
+                      <div className="pt-2">
+                        <button
+                          onClick={() => setSelectedDate(null)}
+                          className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold transition-colors shadow-lg shadow-emerald-600/25"
+                        >
+                          Close & Continue
+                        </button>
+                      </div>
                     </div>
                   </div>
                 ))
               ) : (
-                <div className="text-center py-8 space-y-3">
+                <div className="text-center py-12 px-6 space-y-3">
                   <Tag className="w-10 h-10 text-slate-300 mx-auto" />
                   <h4 className="text-lg font-bold text-slate-800">No Scheduled Events</h4>
                   <p className="text-sm text-slate-500">
