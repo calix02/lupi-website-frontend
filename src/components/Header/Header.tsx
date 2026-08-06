@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useMotionValueEvent, useScroll } from "framer-motion";
-import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown, BriefcaseBusiness, BriefcaseIcon } from "lucide-react";
 import LupiLOgo from "@/assets/logos/lupi_logo.png";
 import { Link } from "react-router-dom";
 
@@ -228,11 +228,11 @@ export default function Header() {
         {/* Action Button */}
         <div className="hidden lg:flex items-center">
           <Link
-            to="transparency"
+            to="jobs"
             className="group flex items-center gap-2 rounded-full bg-linear-to-r from-emerald-500 to-teal-500 px-5 py-2 text-xs font-bold text-slate-950 shadow-md shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all"
           >
-            <span>Transparency</span>
-            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+            <span>Job Vacancies</span>
+            <BriefcaseBusiness className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>
 
@@ -278,9 +278,9 @@ export default function Header() {
                           : "text-slate-200 hover:bg-white/5 hover:text-emerald-400"
                       }`}
                     >
-                      <a href={`#${item.toLowerCase()}`} className="flex-1">
+                      <Link to={item.toLowerCase()} className="flex-1">
                         {item}
-                      </a>
+                      </Link>
                       {hasDropdown && (
                         <ChevronDown
                           className={`w-4 h-4 transition-transform duration-200 ${
@@ -322,12 +322,12 @@ export default function Header() {
               })}
 
               <Link
-                to="transparency"
+                to="jobs"
                 onClick={() => setMobileMenuOpen(false)}
                 className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-emerald-500 to-teal-500 px-4 py-2.5 text-sm font-bold text-slate-950 shadow-md shadow-emerald-500/20"
               >
-                <span>Transparency</span>
-                <ArrowRight className="h-4 w-4" />
+                <span>Job Vacancies</span>
+                <BriefcaseIcon className="h-4 w-4" />
               </Link>
             </nav>
           </motion.div>

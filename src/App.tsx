@@ -14,6 +14,7 @@ import LogIn from "@/pages/Auth/Login";
 import Employees from "./pages/Employees/Employees";
 import Projects from "@/pages/Projects/Projects";
 import Transparency from "./pages/Transparency/Transparency";
+import JobSection from "./pages/Job/JobSection";
  
 function App() { 
   const router = createBrowserRouter([ 
@@ -30,6 +31,8 @@ function App() {
       {path: "/employees", Component: Employees},
       {path: "/projects", Component: Projects},
       {path: "/transparency", Component: Transparency},
+      {path: "/jobs", Component: JobSection},
+
       {path: "/coming-soon", Component: ComingSoon},
       {path: "/about", Component: About},
       {path: "/all-annoucement", Component: AllAnnouncements},
