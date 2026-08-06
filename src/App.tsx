@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import LupiWebsite from "./pages/LupiWebsite";
 import AllAnnouncements from "./pages/Announcement/AllAnnouncement";
 import ComingSoon from "./components/ComingSoon";
-import Transparency from "@/pages/Transparency/Transparency";
 import RootLayout from "./layout/RootLayout";
 import Officials from "./pages/Officials/Officials";
 import Contact from "./pages/Contact/Contact";
@@ -13,6 +12,7 @@ import PublicLayout from "./layout/PublicLayout";
 import AuthLayout from "./layout/AuthLayout";
 import LogIn from "@/pages/Auth/Login";
 import Employees from "./pages/Employees/Employees";
+import Projects from "@/pages/Projects/Projects";
  
 function App() { 
   const router = createBrowserRouter([ 
@@ -27,7 +27,7 @@ function App() {
       {path: "/sangguniangbayan", Component: SangguniangBayan},
       {path: "/officials", Component: Officials},
       {path: "/employees", Component: Employees},
-      {path: "/project", Component: Transparency},
+      {path: "/projects", Component: Projects},
       {path: "/coming-soon", Component: ComingSoon},
       {path: "/about", Component: About},
       {path: "/all-annoucement", Component: AllAnnouncements},

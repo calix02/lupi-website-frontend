@@ -15,6 +15,7 @@ import {
   Sparkles
 } from "lucide-react";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
+import BackHomeButton from "@/components/Buttons/BackHome";
 
 // Types
 export interface Official {
@@ -224,6 +225,7 @@ export default function SangguniangBayan() {
       id="sanggunian"
       className="relative w-full min-h-screen py-20 sm:py-28 px-4 sm:px-8 bg-slate-50 text-slate-800 overflow-hidden flex flex-col items-center"
     >
+      <BackHomeButton/>
       {/* Background Soft Lighting Gradients */}
       <div className="absolute top-0 right-1/4 w-160 h-120 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-140 h-140 bg-teal-100/50 rounded-full blur-3xl pointer-events-none" />

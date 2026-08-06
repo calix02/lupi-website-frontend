@@ -13,8 +13,6 @@ import {
   ShieldCheck,
   Building2,
   FileSpreadsheet,
-  Layers,
-  ArrowUpRight
 } from "lucide-react";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
 import BackHomeButton from "@/components/Buttons/BackHome";
@@ -31,7 +29,7 @@ export interface ProjectItem {
   completionDate: string;
 }
 
-export default function Transparency() {
+export default function Projects() {
   const animate = useInOutAnimation();
 
   // Search & Filter State
@@ -543,7 +541,6 @@ export default function Transparency() {
         </motion.div>
       </motion.div>
     </section>
-    <Footer/>
     </>
     
   );
