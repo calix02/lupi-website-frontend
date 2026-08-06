@@ -12,8 +12,8 @@ import {
   Sparkles,
 } from "lucide-react";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
-import Pattern from "@/assets/pattern/pattern4.svg";
-import Pattern2 from "@/assets/pattern/pattern1.svg";
+import Pattern from "@/assets/pattern/intersecting-waves-split-white.svg";
+import Pattern2 from "@/assets/pattern/intersecting-curves-white.svg";
 
 // Tourist Spot Data Model for Municipality of Lupi
 export interface TouristSpot {
@@ -125,7 +125,7 @@ export default function TourismSection() {
   return (
     <motion.section
       id="tourism"
-      className="relative min-h-screen w-full overflow-hidden bg-slate-950 py-30 text-slate-100 flex flex-col justify-center"
+      className="relative min-h-screen w-full overflow-hidden bg-slate-950 lg:py-40 py-20 text-slate-100 flex flex-col justify-center"
     >
         <div className="absolute top-0 z-10 w-screen ">
             <img src={Pattern} alt="Pattern" className="w-full  object-cover  " />
