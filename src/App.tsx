@@ -13,6 +13,7 @@ import AuthLayout from "./layout/AuthLayout";
 import LogIn from "@/pages/Auth/Login";
 import Employees from "./pages/Employees/Employees";
 import Projects from "@/pages/Projects/Projects";
+import Transparency from "./pages/Transparency/Transparency";
  
 function App() { 
   const router = createBrowserRouter([ 
@@ -28,6 +29,7 @@ function App() {
       {path: "/officials", Component: Officials},
       {path: "/employees", Component: Employees},
       {path: "/projects", Component: Projects},
+      {path: "/transparency", Component: Transparency},
       {path: "/coming-soon", Component: ComingSoon},
       {path: "/about", Component: About},
       {path: "/all-annoucement", Component: AllAnnouncements},

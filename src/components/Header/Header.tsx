@@ -9,6 +9,7 @@ export default function Header() {
     "Home",
     "Government",
     "Projects",
+    "Transparency",
     "About",
     "Contact",
   ];
