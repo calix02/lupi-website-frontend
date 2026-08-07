@@ -30,7 +30,7 @@ export default function Header() {
   },
   {
     label: "Citizen's Charter",
-    link: "#citizens-charter",
+    link: "services",
     desc: "Service standards, requirements, fees, and processing times."
   },
 {

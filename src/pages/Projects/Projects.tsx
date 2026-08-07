@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
 import BackHomeButton from "@/components/Buttons/BackHome";
-import Footer from "@/components/Footer/Footer";
 
 export interface ProjectItem {
   id: number;

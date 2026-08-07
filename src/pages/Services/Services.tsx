@@ -15,11 +15,10 @@ import {
   ChevronRight,
   FileText,
   ArrowLeft,
-  Users,
-  Briefcase,
   Sparkles,
 } from "lucide-react";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
+import BackHomeButton from "@/components/Buttons/BackHome";
 
 // Interfaces
 export interface DownloadableForm {
@@ -405,9 +404,10 @@ export default function LupiServicesSection() {
       id="services"
       className="relative w-full min-h-screen py-20 sm:py-28 px-4 sm:px-8 bg-slate-50 text-slate-800 overflow-hidden flex flex-col items-center"
     >
+        <BackHomeButton/>
       {/* Background Soft Lighting Gradients */}
-      <div className="absolute top-10 left-1/4 w-[40rem] h-[30rem] bg-emerald-200/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-[35rem] h-[35rem] bg-teal-100/50 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-10 left-1/4 w-160 h-120 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-140 h-140 bg-teal-100/50 rounded-full blur-3xl pointer-events-none" />
 
       <motion.div
         variants={animate.containerVariants}
@@ -428,7 +428,7 @@ export default function LupiServicesSection() {
 
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900">
             Offices &{" "}
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
               Citizen's Charter
             </span>
           </h2>
