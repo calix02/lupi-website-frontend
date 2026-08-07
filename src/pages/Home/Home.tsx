@@ -184,17 +184,15 @@ export default function Home() {
           </motion.div>
 
           {/* Call to Action Buttons */}
-          <motion.div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-            <motion.a
-              variants={animate.itemVariants}
-              href="#services"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+          <motion.div  variants={animate.itemVariants} className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+            <Link
+             
+              to ="services"
               className="group flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-linear-to-r from-emerald-500 to-teal-500 px-8 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/25 transition-all hover:shadow-emerald-500/40"
             >
               Explore Services
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </motion.a>
+            </Link>
 
             <motion.a
               variants={animate.itemVariants}

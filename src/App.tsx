@@ -15,6 +15,7 @@ import Employees from "./pages/Employees/Employees";
 import Projects from "@/pages/Projects/Projects";
 import Transparency from "./pages/Transparency/Transparency";
 import JobSection from "./pages/Job/JobSection";
+import Services from "./pages/Services/Services";
  
 function App() { 
   const router = createBrowserRouter([ 
@@ -32,6 +33,7 @@ function App() {
       {path: "/projects", Component: Projects},
       {path: "/transparency", Component: Transparency},
       {path: "/jobs", Component: JobSection},
+      {path: "/services", Component: Services},
 
       {path: "/coming-soon", Component: ComingSoon},
       {path: "/about", Component: About},
