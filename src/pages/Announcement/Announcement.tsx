@@ -157,7 +157,7 @@ export default function Announcement() {
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-160 h-160 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-[8%] w-72 h-72 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.35] [mask-image:radial-gradient(ellipse_at_center,black_0%,transparent_70%)]"
+        className="absolute inset-0 pointer-events-none opacity-[0.35] mask-[radial-gradient(ellipse_at_center,black_0%,transparent_70%)]"
         style={{
           backgroundImage:
             "radial-gradient(circle, rgba(16,185,129,0.15) 1px, transparent 1px)",
