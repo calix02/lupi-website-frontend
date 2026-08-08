@@ -42,8 +42,10 @@ export default function Announcement() {
   // Selected date for event modal popup
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
 
-  // Calendar State (Defaulting to July 2026 based on sample data)
-  const [currentDate, setCurrentDate] = useState(new Date(2026, 6, 1)); // July 2026
+  // Calendar State (Defaults automatically to the current active month and year)
+  const [currentDate, setCurrentDate] = useState(
+    () => new Date(new Date().getFullYear(), new Date().getMonth(), 1)
+  );
 
   // Announcements and Events Dataset
   const announcements: AnnouncementItem[] = [
