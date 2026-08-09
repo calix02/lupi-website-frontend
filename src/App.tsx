@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router"; 
+import { createBrowserRouter, RouterProvider } from "react-router";
 import LupiWebsite from "./pages/LupiWebsite";
 import AllAnnouncements from "./pages/Announcement/AllAnnouncement";
 import ComingSoon from "./components/ComingSoon";
@@ -16,52 +16,43 @@ import Projects from "@/pages/Projects/Projects";
 import Transparency from "./pages/Transparency/Transparency";
 import JobSection from "./pages/Job/JobSection";
 import Services from "./pages/Services/Services";
- 
-function App() { 
-  const router = createBrowserRouter([ 
+
+function App() {
+  const router = createBrowserRouter([
     {
       Component: RootLayout,
       children: [
-         {
-     Component: PublicLayout,
-     children: [
-      {index: true, Component: LupiWebsite},
-      {path: "/government", Component: Government},
-      {path: "/sangguniangbayan", Component: SangguniangBayan},
-      {path: "/officials", Component: Officials},
-      {path: "/employees", Component: Employees},
-      {path: "/projects", Component: Projects},
-      {path: "/transparency", Component: Transparency},
-      {path: "/jobs", Component: JobSection},
-      {path: "/services", Component: Services},
-
-      {path: "/coming-soon", Component: ComingSoon},
-      {path: "/about", Component: About},
-      {path: "/all-annoucement", Component: AllAnnouncements},
-      {path: "/contact", Component: Contact},
-
-    
-     ]
+        {
+          Component: PublicLayout,
+          children: [
+            { index: true, Component: LupiWebsite },
+            { path: "/government", Component: Government },
+            { path: "/sangguniangbayan", Component: SangguniangBayan },
+            { path: "/officials", Component: Officials },
+            { path: "/employees", Component: Employees },
+            { path: "/projects", Component: Projects },
+            { path: "/transparency", Component: Transparency },
+            { path: "/jobs", Component: JobSection },
+            { path: "/services", Component: Services },
+            { path: "/coming-soon", Component: ComingSoon },
+            { path: "/about", Component: About },
+            { path: "/all", Component: AllAnnouncements },
+            { path: "/contact", Component: Contact },
+          ],
+        },
+        {
+          Component: AuthLayout,
+          children: [{ path: "/login", Component: LogIn }],
+        },
+      ],
     },
-    {
-      Component: AuthLayout,
-      children: [
-        {path: "/login", Component: LogIn }
-      ]
-    }
+  ]);
 
-      ]
-    }
-   
-    
-   
-  ]); 
- 
-  return ( 
-    <div> 
-      <RouterProvider router={router} /> 
-    </div> 
-  ); 
-} 
- 
-export default App; 
+  return (
+    <div>
+      <RouterProvider router={router} />
+    </div>
+  );
+}
+
+export default App;

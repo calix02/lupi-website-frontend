@@ -20,6 +20,7 @@ import useInOutAnimation from "@/hooks/useInOutAnimation";
 import AssistanceImg from "@/assets/logos/LGU-NEW.png";
 import HealthMissionImg from "@/assets/logos/LGU-NEW.png";
 import RoadProjImg from "@/assets/logos/LGU-NEW.png";
+import BAdminton from "@/assets/events/badmintom.jpg";
 
 export interface AnnouncementItem {
   id: number;
@@ -44,7 +45,7 @@ export default function Announcement() {
 
   // Calendar State (Defaults automatically to the current active month and year)
   const [currentDate, setCurrentDate] = useState(
-    () => new Date(new Date().getFullYear(), new Date().getMonth(), 1)
+    () => new Date(new Date().getFullYear(), new Date().getMonth(), 1),
   );
 
   // Announcements and Events Dataset
@@ -60,23 +61,37 @@ export default function Announcement() {
       desc: "All qualified beneficiaries are advised to report to the Lupi Covered Court starting at 8:00 AM. Please bring valid IDs and registration stubs.",
       urgent: true,
       isPinned: true,
-      pinnedNote: "Bring 2 valid IDs and original registration stub. Distribution starts strictly at 8:00 AM.",
+      pinnedNote:
+        "Bring 2 valid IDs and original registration stub. Distribution starts strictly at 8:00 AM.",
       image: AssistanceImg,
     },
     {
       id: 2,
-      tag: "Community",
-      title: "Free Healthcare & Dental Mission in Barangay Napolidan",
-      dateKey: "2026-08-02",
-      dateDisplay: "August 02, 2026",
+      tag: "Events",
+      title: "𝟭𝘀𝘁 𝗠𝗔𝗬𝗢𝗥 𝗧𝗢𝗣𝗜 𝗕𝗔𝗗𝗠𝗜𝗡𝗧𝗢𝗡 𝗧𝗢𝗨𝗥𝗡𝗔𝗠𝗘𝗡𝗧",
+      dateKey: "2026-09-17",
+      dateDisplay: "September 17-18, 2026",
       time: "9:00 AM - 3:00 PM",
-      location: "Barangay Napolidan Multi-Purpose Hall",
-      desc: "In partnership with the Rural Health Unit, medical checkups, dental checkups, and basic prescription medicines will be provided free of charge.",
+      location:
+        "Multi-Purpose Covered Court, LGU Compound, Poblacion, Lupi, Camarines Sur",
+      desc: `✅Free registration 
+              ✅Team Tie (every team must consist 4 players) 
+              ✅Double elimination
+              ✅Slot draw before matches
+              👕𝗗𝗥𝗘𝗦𝗦 𝗖𝗢𝗗𝗘
+              𝘗𝘳𝘰𝘱𝘦𝘳 𝘴𝘱𝘰𝘳𝘵𝘴 𝘢𝘵𝘵𝘪𝘳𝘦 𝘰𝘯𝘭𝘺 (no sando or slippers)
+              🏸𝙇𝙞𝙢𝙞𝙩𝙚𝙙 𝙨𝙡𝙤𝙩𝙨 𝙤𝙣𝙡𝙮— 𝙧𝙚𝙜𝙞𝙨𝙩𝙚𝙧 𝙚𝙖𝙧𝙡𝙮!
+              📞𝗖𝗼𝗻𝘁𝗮𝗰𝘁:
+              Justine Kieth Llaneta
+              𝟶𝟿12-690-7913`,
       urgent: false,
       isPinned: true,
-      pinnedNote: "Priority slots are reserved for senior citizens, PWDs, and pregnant mothers during morning hours.",
-      image: HealthMissionImg,
+      pinnedNote: `🏸 𝙊𝙉𝙇𝙔 20 𝙎𝙇𝙊𝙏𝙎 𝘼𝙑𝘼𝙄𝙇𝘼𝘽𝙇𝙀
+                  - 10 𝙎𝙡𝙤𝙩𝙨 𝘳𝘦𝘴𝘦𝘳𝘷𝘦𝘥 𝘧𝘰𝘳 𝘵𝘩𝘦 𝘱𝘢𝘳𝘵𝘪𝘤𝘪𝘱𝘢𝘵𝘪𝘯𝘨 𝘴𝘤𝘩𝘰𝘰𝘭𝘴
+                  - 10 𝙎𝙡𝙤𝙩𝙨 𝘰𝘱𝘦𝘯 𝘧𝘰𝘳 𝘰𝘵𝘩𝘦𝘳 𝘦𝘭𝘪𝘨𝘪𝘣𝘭𝘦 𝘓𝘶𝘱𝘪 𝘱𝘭𝘢𝘺𝘦𝘳𝘴/𝘵𝘦𝘢𝘮𝘴`,
+      image: BAdminton,
     },
+
     {
       id: 3,
       tag: "Development",
@@ -88,7 +103,8 @@ export default function Announcement() {
       desc: "Join us at the Session Hall as we present the upcoming farm-to-market road developments and municipal infrastructure projects.",
       urgent: false,
       isPinned: false,
-      pinnedNote: "Open to all residents, business owners, and local transport operators.",
+      pinnedNote:
+        "Open to all residents, business owners, and local transport operators.",
       image: RoadProjImg,
     },
   ];
@@ -97,26 +113,40 @@ export default function Announcement() {
   const daysInMonth = new Date(
     currentDate.getFullYear(),
     currentDate.getMonth() + 1,
-    0
+    0,
   ).getDate();
 
   const firstDayOfMonth = new Date(
     currentDate.getFullYear(),
     currentDate.getMonth(),
-    1
+    1,
   ).getDay();
 
   const monthNames = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
 
   const prevMonth = () => {
-    setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1));
+    setCurrentDate(
+      new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1),
+    );
   };
 
   const nextMonth = () => {
-    setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1));
+    setCurrentDate(
+      new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1),
+    );
   };
 
   // Format YYYY-MM-DD string for comparison
@@ -128,7 +158,9 @@ export default function Announcement() {
   };
 
   // Find events for selected modal popup
-  const activeEvents = announcements.filter((item) => item.dateKey === selectedDate);
+  const activeEvents = announcements.filter(
+    (item) => item.dateKey === selectedDate,
+  );
 
   // --- Presentational-only helpers (do not affect state or behavior) ---
   const today = new Date();
@@ -174,7 +206,10 @@ export default function Announcement() {
         className="relative z-10 max-w-7xl mx-auto w-full flex flex-col gap-12"
       >
         {/* Section Header */}
-        <motion.div variants={animate.itemVariants} className="text-center max-w-2xl mx-auto">
+        <motion.div
+          variants={animate.itemVariants}
+          className="text-center max-w-2xl mx-auto"
+        >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wide mb-3">
             <Bell className="w-3.5 h-3.5 text-emerald-600 animate-pulse" />
             <span>Public Updates & Events</span>
@@ -186,7 +221,8 @@ export default function Announcement() {
             </span>
           </h2>
           <p className="mt-2 text-sm sm:text-base text-slate-600">
-            Stay informed with upcoming LGU events, advisories, and community programs.
+            Stay informed with upcoming LGU events, advisories, and community
+            programs.
           </p>
         </motion.div>
 
@@ -211,7 +247,8 @@ export default function Announcement() {
                     transition={{ duration: 0.2 }}
                     className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight"
                   >
-                    {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
+                    {monthNames[currentDate.getMonth()]}{" "}
+                    {currentDate.getFullYear()}
                   </motion.h3>
                 </AnimatePresence>
                 <p className="text-xs text-slate-500 font-medium">
@@ -250,37 +287,49 @@ export default function Announcement() {
             >
               {/* Weekday Header Grid */}
               <div className="grid grid-cols-7 gap-2 text-center">
-                {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-                  <div
-                    key={day}
-                    className="py-2 rounded-xl bg-slate-50 text-xs font-bold text-slate-500 tracking-wider uppercase"
-                  >
-                    {day}
-                  </div>
-                ))}
+                {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(
+                  (day) => (
+                    <div
+                      key={day}
+                      className="py-2 rounded-xl bg-slate-50 text-xs font-bold text-slate-500 tracking-wider uppercase"
+                    >
+                      {day}
+                    </div>
+                  ),
+                )}
               </div>
 
               {/* Calendar Days Grid */}
               <div className="grid grid-cols-7 gap-2 sm:gap-3">
                 {/* Empty leading slots */}
                 {Array.from({ length: firstDayOfMonth }).map((_, index) => (
-                  <div key={`empty-${index}`} className="h-14 sm:h-16 rounded-2xl bg-slate-50/40" />
+                  <div
+                    key={`empty-${index}`}
+                    className="h-14 sm:h-16 rounded-2xl bg-slate-50/40"
+                  />
                 ))}
 
                 {/* Day Cells */}
                 {Array.from({ length: daysInMonth }).map((_, dayIndex) => {
                   const dayNum = dayIndex + 1;
                   const formattedDate = getFormattedDateKey(dayNum);
-                  const hasEvent = announcements.some((a) => a.dateKey === formattedDate);
-                  const matchedEvent = announcements.find((a) => a.dateKey === formattedDate);
-                  const isToday = isCurrentMonthShown && dayNum === today.getDate();
+                  const hasEvent = announcements.some(
+                    (a) => a.dateKey === formattedDate,
+                  );
+                  const matchedEvent = announcements.find(
+                    (a) => a.dateKey === formattedDate,
+                  );
+                  const isToday =
+                    isCurrentMonthShown && dayNum === today.getDate();
 
                   return (
                     <button
                       key={dayNum}
                       onClick={() => hasEvent && setSelectedDate(formattedDate)}
                       disabled={!hasEvent}
-                      style={{ animationDelay: `${Math.min(dayIndex * 10, 200)}ms` }}
+                      style={{
+                        animationDelay: `${Math.min(dayIndex * 10, 200)}ms`,
+                      }}
                       className={`cell-in relative h-14 sm:h-16 rounded-2xl flex flex-col items-center justify-between p-2 text-xs sm:text-sm font-bold transition-all duration-300 ${
                         hasEvent
                           ? `bg-linear-to-br ${
@@ -297,7 +346,9 @@ export default function Announcement() {
                           : ""
                       }`}
                     >
-                      <span className="self-start text-xs font-semibold opacity-90">{dayNum}</span>
+                      <span className="self-start text-xs font-semibold opacity-90">
+                        {dayNum}
+                      </span>
 
                       {hasEvent && matchedEvent && (
                         <div className="w-full flex items-center justify-between gap-1 mt-auto">
@@ -339,20 +390,29 @@ export default function Announcement() {
                 <span>Pinned Notice</span>
               </div>
             </div>
-            <span className="font-semibold text-slate-700">{announcements.length} Total Events</span>
+            <span className="font-semibold text-slate-700">
+              {announcements.length} Total Events
+            </span>
           </div>
         </motion.div>
 
         {/* ================= 2. BULLETIN ANNOUNCEMENTS - SQUARE CARDS WITH IMAGES ================= */}
         <div className="flex flex-col gap-6">
-          <motion.div variants={animate.itemVariants} className="flex justify-between items-center">
+          <motion.div
+            variants={animate.itemVariants}
+            className="flex justify-between items-center"
+          >
             <div>
-              <h3 className="text-2xl font-extrabold text-slate-900 tracking-tight">Official Bulletins</h3>
-              <p className="text-xs text-slate-500">Pinned notices and municipal advisories</p>
+              <h3 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+                Official Bulletins
+              </h3>
+              <p className="text-xs text-slate-500">
+                Pinned notices and municipal advisories
+              </p>
             </div>
 
             <Link
-              to="/all-announcements"
+              to="all"
               className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-600 hover:text-emerald-700 transition-colors bg-emerald-50 hover:bg-emerald-100/80 px-4 py-2 rounded-xl"
             >
               <span>View All Bulletins</span>
@@ -398,7 +458,6 @@ export default function Announcement() {
                       </span>
                     )}
                   </div>
-
                   {/* Date Badge on Image */}
                   <div className="absolute bottom-2.5 left-3 flex items-center gap-1 text-[11px] font-semibold text-white/90">
                     <CalendarIcon className="w-3.5 h-3.5 text-emerald-400" />
@@ -421,7 +480,9 @@ export default function Announcement() {
                     {item.pinnedNote && (
                       <div className="p-2 rounded-xl bg-amber-50/80 border border-amber-200/80 flex items-start gap-1.5 text-[10px] sm:text-[11px] text-amber-900">
                         <FileText className="w-3.5 h-3.5 text-amber-600 shrink-0 mt-0.5" />
-                        <p className="line-clamp-1 font-medium">{item.pinnedNote}</p>
+                        <p className="line-clamp-1 font-medium">
+                          {item.pinnedNote}
+                        </p>
                       </div>
                     )}
                   </div>
@@ -503,7 +564,9 @@ export default function Announcement() {
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                         <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 bg-slate-50 rounded-xl px-3 py-2">
                           <CalendarIcon className="w-4 h-4 text-emerald-600 shrink-0" />
-                          <span className="font-semibold">{event.dateDisplay}</span>
+                          <span className="font-semibold">
+                            {event.dateDisplay}
+                          </span>
                         </div>
                         <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 bg-slate-50 rounded-xl px-3 py-2">
                           <Clock className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -544,9 +607,12 @@ export default function Announcement() {
               ) : (
                 <div className="text-center py-12 px-6 space-y-3">
                   <Tag className="w-10 h-10 text-slate-300 mx-auto" />
-                  <h4 className="text-lg font-bold text-slate-800">No Scheduled Events</h4>
+                  <h4 className="text-lg font-bold text-slate-800">
+                    No Scheduled Events
+                  </h4>
                   <p className="text-sm text-slate-500">
-                    There are no public announcements or events scheduled for this date.
+                    There are no public announcements or events scheduled for
+                    this date.
                   </p>
                 </div>
               )}

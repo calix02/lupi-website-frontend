@@ -18,6 +18,7 @@ import {
   Check,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import Badminton from "@/assets/events/badmintom.jpg";
 
 // Announcement Data Structure Definition
 export interface AnnouncementItem {
@@ -36,7 +37,7 @@ export interface AnnouncementItem {
 const ANNOUNCEMENTS: AnnouncementItem[] = [
   {
     id: "1",
-    title: "Annual Municipal Town Hall & Citizen Engagement Forum 2026",
+    title: "𝟭𝘀𝘁 𝗠𝗔𝗬𝗢𝗥 𝗧𝗢𝗣𝗜 𝗕𝗔𝗗𝗠𝗜𝗡𝗧𝗢𝗡 𝗧𝗢𝗨𝗥𝗡𝗔𝗠𝗘𝗡𝗧",
     summary:
       "Join local leaders and fellow residents to discuss upcoming infrastructure projects, digital public services, and community budgets for the coming year.",
     fullContent:
@@ -45,8 +46,7 @@ const ANNOUNCEMENTS: AnnouncementItem[] = [
     date: "Aug 15, 2026",
     readTime: "3 min read",
     isPinned: true,
-    image:
-      "https://images.unsplash.com/photo-1544928147-79a2dbc1f389?auto=format&fit=crop&q=80&w=1000",
+    image: Badminton,
   },
   {
     id: "2",
@@ -120,15 +120,23 @@ const ANNOUNCEMENTS: AnnouncementItem[] = [
   },
 ];
 
-const CATEGORIES = ["All", "Events", "Advisory", "Services", "Development", "General"];
+const CATEGORIES = [
+  "All",
+  "Events",
+  "Advisory",
+  "Services",
+  "Development",
+  "General",
+];
 
 export default function AllAnnouncement() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  
+
   // State for Full Detail Card Modal
-  const [activeAnnouncement, setActiveAnnouncement] = useState<AnnouncementItem | null>(null);
+  const [activeAnnouncement, setActiveAnnouncement] =
+    useState<AnnouncementItem | null>(null);
 
   // State for Lightbox Poster Image Only
   const [selectedPoster, setSelectedPoster] = useState<{
@@ -251,7 +259,8 @@ export default function AllAnnouncement() {
             variants={itemVariants}
             className="mt-4 max-w-2xl text-sm sm:text-lg text-slate-600"
           >
-            Stay informed with official updates, community programs, public health advisories, and civic events from LGU Lupi.
+            Stay informed with official updates, community programs, public
+            health advisories, and civic events from LGU Lupi.
           </motion.p>
         </motion.div>
 
@@ -421,7 +430,8 @@ export default function AllAnnouncement() {
                 No announcements found
               </h3>
               <p className="mt-1 text-sm text-slate-500 max-w-sm">
-                Try adjusting your search terms or filter selection to find what you're looking for.
+                Try adjusting your search terms or filter selection to find what
+                you're looking for.
               </p>
               <button
                 type="button"
@@ -555,7 +565,9 @@ export default function AllAnnouncement() {
                       "For further inquiries, visit the Local Government Unit main administration office or coordinate with your local barangay official."}
                   </p>
                   <p>
-                    Please stay tuned to our official portal and verified municipal channels for real-time schedule updates and related public notifications.
+                    Please stay tuned to our official portal and verified
+                    municipal channels for real-time schedule updates and
+                    related public notifications.
                   </p>
                 </div>
 
