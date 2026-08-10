@@ -254,7 +254,7 @@ export default function Home2() {
         >
           <source src={HeroVideo} type="video/mp4" />
         </video>
-        <div className="inset-0 absolute bg-slate-950/60"></div>
+        <div className="inset-0 absolute bg-slate-950/20"></div>
         {/* Split Pattern Layer */}
         <div className="absolute -top-10 inset-x-0">
           <img src={Pattern} alt="" className="w-full object-cover" />

@@ -254,7 +254,7 @@ export default function Home2() {
 
       {/* Hero Image Section Footer */}
       <div
-        className="h-[60vh]  absolute bottom-0 w-full bg-cover bg-top  pointer-events-none z-10 lg:block md:block hidden"
+        className="h-[50vh]  absolute bottom-0 w-full bg-cover bg-top  pointer-events-none z-10 lg:block md:block hidden"
         style={{ backgroundImage: `url(${HeroImage})` }}
       >
         {/* Split Pattern Layer */}

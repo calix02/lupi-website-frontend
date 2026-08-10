@@ -1,4 +1,4 @@
-import Home from "@/pages/Home/Home3";
+import Home from "@/pages/Home/Home2";
 import Announcement from "./Announcement/Announcement";
 import { useEffect, useState } from "react";
 import SplashScreen from "@/components/SplashScreen/SplashScreen";
