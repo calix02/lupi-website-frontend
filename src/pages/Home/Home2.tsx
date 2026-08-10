@@ -142,7 +142,7 @@ export default function Home2() {
       >
         {/* Badge */}
         <motion.div variants={itemVariants}>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-slate-900/5 border border-slate-900/10 rounded-full backdrop-blur-md mb-6 shadow-xs">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-slate-900/5 border border-slate-900/10 rounded-full backdrop-blur-md lg:mb-6 md:mb-6 mb-2 shadow-xs">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -164,7 +164,7 @@ export default function Home2() {
         {/* Sub-heading with Gradient */}
         <motion.h2
           variants={itemVariants}
-          className="bg-linear-to-r from-emerald-600 via-teal-600 to-cyan-600 text-3xl sm:text-5xl md:text-6xl playfair bg-clip-text text-transparent font-medium mb-6"
+          className="bg-linear-to-r from-emerald-600 via-teal-600 to-cyan-600 text-3xl sm:text-5xl md:text-6xl playfair bg-clip-text text-transparent font-medium lg:mb-6 md:mb-6 mb-2"
         >
           Innovation & Services
         </motion.h2>
@@ -201,11 +201,11 @@ export default function Home2() {
         {/* Call to Action Buttons */}
         <motion.div
           variants={itemVariants}
-          className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+          className="mt-8 flex  items-center justify-center gap-4 w-full sm:w-auto"
         >
           <Link
             to="/services"
-            className="group flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 transition-all hover:shadow-emerald-600/40 hover:-translate-y-0.5 active:translate-y-0"
+            className="group flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-linear-to-r from-emerald-600 to-teal-600 px-8 py-3.5 lg:text-sm md:text-sm text-xs font-semibold text-white shadow-lg shadow-emerald-600/25 transition-all hover:shadow-emerald-600/40 hover:-translate-y-0.5 active:translate-y-0"
           >
             Explore Services
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -213,7 +213,7 @@ export default function Home2() {
 
           <a
             href="#announcements"
-            className="flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-slate-300 bg-white/80 px-8 py-3.5 text-sm font-semibold text-slate-700 shadow-xs backdrop-blur-md hover:bg-slate-100 hover:border-slate-400 transition-all hover:-translate-y-0.5 active:translate-y-0"
+            className="flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-slate-300 bg-white/80 px-8 py-3.5 lg:text-sm md:text-md text-xs font-semibold text-slate-700 shadow-xs backdrop-blur-md hover:bg-slate-100 hover:border-slate-400 transition-all hover:-translate-y-0.5 active:translate-y-0"
           >
             Latest News
           </a>
@@ -222,7 +222,7 @@ export default function Home2() {
         {/* Floating Stats Cards */}
         <motion.div
           variants={itemVariants}
-          className="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-4xl"
+          className="lg:mt-10 md:mt-15 mt-5 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-4xl"
         >
           {stats.map((stat, idx) => {
             const Icon = stat.icon;
@@ -254,12 +254,9 @@ export default function Home2() {
 
       {/* Hero Image Section Footer */}
       <div
-        className="h-[45vh] sm:h-[42vh] absolute bottom-0 w-full bg-cover bg-top  pointer-events-none z-10"
+        className="h-[60vh]  absolute bottom-0 w-full bg-cover bg-top  pointer-events-none z-10 lg:block md:block hidden"
         style={{ backgroundImage: `url(${HeroImage})` }}
       >
-        {/* Top Vignette Gradient for smooth transition */}
-        <div className="absolute inset-0 bg-linear-to-t from-transparent via-slate-50/40 to-slate-50" />
-
         {/* Split Pattern Layer */}
         <div className="absolute -top-10 inset-x-0">
           <img src={Pattern} alt="" className="w-full object-cover" />

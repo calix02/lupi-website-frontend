@@ -47,7 +47,10 @@ function StatValue({ value }: { value: string }) {
   }, [inView, value]);
 
   return (
-    <p ref={ref} className="text-lg font-bold text-slate-100 leading-none tabular-nums">
+    <p
+      ref={ref}
+      className="text-lg font-bold text-slate-100 leading-none tabular-nums"
+    >
       {display}
     </p>
   );
@@ -66,9 +69,24 @@ export default function Home() {
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 60]);
 
   const stats = [
-    { icon: Users, label: "Community Members", value: "35,000+", link: "/coming-soon" },
-    { icon: Landmark, label: "Public Services Guide", value: "24/7 Digital", link: "/coming-soon" },
-    { icon: MapPin, label: "Tourist Spots", value: "12+ Places", link: "/coming-soon" },
+    {
+      icon: Users,
+      label: "Community Members",
+      value: "35,000+",
+      link: "/coming-soon",
+    },
+    {
+      icon: Landmark,
+      label: "Public Services Guide",
+      value: "24/7 Digital",
+      link: "/coming-soon",
+    },
+    {
+      icon: MapPin,
+      label: "Tourist Spots",
+      value: "12+ Places",
+      link: "/coming-soon",
+    },
   ];
 
   const heritage = [
@@ -100,7 +118,11 @@ export default function Home() {
 
       {/* Bottom Decorative Pattern Divider */}
       <div className="absolute bottom-0 inset-x-0 z-10 pointer-events-none">
-        <img src={Pattern} alt="" className="w-full object-cover -scale-y-100" />
+        <img
+          src={Pattern}
+          alt=""
+          className="w-full object-cover -scale-y-100"
+        />
       </div>
 
       {/* Video Background with scroll parallax */}
@@ -108,7 +130,13 @@ export default function Home() {
         style={{ scale: videoScale, opacity: videoOpacity }}
         className="absolute inset-0 z-0 overflow-hidden"
       >
-        <video autoPlay loop muted playsInline className="h-full w-full object-cover object-center">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-full w-full object-cover object-center"
+        >
           <source src={HeroVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -156,8 +184,9 @@ export default function Home() {
             variants={animate.itemVariants}
             className="mt-4 sm:mt-6 max-w-2xl text-sm sm:text-lg md:text-xl font-normal text-slate-300 leading-relaxed"
           >
-            Discover municipal updates, public services, tourism spots, and upcoming events —
-            all in one unified digital hub for the people of Lupi.
+            Discover municipal updates, public services, tourism spots, and
+            upcoming events — all in one unified digital hub for the people of
+            Lupi.
           </motion.p>
 
           {/* Heritage strip — signature element */}
@@ -184,10 +213,12 @@ export default function Home() {
           </motion.div>
 
           {/* Call to Action Buttons */}
-          <motion.div  variants={animate.itemVariants} className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+          <motion.div
+            variants={animate.itemVariants}
+            className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+          >
             <Link
-             
-              to ="services"
+              to="services"
               className="group flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-linear-to-r from-emerald-500 to-teal-500 px-8 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/25 transition-all hover:shadow-emerald-500/40"
             >
               Explore Services

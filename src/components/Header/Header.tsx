@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence, useMotionValueEvent, useScroll } from "framer-motion";
-import { Menu, X, ArrowRight, ChevronDown, BriefcaseBusiness, BriefcaseIcon } from "lucide-react";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValueEvent,
+  useScroll,
+} from "framer-motion";
+import {
+  Menu,
+  X,
+  ArrowRight,
+  ChevronDown,
+  BriefcaseBusiness,
+  BriefcaseIcon,
+} from "lucide-react";
 import LupiLOgo from "@/assets/logos/lupi_logo.png";
 import { Link } from "react-router-dom";
 
@@ -15,37 +27,40 @@ export default function Header() {
   ];
 
   // Dropdown items configuration for each navigation link
-  const navDropdownData: Record<string, { label: string; link: string; desc: string }[]> = {
-   
+  const navDropdownData: Record<
+    string,
+    { label: string; link: string; desc: string }[]
+  > = {
     Government: [
-  {
-    label: "Elected Officials",
-    link: "officials",
-    desc: "Profiles of the municipality's elected leaders."
-  },
-  {
-    label: "Sangguniang Bayan",
-    link: "sangguniangbayan",
-    desc: "Municipal Council members, ordinances, and resolutions."
-  },
-  {
-    label: "Citizen's Charter",
-    link: "services",
-    desc: "Service standards, requirements, fees, and processing times."
-  },
-{
-  label: "LGU Employees",
-  link: "employees",
-  desc: "View the list of municipal personnel, departments, and designated roles."
-}
-],
-  
+      {
+        label: "Elected Officials",
+        link: "officials",
+        desc: "Profiles of the municipality's elected leaders.",
+      },
+      {
+        label: "Sangguniang Bayan",
+        link: "sangguniangbayan",
+        desc: "Municipal Council members, ordinances, and resolutions.",
+      },
+      {
+        label: "Citizen's Charter",
+        link: "services",
+        desc: "Service standards, requirements, fees, and processing times.",
+      },
+      {
+        label: "LGU Employees",
+        link: "employees",
+        desc: "View the list of municipal personnel, departments, and designated roles.",
+      },
+    ],
   };
 
   const [activeTab, setActiveTab] = useState("Home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredDropdown, setHoveredDropdown] = useState<string | null>(null);
-  const [mobileExpandedItem, setMobileExpandedItem] = useState<string | null>(null);
+  const [mobileExpandedItem, setMobileExpandedItem] = useState<string | null>(
+    null,
+  );
 
   // Auto-close mobile drawer on screen resize to desktop
   useEffect(() => {
@@ -58,8 +73,6 @@ export default function Header() {
     return () => mediaQuery.removeEventListener("change", handleScreenChange);
   }, []);
 
-
-
   // Listen for section intersection to update active tab
   useEffect(() => {
     const sections = document.querySelectorAll("section[id]");
@@ -71,7 +84,7 @@ export default function Header() {
             const sectionId = entry.target.id;
 
             const active = navItems.find(
-              (item) => item.toLowerCase() === sectionId
+              (item) => item.toLowerCase() === sectionId,
             );
 
             if (active) {
@@ -82,7 +95,7 @@ export default function Header() {
       },
       {
         threshold: 0.5,
-      }
+      },
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -117,7 +130,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-20 w-[92%] max-w-7xl lg:rounded-full rounded-2xl transition-all duration-500 border border-white/15  bg-slate-950/20 backdrop-blur-md py-3.5 px-6 shadow-xl shadow-slate-950/20 ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-7xl lg:rounded-full rounded-2xl transition-all duration-500 border border-white/15  bg-slate-950/20 backdrop-blur-md py-3.5 px-6 shadow-xl shadow-slate-950/20 ${
         isHidden ? "hidden" : "block"
       }`}
     >
@@ -149,7 +162,8 @@ export default function Header() {
           <ul className="flex items-center space-x-1 rounded-full border border-white/10 bg-white/5 px-2 py-1 backdrop-blur-md">
             {navItems.map((item) => {
               const isActive = activeTab === item;
-              const hasDropdown = navDropdownData[item] && navDropdownData[item].length > 0;
+              const hasDropdown =
+                navDropdownData[item] && navDropdownData[item].length > 0;
               const isHovered = hoveredDropdown === item;
 
               return (
@@ -160,13 +174,13 @@ export default function Header() {
                   onMouseLeave={() => setHoveredDropdown(null)}
                 >
                   <Link
-                  to={item.toLowerCase()}
+                    to={item.toLowerCase()}
                     className={`relative z-10 flex items-center gap-1 px-4 py-1.5 text-xs font-semibold tracking-wide transition-colors duration-200 ${
                       isActive
                         ? "text-slate-950"
                         : "text-slate-100 hover:text-emerald-400"
-                    }`}>
-                 
+                    }`}
+                  >
                     <span>{item}</span>
                     {hasDropdown && (
                       <ChevronDown
@@ -182,7 +196,11 @@ export default function Header() {
                     <motion.div
                       layoutId="activePill"
                       className="absolute inset-0 z-0 rounded-full bg-linear-to-r from-emerald-400 via-teal-300 to-cyan-400 shadow-sm"
-                      transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 32,
+                      }}
                     />
                   )}
 
@@ -258,7 +276,8 @@ export default function Header() {
           >
             <nav className="flex flex-col gap-1.5 pt-4 pb-2 border-t  border-white/10 mt-3 max-h-[70vh] overflow-y-auto pr-1">
               {navItems.map((item) => {
-                const hasDropdown = navDropdownData[item] && navDropdownData[item].length > 0;
+                const hasDropdown =
+                  navDropdownData[item] && navDropdownData[item].length > 0;
                 const isExpanded = mobileExpandedItem === item;
 
                 return (
@@ -284,7 +303,9 @@ export default function Header() {
                       {hasDropdown && (
                         <ChevronDown
                           className={`w-4 h-4 transition-transform duration-200 ${
-                            isExpanded ? "rotate-180 text-emerald-400" : "text-slate-400"
+                            isExpanded
+                              ? "rotate-180 text-emerald-400"
+                              : "text-slate-400"
                           }`}
                         />
                       )}
@@ -310,8 +331,12 @@ export default function Header() {
                               }}
                               className="flex flex-col gap-0.5 rounded-lg p-2.5 hover:bg-white/5 text-slate-300 hover:text-emerald-400 transition-colors"
                             >
-                              <span className="text-xs font-bold">{subItem.label}</span>
-                              <span className="text-[10px] text-slate-500">{subItem.desc}</span>
+                              <span className="text-xs font-bold">
+                                {subItem.label}
+                              </span>
+                              <span className="text-[10px] text-slate-500">
+                                {subItem.desc}
+                              </span>
                             </Link>
                           ))}
                         </motion.div>
