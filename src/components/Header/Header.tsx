@@ -68,41 +68,8 @@ export default function Header() {
     const handleScreenChange = (e: MediaQueryListEvent) => {
       if (e.matches) setMobileMenuOpen(false);
     };
-
     mediaQuery.addEventListener("change", handleScreenChange);
     return () => mediaQuery.removeEventListener("change", handleScreenChange);
-  }, []);
-
-  // Listen for section intersection to update active tab
-  useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const sectionId = entry.target.id;
-
-            const active = navItems.find(
-              (item) => item.toLowerCase() === sectionId,
-            );
-
-            if (active) {
-              setActiveTab(active);
-            }
-          }
-        });
-      },
-      {
-        threshold: 0.5,
-      },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => {
-      sections.forEach((section) => observer.unobserve(section));
-    };
   }, []);
 
   // Track visibility state
@@ -130,7 +97,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-7xl lg:rounded-full rounded-2xl transition-all duration-500 border border-white/15  bg-slate-950/20 backdrop-blur-md py-3.5 px-6 shadow-xl shadow-slate-950/20 ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-7xl lg:rounded-full rounded-2xl transition-all duration-500 border border-slate-200 bg-slate-100/20 backdrop-blur-md py-3.5 px-6 shadow-lg shadow-slate-400/20 ${
         isHidden ? "hidden" : "block"
       }`}
     >
@@ -151,7 +118,7 @@ export default function Header() {
             <span className="text-base sm:text-lg font-extrabold tracking-wide bg-linear-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
               Municipality of Lupi
             </span>
-            <span className="text-xs font-medium text-slate-400 tracking-wider">
+            <span className="text-xs font-medium text-slate-700 tracking-wider">
               Camarines Sur
             </span>
           </div>
@@ -161,7 +128,6 @@ export default function Header() {
         <nav className="hidden lg:block">
           <ul className="flex items-center space-x-1 rounded-full border border-white/10 bg-white/5 px-2 py-1 backdrop-blur-md">
             {navItems.map((item) => {
-              const isActive = activeTab === item;
               const hasDropdown =
                 navDropdownData[item] && navDropdownData[item].length > 0;
               const isHovered = hoveredDropdown === item;
@@ -175,34 +141,20 @@ export default function Header() {
                 >
                   <Link
                     to={`/${item.toLowerCase()}`}
-                    className={`relative z-10 flex items-center gap-1 px-4 py-1.5 text-xs font-semibold tracking-wide transition-colors duration-200 ${
-                      isActive
-                        ? "text-slate-950"
-                        : "text-slate-100 hover:text-emerald-400"
-                    }`}
+                    className={`relative z-10 flex items-center gap-1 px-4 py-1.5 text-xs font-semibold tracking-wide transition-colors duration-200 
+                    
+                        text-slate-700 hover:text-emerald-400
+                    `}
                   >
                     <span>{item}</span>
                     {hasDropdown && (
                       <ChevronDown
                         className={`w-3 h-3 transition-transform duration-200 ${
                           isHovered ? "rotate-180 text-emerald-400" : ""
-                        } ${isActive ? "text-slate-950" : "text-slate-400"}`}
+                        } text-slate-700`}
                       />
                     )}
                   </Link>
-
-                  {/* Active Sliding Background Pill for Main Nav */}
-                  {isActive && (
-                    <motion.div
-                      layoutId="activePill"
-                      className="absolute inset-0 z-0 rounded-full bg-linear-to-r from-emerald-400 via-teal-300 to-cyan-400 shadow-sm"
-                      transition={{
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 32,
-                      }}
-                    />
-                  )}
 
                   {/* Dropdown Menu Panel */}
                   <AnimatePresence>
@@ -219,7 +171,7 @@ export default function Header() {
                             {navDropdownData[item].map((subItem, idx) => (
                               <Link
                                 key={idx}
-                                to={subItem.link}
+                                to={`/${subItem.link}`}
                                 onClick={() => setHoveredDropdown(null)}
                                 className="group/sub flex flex-col gap-0.5 rounded-xl p-3 hover:bg-emerald-500/10 transition-all duration-200"
                               >
