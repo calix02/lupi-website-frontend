@@ -14,7 +14,6 @@ import {
   Sparkles,
 } from "lucide-react";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
-import BackHomeButton from "@/components/Buttons/BackHome";
 
 // Interfaces
 export interface ReportItem {
@@ -40,7 +39,9 @@ export default function TransparencySection() {
   const [activeTab, setActiveTab] = useState<"trust" | "general">("trust");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedYear, setSelectedYear] = useState<string>("All");
-  const [selectedPdf, setSelectedPdf] = useState<TransparencyPdfModal | null>(null);
+  const [selectedPdf, setSelectedPdf] = useState<TransparencyPdfModal | null>(
+    null,
+  );
 
   // Available Years
   const availableYears = ["All", "2026", "2025", "2024", "2023"];
@@ -50,32 +51,46 @@ export default function TransparencySection() {
     {
       id: "tf-2026",
       year: 2026,
-      q1PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      q2PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      q1PdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      q2PdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
     {
       id: "tf-2025",
       year: 2025,
-      q1PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      q2PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      q3PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      q4PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      q1PdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      q2PdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      q3PdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      q4PdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
     {
       id: "tf-2024",
       year: 2024,
-      q1PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      q2PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      q3PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      q4PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      q1PdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      q2PdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      q3PdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      q4PdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
     {
       id: "tf-2023",
       year: 2023,
-      q1PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      q2PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      q3PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      q4PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      q1PdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      q2PdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      q3PdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      q4PdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
   ];
 
@@ -85,63 +100,184 @@ export default function TransparencySection() {
       category: "20% National Tax Allotment (NTA) Utilization",
       idKey: "nta",
       reports: [
-        { year: 2026, q1PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", q2PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" },
-        { year: 2025, q1PdfUrl: "#", q2PdfUrl: "#", q3PdfUrl: "#", q4PdfUrl: "#" },
-        { year: 2024, q1PdfUrl: "#", q2PdfUrl: "#", q3PdfUrl: "#", q4PdfUrl: "#" },
+        {
+          year: 2026,
+          q1PdfUrl:
+            "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+          q2PdfUrl:
+            "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        },
+        {
+          year: 2025,
+          q1PdfUrl: "#",
+          q2PdfUrl: "#",
+          q3PdfUrl: "#",
+          q4PdfUrl: "#",
+        },
+        {
+          year: 2024,
+          q1PdfUrl: "#",
+          q2PdfUrl: "#",
+          q3PdfUrl: "#",
+          q4PdfUrl: "#",
+        },
       ],
     },
     {
       category: "Local Disaster Risk Reduction & Management Fund (LDRRMF)",
       idKey: "ldrrmf",
       reports: [
-        { year: 2026, q1PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", q2PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" },
-        { year: 2025, q1PdfUrl: "#", q2PdfUrl: "#", q3PdfUrl: "#", q4PdfUrl: "#" },
-        { year: 2024, q1PdfUrl: "#", q2PdfUrl: "#", q3PdfUrl: "#", q4PdfUrl: "#" },
+        {
+          year: 2026,
+          q1PdfUrl:
+            "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+          q2PdfUrl:
+            "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        },
+        {
+          year: 2025,
+          q1PdfUrl: "#",
+          q2PdfUrl: "#",
+          q3PdfUrl: "#",
+          q4PdfUrl: "#",
+        },
+        {
+          year: 2024,
+          q1PdfUrl: "#",
+          q2PdfUrl: "#",
+          q3PdfUrl: "#",
+          q4PdfUrl: "#",
+        },
       ],
     },
     {
       category: "Quarterly Statement of Cash Flow",
       idKey: "cashflow",
       reports: [
-        { year: 2026, q1PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", q2PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" },
-        { year: 2025, q1PdfUrl: "#", q2PdfUrl: "#", q3PdfUrl: "#", q4PdfUrl: "#" },
-        { year: 2024, q1PdfUrl: "#", q2PdfUrl: "#", q3PdfUrl: "#", q4PdfUrl: "#" },
+        {
+          year: 2026,
+          q1PdfUrl:
+            "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+          q2PdfUrl:
+            "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        },
+        {
+          year: 2025,
+          q1PdfUrl: "#",
+          q2PdfUrl: "#",
+          q3PdfUrl: "#",
+          q4PdfUrl: "#",
+        },
+        {
+          year: 2024,
+          q1PdfUrl: "#",
+          q2PdfUrl: "#",
+          q3PdfUrl: "#",
+          q4PdfUrl: "#",
+        },
       ],
     },
     {
-      category: "Bid Results on Civil Works, Goods & Services, and Consulting Services",
+      category:
+        "Bid Results on Civil Works, Goods & Services, and Consulting Services",
       idKey: "bids",
       reports: [
-        { year: 2026, q1PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", q2PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" },
-        { year: 2025, q1PdfUrl: "#", q2PdfUrl: "#", q3PdfUrl: "#", q4PdfUrl: "#" },
-        { year: 2024, q1PdfUrl: "#", q2PdfUrl: "#", q3PdfUrl: "#", q4PdfUrl: "#" },
+        {
+          year: 2026,
+          q1PdfUrl:
+            "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+          q2PdfUrl:
+            "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        },
+        {
+          year: 2025,
+          q1PdfUrl: "#",
+          q2PdfUrl: "#",
+          q3PdfUrl: "#",
+          q4PdfUrl: "#",
+        },
+        {
+          year: 2024,
+          q1PdfUrl: "#",
+          q2PdfUrl: "#",
+          q3PdfUrl: "#",
+          q4PdfUrl: "#",
+        },
       ],
     },
     {
       category: "Special Education Fund (SEF) Utilization",
       idKey: "sef",
       reports: [
-        { year: 2026, q1PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" },
-        { year: 2025, q1PdfUrl: "#", q2PdfUrl: "#", q3PdfUrl: "#", q4PdfUrl: "#" },
-        { year: 2024, q1PdfUrl: "#", q2PdfUrl: "#", q3PdfUrl: "#", q4PdfUrl: "#" },
+        {
+          year: 2026,
+          q1PdfUrl:
+            "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        },
+        {
+          year: 2025,
+          q1PdfUrl: "#",
+          q2PdfUrl: "#",
+          q3PdfUrl: "#",
+          q4PdfUrl: "#",
+        },
+        {
+          year: 2024,
+          q1PdfUrl: "#",
+          q2PdfUrl: "#",
+          q3PdfUrl: "#",
+          q4PdfUrl: "#",
+        },
       ],
     },
     {
       category: "Unliquidated Cash Advances",
       idKey: "cash-advances",
       reports: [
-        { year: 2026, q1PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" },
-        { year: 2025, q1PdfUrl: "#", q2PdfUrl: "#", q3PdfUrl: "#", q4PdfUrl: "#" },
-        { year: 2024, q1PdfUrl: "#", q2PdfUrl: "#", q3PdfUrl: "#", q4PdfUrl: "#" },
+        {
+          year: 2026,
+          q1PdfUrl:
+            "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        },
+        {
+          year: 2025,
+          q1PdfUrl: "#",
+          q2PdfUrl: "#",
+          q3PdfUrl: "#",
+          q4PdfUrl: "#",
+        },
+        {
+          year: 2024,
+          q1PdfUrl: "#",
+          q2PdfUrl: "#",
+          q3PdfUrl: "#",
+          q4PdfUrl: "#",
+        },
       ],
     },
     {
       category: "Local Government Support Fund (LGSF)",
       idKey: "lgsf",
       reports: [
-        { year: 2026, q1PdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" },
-        { year: 2025, q1PdfUrl: "#", q2PdfUrl: "#", q3PdfUrl: "#", q4PdfUrl: "#" },
-        { year: 2024, q1PdfUrl: "#", q2PdfUrl: "#", q3PdfUrl: "#", q4PdfUrl: "#" },
+        {
+          year: 2026,
+          q1PdfUrl:
+            "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        },
+        {
+          year: 2025,
+          q1PdfUrl: "#",
+          q2PdfUrl: "#",
+          q3PdfUrl: "#",
+          q4PdfUrl: "#",
+        },
+        {
+          year: 2024,
+          q1PdfUrl: "#",
+          q2PdfUrl: "#",
+          q3PdfUrl: "#",
+          q4PdfUrl: "#",
+        },
       ],
     },
   ];
@@ -149,7 +285,8 @@ export default function TransparencySection() {
   // Filtering Logic for Trust Fund Table
   const filteredTrustFund = useMemo(() => {
     return trustFundReports.filter((item) => {
-      const matchesYear = selectedYear === "All" || item.year.toString() === selectedYear;
+      const matchesYear =
+        selectedYear === "All" || item.year.toString() === selectedYear;
       const matchesSearch = item.year.toString().includes(searchTerm);
       return matchesYear && matchesSearch;
     });
@@ -160,7 +297,8 @@ export default function TransparencySection() {
     return generalReports
       .map((cat) => {
         const filteredList = cat.reports.filter((rep) => {
-          const matchesYear = selectedYear === "All" || rep.year.toString() === selectedYear;
+          const matchesYear =
+            selectedYear === "All" || rep.year.toString() === selectedYear;
           const matchesSearch =
             cat.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
             rep.year.toString().includes(searchTerm);
@@ -185,7 +323,11 @@ export default function TransparencySection() {
     quarter: string;
   }) => {
     if (!pdfUrl) {
-      return <span className="text-[11px] font-medium text-slate-400 italic">Pending</span>;
+      return (
+        <span className="text-[11px] font-medium text-slate-400 italic">
+          Pending
+        </span>
+      );
     }
 
     return (
@@ -208,7 +350,6 @@ export default function TransparencySection() {
       id="transparency"
       className="relative w-full min-h-screen py-20 sm:py-28 px-4 sm:px-8 bg-slate-50 text-slate-800 overflow-hidden flex flex-col items-center"
     >
-        <BackHomeButton/>
       {/* Background Soft Lighting Gradients */}
       <div className="absolute top-0 right-1/4 w-160 h-120 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-140 h-140 bg-teal-100/50 rounded-full blur-3xl pointer-events-none" />
@@ -221,7 +362,10 @@ export default function TransparencySection() {
         className="relative z-10 max-w-7xl mx-auto w-full flex flex-col gap-14"
       >
         {/* ================= 1. SECTION HEADER ================= */}
-        <motion.div variants={animate.itemVariants} className="text-center max-w-3xl mx-auto space-y-4">
+        <motion.div
+          variants={animate.itemVariants}
+          className="text-center max-w-3xl mx-auto space-y-4"
+        >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wider uppercase backdrop-blur-md shadow-xs">
             <ShieldCheck className="w-4 h-4 text-emerald-600" />
             <span>Full Disclosure Policy</span>
@@ -235,7 +379,10 @@ export default function TransparencySection() {
           </h2>
 
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            In compliance with the Department of the Interior and Local Government (DILG) Full Disclosure Policy, the Municipality of Lupi presents all quarterly public funds, procurements, and administrative accounts.
+            In compliance with the Department of the Interior and Local
+            Government (DILG) Full Disclosure Policy, the Municipality of Lupi
+            presents all quarterly public funds, procurements, and
+            administrative accounts.
           </p>
         </motion.div>
 
@@ -249,8 +396,12 @@ export default function TransparencySection() {
               <Landmark className="w-6 h-6" />
             </div>
             <div>
-              <p className="text-xs text-slate-500 font-medium">100% Compliance</p>
-              <h3 className="text-base font-extrabold text-slate-900">DILG FDP Standards</h3>
+              <p className="text-xs text-slate-500 font-medium">
+                100% Compliance
+              </p>
+              <h3 className="text-base font-extrabold text-slate-900">
+                DILG FDP Standards
+              </h3>
             </div>
           </div>
 
@@ -259,8 +410,12 @@ export default function TransparencySection() {
               <TrendingUp className="w-6 h-6" />
             </div>
             <div>
-              <p className="text-xs text-slate-500 font-medium">Updated Real-Time</p>
-              <h3 className="text-base font-extrabold text-slate-900">Quarterly Disclosures</h3>
+              <p className="text-xs text-slate-500 font-medium">
+                Updated Real-Time
+              </p>
+              <h3 className="text-base font-extrabold text-slate-900">
+                Quarterly Disclosures
+              </h3>
             </div>
           </div>
 
@@ -269,8 +424,12 @@ export default function TransparencySection() {
               <Building className="w-6 h-6" />
             </div>
             <div>
-              <p className="text-xs text-slate-500 font-medium">Open Data Portal</p>
-              <h3 className="text-base font-extrabold text-slate-900">Public Audit Ready</h3>
+              <p className="text-xs text-slate-500 font-medium">
+                Open Data Portal
+              </p>
+              <h3 className="text-base font-extrabold text-slate-900">
+                Public Audit Ready
+              </h3>
             </div>
           </div>
         </motion.div>
@@ -350,8 +509,12 @@ export default function TransparencySection() {
           >
             <div className="p-6 border-b border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
-                <h3 className="text-xl font-black text-slate-900">Trust Fund Utilization Reports</h3>
-                <p className="text-xs text-slate-500">Quarterly disbursements and trust account statements</p>
+                <h3 className="text-xl font-black text-slate-900">
+                  Trust Fund Utilization Reports
+                </h3>
+                <p className="text-xs text-slate-500">
+                  Quarterly disbursements and trust account statements
+                </p>
               </div>
               <span className="text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
                 Updated Calendar Year {new Date().getFullYear()}
@@ -373,27 +536,53 @@ export default function TransparencySection() {
                 <tbody className="divide-y divide-slate-100 text-slate-700">
                   {filteredTrustFund.length > 0 ? (
                     filteredTrustFund.map((row) => (
-                      <tr key={row.id} className="hover:bg-slate-50/80 transition-colors">
+                      <tr
+                        key={row.id}
+                        className="hover:bg-slate-50/80 transition-colors"
+                      >
                         <td className="py-4 px-6 font-extrabold text-emerald-700 text-sm">
                           {row.year}
                         </td>
                         <td className="py-4 px-6 text-center">
-                          <RenderPdfButton pdfUrl={row.q1PdfUrl} title="Trust Fund Utilization" year={row.year} quarter="Q1" />
+                          <RenderPdfButton
+                            pdfUrl={row.q1PdfUrl}
+                            title="Trust Fund Utilization"
+                            year={row.year}
+                            quarter="Q1"
+                          />
                         </td>
                         <td className="py-4 px-6 text-center">
-                          <RenderPdfButton pdfUrl={row.q2PdfUrl} title="Trust Fund Utilization" year={row.year} quarter="Q2" />
+                          <RenderPdfButton
+                            pdfUrl={row.q2PdfUrl}
+                            title="Trust Fund Utilization"
+                            year={row.year}
+                            quarter="Q2"
+                          />
                         </td>
                         <td className="py-4 px-6 text-center">
-                          <RenderPdfButton pdfUrl={row.q3PdfUrl} title="Trust Fund Utilization" year={row.year} quarter="Q3" />
+                          <RenderPdfButton
+                            pdfUrl={row.q3PdfUrl}
+                            title="Trust Fund Utilization"
+                            year={row.year}
+                            quarter="Q3"
+                          />
                         </td>
                         <td className="py-4 px-6 text-center">
-                          <RenderPdfButton pdfUrl={row.q4PdfUrl} title="Trust Fund Utilization" year={row.year} quarter="Q4" />
+                          <RenderPdfButton
+                            pdfUrl={row.q4PdfUrl}
+                            title="Trust Fund Utilization"
+                            year={row.year}
+                            quarter="Q4"
+                          />
                         </td>
                       </tr>
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={5} className="py-12 text-center text-slate-400">
+                      <td
+                        colSpan={5}
+                        className="py-12 text-center text-slate-400"
+                      >
                         No Trust Fund reports found matching your criteria.
                       </td>
                     </tr>
@@ -439,21 +628,44 @@ export default function TransparencySection() {
                       </thead>
                       <tbody className="divide-y divide-slate-100 text-slate-700">
                         {catGroup.reports.map((rep) => (
-                          <tr key={rep.year} className="hover:bg-slate-50/80 transition-colors">
+                          <tr
+                            key={rep.year}
+                            className="hover:bg-slate-50/80 transition-colors"
+                          >
                             <td className="py-3.5 px-6 font-extrabold text-teal-700">
                               {rep.year}
                             </td>
                             <td className="py-3.5 px-6 text-center">
-                              <RenderPdfButton pdfUrl={rep.q1PdfUrl} title={catGroup.category} year={rep.year} quarter="Q1" />
+                              <RenderPdfButton
+                                pdfUrl={rep.q1PdfUrl}
+                                title={catGroup.category}
+                                year={rep.year}
+                                quarter="Q1"
+                              />
                             </td>
                             <td className="py-3.5 px-6 text-center">
-                              <RenderPdfButton pdfUrl={rep.q2PdfUrl} title={catGroup.category} year={rep.year} quarter="Q2" />
+                              <RenderPdfButton
+                                pdfUrl={rep.q2PdfUrl}
+                                title={catGroup.category}
+                                year={rep.year}
+                                quarter="Q2"
+                              />
                             </td>
                             <td className="py-3.5 px-6 text-center">
-                              <RenderPdfButton pdfUrl={rep.q3PdfUrl} title={catGroup.category} year={rep.year} quarter="Q3" />
+                              <RenderPdfButton
+                                pdfUrl={rep.q3PdfUrl}
+                                title={catGroup.category}
+                                year={rep.year}
+                                quarter="Q3"
+                              />
                             </td>
                             <td className="py-3.5 px-6 text-center">
-                              <RenderPdfButton pdfUrl={rep.q4PdfUrl} title={catGroup.category} year={rep.year} quarter="Q4" />
+                              <RenderPdfButton
+                                pdfUrl={rep.q4PdfUrl}
+                                title={catGroup.category}
+                                year={rep.year}
+                                quarter="Q4"
+                              />
                             </td>
                           </tr>
                         ))}

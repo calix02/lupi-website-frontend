@@ -61,8 +61,11 @@ export default function LupiServicesSection() {
   const animate = useInOutAnimation();
 
   // State
-  const [selectedDepartment, setSelectedDepartment] = useState<Department | null>(null);
-  const [selectedService, setSelectedService] = useState<LGUService | null>(null);
+  const [selectedDepartment, setSelectedDepartment] =
+    useState<Department | null>(null);
+  const [selectedService, setSelectedService] = useState<LGUService | null>(
+    null,
+  );
   const [searchTerm, setSearchTerm] = useState("");
 
   // Sample Data tailored for LGU Lupi, Camarines Sur
@@ -78,7 +81,8 @@ export default function LupiServicesSection() {
         {
           id: "s-101",
           title: "Application for New Business Permit",
-          description: "Issuance of Mayor's Permit and municipal licenses for newly established businesses within Lupi.",
+          description:
+            "Issuance of Mayor's Permit and municipal licenses for newly established businesses within Lupi.",
           targetClients: "Business Owners & Entrepreneurs",
           processingTime: "1 to 2 Working Days",
           fees: "Varies based on capital investment & Mayor's Permit Tax Code",
@@ -92,28 +96,32 @@ export default function LupiServicesSection() {
             {
               stepNo: 1,
               title: "Requirement Evaluation",
-              description: "Present verified documents at BPLO Counter for checking.",
+              description:
+                "Present verified documents at BPLO Counter for checking.",
               officeOrWindow: "BPLO Window 1",
               duration: "15 minutes",
             },
             {
               stepNo: 2,
               title: "Tax Assessment",
-              description: "Computation of Tax Order of Payment (TOP) according to local revenue code.",
+              description:
+                "Computation of Tax Order of Payment (TOP) according to local revenue code.",
               officeOrWindow: "Treasury Counter 2",
               duration: "20 minutes",
             },
             {
               stepNo: 3,
               title: "Payment Collection",
-              description: "Pay corresponding fees and receive Official Receipt.",
+              description:
+                "Pay corresponding fees and receive Official Receipt.",
               officeOrWindow: "Treasury Cashier Window 4",
               duration: "10 minutes",
             },
             {
               stepNo: 4,
               title: "Permit Release",
-              description: "Claim signed Mayor's Permit, business plate, and stickers.",
+              description:
+                "Claim signed Mayor's Permit, business plate, and stickers.",
               officeOrWindow: "BPLO Releasing Desk",
               duration: "20 minutes",
             },
@@ -130,7 +138,8 @@ export default function LupiServicesSection() {
         {
           id: "s-102",
           title: "Payment of Real Property Tax (RPT)",
-          description: "Assessment and collection of basic tax on land, buildings, and machinery located in Lupi.",
+          description:
+            "Assessment and collection of basic tax on land, buildings, and machinery located in Lupi.",
           targetClients: "Property Owners & Taxpayers",
           processingTime: "20 Minutes",
           fees: "Based on Tax Declaration Assessment Value",
@@ -142,14 +151,16 @@ export default function LupiServicesSection() {
             {
               stepNo: 1,
               title: "Tax Computation",
-              description: "Submit Tax Declaration copy for current statement of account.",
+              description:
+                "Submit Tax Declaration copy for current statement of account.",
               officeOrWindow: "RPT Counter 1",
               duration: "10 minutes",
             },
             {
               stepNo: 2,
               title: "Payment & Receipt Issuance",
-              description: "Pay tax amount due and receive official RPT receipt.",
+              description:
+                "Pay tax amount due and receive official RPT receipt.",
               officeOrWindow: "Treasury Cashier",
               duration: "10 minutes",
             },
@@ -169,13 +180,15 @@ export default function LupiServicesSection() {
       id: "dept-2",
       name: "Municipal Civil Registrar",
       code: "MCR",
-      description: "Responsible for recording and preserving vital events such as births, marriages, and deaths occurring within Lupi.",
+      description:
+        "Responsible for recording and preserving vital events such as births, marriages, and deaths occurring within Lupi.",
       icon: Landmark,
       services: [
         {
           id: "s-201",
           title: "Issuance of Birth Certificate (Certified True Copy)",
-          description: "Request official annotated or certified true copies of registered birth certificates.",
+          description:
+            "Request official annotated or certified true copies of registered birth certificates.",
           targetClients: "General Public",
           processingTime: "30 Minutes",
           fees: "₱150.00 per copy + ₱30.00 Documentary Stamp Tax",
@@ -188,7 +201,8 @@ export default function LupiServicesSection() {
             {
               stepNo: 1,
               title: "Filing Request",
-              description: "Fill out request form and submit at Civil Registry window.",
+              description:
+                "Fill out request form and submit at Civil Registry window.",
               officeOrWindow: "MCR Window 1",
               duration: "10 minutes",
             },
@@ -219,7 +233,8 @@ export default function LupiServicesSection() {
         {
           id: "s-202",
           title: "Application for Marriage License",
-          description: "Processing requirements and license issuance for couples intending to marry in Lupi.",
+          description:
+            "Processing requirements and license issuance for couples intending to marry in Lupi.",
           targetClients: "Contracting Parties",
           processingTime: "10 Days Posting + 1 Day Processing",
           fees: "₱300.00 Marriage License Fee",
@@ -240,7 +255,8 @@ export default function LupiServicesSection() {
             {
               stepNo: 2,
               title: "Notice Posting",
-              description: "10 consecutive days posting of marriage application notice.",
+              description:
+                "10 consecutive days posting of marriage application notice.",
               officeOrWindow: "Municipal Bulletin Board",
               duration: "10 Days",
             },
@@ -267,13 +283,15 @@ export default function LupiServicesSection() {
       id: "dept-3",
       name: "Municipal Engineering & Building Official",
       code: "ME",
-      description: "Regulates infrastructure, structural integrity, and issues building, electrical, and zoning clearances in Lupi.",
+      description:
+        "Regulates infrastructure, structural integrity, and issues building, electrical, and zoning clearances in Lupi.",
       icon: Building2,
       services: [
         {
           id: "s-301",
           title: "Application for Building Permit",
-          description: "Securing official construction authorization for residential, commercial, or public projects.",
+          description:
+            "Securing official construction authorization for residential, commercial, or public projects.",
           targetClients: "Property Owners & Contractors",
           processingTime: "3 to 5 Working Days",
           fees: "Based on structural floor area and classification",
@@ -286,7 +304,8 @@ export default function LupiServicesSection() {
             {
               stepNo: 1,
               title: "Plans Submission",
-              description: "Submit 5 blueprint sets and documents for technical evaluation.",
+              description:
+                "Submit 5 blueprint sets and documents for technical evaluation.",
               officeOrWindow: "Engineering Office Window 1",
               duration: "1 Day",
             },
@@ -300,7 +319,8 @@ export default function LupiServicesSection() {
             {
               stepNo: 3,
               title: "Permit Issuance",
-              description: "Pay computed fees and claim official Building Permit.",
+              description:
+                "Pay computed fees and claim official Building Permit.",
               officeOrWindow: "OBO Releasing Desk",
               duration: "30 minutes",
             },
@@ -326,13 +346,15 @@ export default function LupiServicesSection() {
       id: "dept-4",
       name: "Municipal Health Office & Social Welfare",
       code: "MHO & MSWDO",
-      description: "Delivers healthcare programs, medical clearances, social services, and financial assistance to vulnerable Lupi residents.",
+      description:
+        "Delivers healthcare programs, medical clearances, social services, and financial assistance to vulnerable Lupi residents.",
       icon: HeartPulse,
       services: [
         {
           id: "s-401",
           title: "Issuance of Medical Certificate & Health Card",
-          description: "Health clearances for local workers, food handlers, and students.",
+          description:
+            "Health clearances for local workers, food handlers, and students.",
           targetClients: "Workers, Food Handlers, Students",
           processingTime: "1 Hour",
           fees: "₱100.00 Health Card Fee",
@@ -384,14 +406,15 @@ export default function LupiServicesSection() {
         const matchingServices = dept.services.filter(
           (s) =>
             s.title.toLowerCase().includes(searchLower) ||
-            s.description.toLowerCase().includes(searchLower)
+            s.description.toLowerCase().includes(searchLower),
         );
 
         if (matchesDept || matchingServices.length > 0) {
           return {
             ...dept,
             // If search matches specific services, keep only matching ones for focused table view
-            services: matchingServices.length > 0 ? matchingServices : dept.services,
+            services:
+              matchingServices.length > 0 ? matchingServices : dept.services,
           };
         }
         return null;
@@ -404,7 +427,6 @@ export default function LupiServicesSection() {
       id="services"
       className="relative w-full min-h-screen py-20 sm:py-28 px-4 sm:px-8 bg-slate-50 text-slate-800 overflow-hidden flex flex-col items-center"
     >
-        <BackHomeButton/>
       {/* Background Soft Lighting Gradients */}
       <div className="absolute top-10 left-1/4 w-160 h-120 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-140 h-140 bg-teal-100/50 rounded-full blur-3xl pointer-events-none" />
@@ -434,7 +456,9 @@ export default function LupiServicesSection() {
           </h2>
 
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Select a municipal department to view its complete list of public services, step-by-step procedures, and downloadable application forms.
+            Select a municipal department to view its complete list of public
+            services, step-by-step procedures, and downloadable application
+            forms.
           </p>
         </motion.div>
 

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import BackHomeButton from "@/components/Buttons/BackHome";
 import OfficeCard from "./component/OfficeCard";
 import { Bell, Search, X, Users, Mail, Phone } from "lucide-react";
 import { BsBank } from "react-icons/bs";
@@ -34,10 +33,22 @@ export default function Employees() {
       title: "Mayor's Office",
       value: 20,
       icon: <BsBank />,
-      description: "Executive direction, public policy, and overall municipal leadership.",
+      description:
+        "Executive direction, public policy, and overall municipal leadership.",
       employees: [
-        { id: "1", name: "Hon. Municipal Mayor", position: "Mayor", email: "mayor@lupi.gov.ph", isHead: true },
-        { id: "2", name: "Maria Santos", position: "Executive Assistant IV", email: "m.santos@lupi.gov.ph" },
+        {
+          id: "1",
+          name: "Hon. Municipal Mayor",
+          position: "Mayor",
+          email: "mayor@lupi.gov.ph",
+          isHead: true,
+        },
+        {
+          id: "2",
+          name: "Maria Santos",
+          position: "Executive Assistant IV",
+          email: "m.santos@lupi.gov.ph",
+        },
         { id: "3", name: "Ricardo Gomez", position: "Private Secretary" },
       ],
     },
@@ -45,9 +56,16 @@ export default function Employees() {
       title: "RHU",
       value: 26,
       icon: <FaRegHospital />,
-      description: "Primary healthcare, maternal care, and community health services.",
+      description:
+        "Primary healthcare, maternal care, and community health services.",
       employees: [
-        { id: "1", name: "Dr. Ana Reyes, MD", position: "Municipal Health Officer", email: "rhu@lupi.gov.ph", isHead: true },
+        {
+          id: "1",
+          name: "Dr. Ana Reyes, MD",
+          position: "Municipal Health Officer",
+          email: "rhu@lupi.gov.ph",
+          isHead: true,
+        },
         { id: "2", name: "Elena Ramos, RN", position: "Public Health Nurse" },
       ],
     },
@@ -55,142 +73,260 @@ export default function Employees() {
       title: "Treasury Office",
       value: 16,
       icon: <FaMoneyBills />,
-      description: "Revenue collection, license assessments, and disbursements.",
+      description:
+        "Revenue collection, license assessments, and disbursements.",
       employees: [
-        { id: "1", name: "Roberto Tan", position: "Municipal Treasurer", isHead: true },
+        {
+          id: "1",
+          name: "Roberto Tan",
+          position: "Municipal Treasurer",
+          isHead: true,
+        },
       ],
     },
     {
       title: "Accounting Office",
       value: 16,
       icon: <FaMoneyBills />,
-      description: "Financial accounting, auditing, and municipal budget tracking.",
+      description:
+        "Financial accounting, auditing, and municipal budget tracking.",
       employees: [
-        { id: "1", name: "Clara Garcia, CPA", position: "Municipal Accountant", isHead: true },
+        {
+          id: "1",
+          name: "Clara Garcia, CPA",
+          position: "Municipal Accountant",
+          isHead: true,
+        },
       ],
     },
     {
       title: "Assessor Office",
       value: 20,
       icon: <BsBank />,
-      employees: [{ id: "1", name: "Engr. David Flores", position: "Municipal Assessor", isHead: true }],
+      employees: [
+        {
+          id: "1",
+          name: "Engr. David Flores",
+          position: "Municipal Assessor",
+          isHead: true,
+        },
+      ],
     },
     {
       title: "Budget Office",
       value: 20,
       icon: <BsBank />,
-      employees: [{ id: "1", name: "Sonia Villanueva", position: "Municipal Budget Officer", isHead: true }],
+      employees: [
+        {
+          id: "1",
+          name: "Sonia Villanueva",
+          position: "Municipal Budget Officer",
+          isHead: true,
+        },
+      ],
     },
     {
       title: "DILG",
       value: 20,
       icon: <BsBank />,
-      employees: [{ id: "1", name: "LGOO V Mark Anthony", position: "MLGOO Officer", isHead: true }],
+      employees: [
+        {
+          id: "1",
+          name: "LGOO V Mark Anthony",
+          position: "MLGOO Officer",
+          isHead: true,
+        },
+      ],
     },
     {
       title: "Electrician",
       value: 20,
       icon: <BsBank />,
-      employees: [{ id: "1", name: "Juan Mercado", position: "Chief Electrician", isHead: true }],
+      employees: [
+        {
+          id: "1",
+          name: "Juan Mercado",
+          position: "Chief Electrician",
+          isHead: true,
+        },
+      ],
     },
     {
       title: "Engineering",
       value: 20,
       icon: <BsBank />,
-      employees: [{ id: "1", name: "Engr. Ramon Castillo", position: "Municipal Engineer", isHead: true }],
+      employees: [
+        {
+          id: "1",
+          name: "Engr. Ramon Castillo",
+          position: "Municipal Engineer",
+          isHead: true,
+        },
+      ],
     },
     {
       title: "General Services",
       value: 20,
       icon: <BsBank />,
-      employees: [{ id: "1", name: "Pedro Gomez", position: "GSO Officer", isHead: true }],
+      employees: [
+        { id: "1", name: "Pedro Gomez", position: "GSO Officer", isHead: true },
+      ],
     },
     {
       title: "HRMO",
       value: 20,
       icon: <BsBank />,
-      employees: [{ id: "1", name: "Patricia Aquino", position: "HRM Officer", isHead: true }],
+      employees: [
+        {
+          id: "1",
+          name: "Patricia Aquino",
+          position: "HRM Officer",
+          isHead: true,
+        },
+      ],
     },
     {
       title: "Kalahi",
       value: 20,
       icon: <BsBank />,
-      employees: [{ id: "1", name: "Luzviminda Cruz", position: "Area Coordinator", isHead: true }],
+      employees: [
+        {
+          id: "1",
+          name: "Luzviminda Cruz",
+          position: "Area Coordinator",
+          isHead: true,
+        },
+      ],
     },
     {
       title: "LCR",
       value: 20,
       icon: <BsBank />,
-      employees: [{ id: "1", name: "Manuel Roxas", position: "Civil Registrar", isHead: true }],
+      employees: [
+        {
+          id: "1",
+          name: "Manuel Roxas",
+          position: "Civil Registrar",
+          isHead: true,
+        },
+      ],
     },
     {
       title: "LWSS",
       value: 20,
       icon: <BsBank />,
-      employees: [{ id: "1", name: "Danilo Perez", position: "LWSS Manager", isHead: true }],
+      employees: [
+        {
+          id: "1",
+          name: "Danilo Perez",
+          position: "LWSS Manager",
+          isHead: true,
+        },
+      ],
     },
     {
       title: "MASO",
       value: 20,
       icon: <BsBank />,
-      employees: [{ id: "1", name: "Benita Morales", position: "Municipal Agriculturist", isHead: true }],
+      employees: [
+        {
+          id: "1",
+          name: "Benita Morales",
+          position: "Municipal Agriculturist",
+          isHead: true,
+        },
+      ],
     },
     {
       title: "MDR",
       value: 20,
       icon: <BsBank />,
-      employees: [{ id: "1", name: "Gabriel Soriano", position: "MDRRM Officer", isHead: true }],
+      employees: [
+        {
+          id: "1",
+          name: "Gabriel Soriano",
+          position: "MDRRM Officer",
+          isHead: true,
+        },
+      ],
     },
     {
       title: "MENRO",
       value: 20,
       icon: <BsBank />,
-      employees: [{ id: "1", name: "Teresa Aquilino", position: "MENR Officer", isHead: true }],
+      employees: [
+        {
+          id: "1",
+          name: "Teresa Aquilino",
+          position: "MENR Officer",
+          isHead: true,
+        },
+      ],
     },
     {
       title: "MNAO",
       value: 20,
       icon: <BsBank />,
-      employees: [{ id: "1", name: "Carmen Laurel", position: "MNA Officer", isHead: true }],
+      employees: [
+        {
+          id: "1",
+          name: "Carmen Laurel",
+          position: "MNA Officer",
+          isHead: true,
+        },
+      ],
     },
     {
       title: "MPDO",
       value: 20,
       icon: <BsBank />,
-      employees: [{ id: "1", name: "Arch. Jose Mari", position: "MPDC Officer", isHead: true }],
+      employees: [
+        {
+          id: "1",
+          name: "Arch. Jose Mari",
+          position: "MPDC Officer",
+          isHead: true,
+        },
+      ],
     },
     {
       title: "MSDWDO",
       value: 20,
       icon: <BsBank />,
-      employees: [{ id: "1", name: "Francisca Silva", position: "MSWD Officer", isHead: true }],
+      employees: [
+        {
+          id: "1",
+          name: "Francisca Silva",
+          position: "MSWD Officer",
+          isHead: true,
+        },
+      ],
     },
   ];
 
   const filteredEmployees = selectedOffice?.employees.filter(
     (emp) =>
       emp.name.toLowerCase().includes(filterQuery.toLowerCase()) ||
-      emp.position.toLowerCase().includes(filterQuery.toLowerCase())
+      emp.position.toLowerCase().includes(filterQuery.toLowerCase()),
   );
 
   return (
     <section className="min-h-screen w-screen relative py-20 lg:px-20 px-5 flex flex-col items-center bg-slate-50">
-      <BackHomeButton />
-      
       <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wide mb-3">
         <Bell className="w-3.5 h-3.5 text-emerald-600 animate-bounce" />
         <span>Serving with Excellence</span>
       </div>
-      
+
       <h1 className="font-extrabold lg:text-6xl text-4xl tracking-tight text-slate-900">
         Meet{" "}
         <span className="bg-linear-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
           Our Team
         </span>
       </h1>
-      
+
       <p className="text-slate-500 tracking-wide mt-5 text-center max-w-2xl">
-        Dedicated public servants committed to delivering quality services to the people of Lupi.
+        Dedicated public servants committed to delivering quality services to
+        the people of Lupi.
       </p>
 
       {/* Grid displaying the original OfficeCard design */}
@@ -204,7 +340,11 @@ export default function Employees() {
             }}
             className="cursor-pointer transition-transform duration-200 hover:-translate-y-1"
           >
-            <OfficeCard title={data.title} value={data.value} icon={data.icon} />
+            <OfficeCard
+              title={data.title}
+              value={data.value}
+              icon={data.icon}
+            />
           </div>
         ))}
       </div>

@@ -1,21 +1,17 @@
 import useInOutAnimation from "@/hooks/useInOutAnimation";
 import { motion } from "framer-motion";
-import { 
-  Compass, 
-} from "lucide-react";
+import { Compass } from "lucide-react";
 import Card from "./component/Card";
 import HeroCard from "./component/HeroCard";
-import BackHomeButton from "@/components/Buttons/BackHome";
 
 export default function About() {
- const animate = useInOutAnimation();
+  const animate = useInOutAnimation();
 
   return (
     <section
       id="about"
       className="relative min-h-screen w-full bg-slate-50 py-24 lg:pt-35  px-4 sm:px-8 flex flex-col items-center justify-center overflow-hidden font-sans"
     >
-      <BackHomeButton/>
       {/* Animated Glowing Light Orbs */}
       <motion.div
         animate={{
@@ -43,21 +39,24 @@ export default function About() {
         className="absolute bottom-10 right-1/4 h-100 w-100 rounded-full bg-teal-200/40 blur-[140px] pointer-events-none z-0"
       />
 
-
-      <motion.div variants={animate.containerVariants}
+      <motion.div
+        variants={animate.containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ amount: 0.25 }} className="relative z-10 mx-auto w-full max-w-7xl flex flex-col items-center">
+        viewport={{ amount: 0.25 }}
+        className="relative z-10 mx-auto w-full max-w-7xl flex flex-col items-center"
+      >
         {/* ================= 2. SECTION HEADER ================= */}
-        <div
-          className="flex flex-col items-center text-center mb-16"
-        >
+        <div className="flex flex-col items-center text-center mb-16">
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-100/80 px-4 py-1.5 text-xs font-semibold text-emerald-800 shadow-sm backdrop-blur-md mb-3">
             <Compass className="h-4 w-4 text-emerald-600 animate-spin-slow" />
             <span>Discover Our Identity</span>
           </div>
 
-          <motion.h2 variants={animate.itemVariants} className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-slate-950">
+          <motion.h2
+            variants={animate.itemVariants}
+            className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl text-slate-950"
+          >
             About the{" "}
             <span className="bg-linear-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
               Municipality of Lupi
@@ -65,12 +64,19 @@ export default function About() {
           </motion.h2>
 
           <p className="mt-3 max-w-2xl text-base sm:text-lg text-slate-600 font-medium">
-            Rooted in rich heritage, driven by unified vision, and committed to sustainable progress for every Lupiniang.
+            Rooted in rich heritage, driven by unified vision, and committed to
+            sustainable progress for every Lupiniang.
           </p>
         </div>
 
         {/* ================= 3. HISTORY SECTION (HERO CARD) ================= */}
-       <HeroCard variants={animate.itemVariants} title="A Journey Through Time" totalBarangay="38" district="1st" rate="100%"/>
+        <HeroCard
+          variants={animate.itemVariants}
+          title="A Journey Through Time"
+          totalBarangay="38"
+          district="1st"
+          rate="100%"
+        />
 
         {/* ================= 4. MISSION & VISION CARDS ================= */}
         <motion.div
@@ -81,14 +87,24 @@ export default function About() {
           className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full"
         >
           {/* Mission Card */}
-            <Card name="Our Mission" title="Serving with Purpose" description="To uplift the quality of life of all Lupiniangs through transparent and inclusive governance, sustainable agricultural development, robust infrastructure, accessible healthcare, quality education, and resilient environmental stewardship." quote="Dedicated to Citizen Welfare & Progress" variants={animate.itemVariants} />
+          <Card
+            name="Our Mission"
+            title="Serving with Purpose"
+            description="To uplift the quality of life of all Lupiniangs through transparent and inclusive governance, sustainable agricultural development, robust infrastructure, accessible healthcare, quality education, and resilient environmental stewardship."
+            quote="Dedicated to Citizen Welfare & Progress"
+            variants={animate.itemVariants}
+          />
 
           {/* Vision Card */}
-            <Card name="Our Vision" title="A Thriving Lupi" description="To become a model municipality in Camarines Sur, recognized for its sustainable development, empowered communities, and harmonious balance between progress and preservation of its rich cultural and natural heritage." quote="Inspiring Growth & Sustainability" variants={animate.itemVariants} />
+          <Card
+            name="Our Vision"
+            title="A Thriving Lupi"
+            description="To become a model municipality in Camarines Sur, recognized for its sustainable development, empowered communities, and harmonious balance between progress and preservation of its rich cultural and natural heritage."
+            quote="Inspiring Growth & Sustainability"
+            variants={animate.itemVariants}
+          />
         </motion.div>
-        <div className="mt-10 w-full h">
-
-        </div>
+        <div className="mt-10 w-full h"></div>
       </motion.div>
     </section>
   );

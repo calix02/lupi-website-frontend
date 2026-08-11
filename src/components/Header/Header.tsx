@@ -174,7 +174,7 @@ export default function Header() {
                   onMouseLeave={() => setHoveredDropdown(null)}
                 >
                   <Link
-                    to={item.toLowerCase()}
+                    to={`/${item.toLowerCase()}`}
                     className={`relative z-10 flex items-center gap-1 px-4 py-1.5 text-xs font-semibold tracking-wide transition-colors duration-200 ${
                       isActive
                         ? "text-slate-950"

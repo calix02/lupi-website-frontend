@@ -12,10 +12,9 @@ import {
   Award,
   ChevronLeft,
   ChevronRight,
-  Sparkles
+  Sparkles,
 } from "lucide-react";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
-import BackHomeButton from "@/components/Buttons/BackHome";
 
 // Types
 export interface Official {
@@ -43,7 +42,9 @@ export default function SangguniangBayan() {
   const animate = useInOutAnimation();
 
   // Active Tab, Filters, & Pagination State
-  const [activeTab, setActiveTab] = useState<"ordinance" | "resolution">("ordinance");
+  const [activeTab, setActiveTab] = useState<"ordinance" | "resolution">(
+    "ordinance",
+  );
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedYear, setSelectedYear] = useState<string>("All");
   const [selectedPdf, setSelectedPdf] = useState<DocumentItem | null>(null);
@@ -59,35 +60,40 @@ export default function SangguniangBayan() {
       name: "Hon. Maria Clara Santos",
       position: "Municipal Vice Mayor & Presiding Officer",
       committee: "Chairperson, Committee on Rules & Legal Matters",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400",
+      image:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400",
     },
     {
       id: 2,
       name: "Hon. Juan Dela Cruz Jr.",
       position: "SB Member (1st Councilor)",
       committee: "Chairperson, Committee on Appropriations & Finance",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400",
+      image:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400",
     },
     {
       id: 3,
       name: "Hon. Roberto Reyes",
       position: "SB Member (2nd Councilor)",
       committee: "Chairperson, Committee on Infrastructure & Public Works",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400",
+      image:
+        "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400",
     },
     {
       id: 4,
       name: "Hon. Elena Agoncillo",
       position: "SB Member (3rd Councilor)",
       committee: "Chairperson, Committee on Health & Social Welfare",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400",
+      image:
+        "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400",
     },
     {
       id: 5,
       name: "Hon. Gabriel Mendoza",
       position: "SB Member (4th Councilor)",
       committee: "Chairperson, Committee on Agriculture & Environment",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
+      image:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
     },
   ];
 
@@ -96,13 +102,16 @@ export default function SangguniangBayan() {
     {
       id: "ord-2026-001",
       number: "Ordinance No. 2026-001",
-      title: "Comprehensive Ecological Waste Management & Plastic Regulation Act",
+      title:
+        "Comprehensive Ecological Waste Management & Plastic Regulation Act",
       category: "Environment",
       dateEnacted: "January 15, 2026",
       year: 2026,
       author: "Hon. Gabriel Mendoza",
-      summary: "An ordinance regulating single-use plastics and establishing material recovery facilities across all barangays in Lupi.",
-      pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      summary:
+        "An ordinance regulating single-use plastics and establishing material recovery facilities across all barangays in Lupi.",
+      pdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
       type: "ordinance",
     },
     {
@@ -113,8 +122,10 @@ export default function SangguniangBayan() {
       dateEnacted: "November 10, 2025",
       year: 2025,
       author: "Hon. Juan Dela Cruz Jr.",
-      summary: "Providing tax incentives and streamlined licensing processes for new enterprises establishing operations within the municipality.",
-      pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      summary:
+        "Providing tax incentives and streamlined licensing processes for new enterprises establishing operations within the municipality.",
+      pdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
       type: "ordinance",
     },
     {
@@ -125,8 +136,10 @@ export default function SangguniangBayan() {
       dateEnacted: "July 22, 2025",
       year: 2025,
       author: "Hon. Elena Agoncillo",
-      summary: "Institutionalizing annual leadership summits, scholarship grants, and sports development funds for youth organizations.",
-      pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      summary:
+        "Institutionalizing annual leadership summits, scholarship grants, and sports development funds for youth organizations.",
+      pdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
       type: "ordinance",
     },
     {
@@ -137,44 +150,55 @@ export default function SangguniangBayan() {
       dateEnacted: "March 11, 2024",
       year: 2024,
       author: "Hon. Roberto Reyes",
-      summary: "Establishing standard speed zones, helmet compliance measures, and dedicated pedestrian pathways along major municipal arterial roads.",
-      pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      summary:
+        "Establishing standard speed zones, helmet compliance measures, and dedicated pedestrian pathways along major municipal arterial roads.",
+      pdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
       type: "ordinance",
     },
     {
       id: "res-2026-005",
       number: "Resolution No. 2026-005",
-      title: "Authorizing the LGU to Enter into MOA for Rural Health Telemedicine Infrastructure",
+      title:
+        "Authorizing the LGU to Enter into MOA for Rural Health Telemedicine Infrastructure",
       category: "Health & Technology",
       dateEnacted: "February 02, 2026",
       year: 2026,
       author: "Hon. Elena Agoncillo",
-      summary: "Authorizing the Municipal Mayor to sign agreement for the rollout of digital health consultations in remote barangays.",
-      pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      summary:
+        "Authorizing the Municipal Mayor to sign agreement for the rollout of digital health consultations in remote barangays.",
+      pdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
       type: "resolution",
     },
     {
       id: "res-2025-032",
       number: "Resolution No. 2025-032",
-      title: "Adopting the 2026-2028 Municipal Disaster Risk Reduction and Management Plan",
+      title:
+        "Adopting the 2026-2028 Municipal Disaster Risk Reduction and Management Plan",
       category: "Public Safety",
       dateEnacted: "December 05, 2025",
       year: 2025,
       author: "Hon. Roberto Reyes",
-      summary: "Formal adoption of the comprehensive 3-year DRRM strategy, allocation of emergency reserves, and evacuation route upgrades.",
-      pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      summary:
+        "Formal adoption of the comprehensive 3-year DRRM strategy, allocation of emergency reserves, and evacuation route upgrades.",
+      pdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
       type: "resolution",
     },
     {
       id: "res-2024-019",
       number: "Resolution No. 2024-019",
-      title: "Commending Top Taxpayers and Outstanding Agriculture Cooperatives of 2024",
+      title:
+        "Commending Top Taxpayers and Outstanding Agriculture Cooperatives of 2024",
       category: "Commendation",
       dateEnacted: "October 18, 2024",
       year: 2024,
       author: "Hon. Maria Clara Santos",
-      summary: "Expressing highest appreciation to local stakeholders and farmers cooperatives for exemplary economic performance.",
-      pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      summary:
+        "Expressing highest appreciation to local stakeholders and farmers cooperatives for exemplary economic performance.",
+      pdfUrl:
+        "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
       type: "resolution",
     },
   ];
@@ -186,7 +210,8 @@ export default function SangguniangBayan() {
   const filteredDocs = useMemo(() => {
     return legislativeDocs.filter((doc) => {
       const matchesType = doc.type === activeTab;
-      const matchesYear = selectedYear === "All" || doc.year.toString() === selectedYear;
+      const matchesYear =
+        selectedYear === "All" || doc.year.toString() === selectedYear;
       const matchesSearch =
         doc.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         doc.number.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -225,7 +250,6 @@ export default function SangguniangBayan() {
       id="sanggunian"
       className="relative w-full min-h-screen py-20 sm:py-28 px-4 sm:px-8 bg-slate-50 text-slate-800 overflow-hidden flex flex-col items-center"
     >
-      <BackHomeButton/>
       {/* Background Soft Lighting Gradients */}
       <div className="absolute top-0 right-1/4 w-160 h-120 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-140 h-140 bg-teal-100/50 rounded-full blur-3xl pointer-events-none" />
@@ -238,7 +262,10 @@ export default function SangguniangBayan() {
         className="relative z-10 max-w-7xl mx-auto w-full flex flex-col gap-16"
       >
         {/* ================= 1. HEADER & EXECUTIVE MESSAGE ================= */}
-        <motion.div variants={animate.itemVariants} className="text-center max-w-3xl mx-auto space-y-4">
+        <motion.div
+          variants={animate.itemVariants}
+          className="text-center max-w-3xl mx-auto space-y-4"
+        >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wider uppercase backdrop-blur-md shadow-xs">
             <Building2 className="w-4 h-4 text-emerald-600" />
             <span>Legislative Branch of Lupi</span>
@@ -252,7 +279,9 @@ export default function SangguniangBayan() {
           </h2>
 
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Crafting transparent, inclusive, and progressive legislation to steer the Municipality of Lupi toward sustainable growth and community empowerment.
+            Crafting transparent, inclusive, and progressive legislation to
+            steer the Municipality of Lupi toward sustainable growth and
+            community empowerment.
           </p>
         </motion.div>
 
@@ -279,10 +308,18 @@ export default function SangguniangBayan() {
               <Sparkles className="w-3.5 h-3.5" />
               <span>Message from the Presiding Officer</span>
             </div>
-            <h3 className="text-xl sm:text-2xl font-black">{officials[0].name}</h3>
-            <p className="text-xs text-emerald-300 font-semibold">{officials[0].position}</p>
+            <h3 className="text-xl sm:text-2xl font-black">
+              {officials[0].name}
+            </h3>
+            <p className="text-xs text-emerald-300 font-semibold">
+              {officials[0].position}
+            </p>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-3xl italic">
-              &ldquo;Welcome to our public legislative repository. Here, every citizen has direct access to the ordinances and resolutions enacted by your Sangguniang Bayan. Transparency in governance begins with open access to local laws that safeguard your rights and future.&rdquo;
+              &ldquo;Welcome to our public legislative repository. Here, every
+              citizen has direct access to the ordinances and resolutions
+              enacted by your Sangguniang Bayan. Transparency in governance
+              begins with open access to local laws that safeguard your rights
+              and future.&rdquo;
             </p>
           </div>
         </motion.div>
@@ -291,8 +328,12 @@ export default function SangguniangBayan() {
         <motion.div variants={animate.itemVariants} className="space-y-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-slate-200/80 pb-4">
             <div>
-              <h3 className="text-2xl font-extrabold text-slate-900">Municipal Legislators</h3>
-              <p className="text-xs text-slate-500">Members of the Sangguniang Bayan for the current term</p>
+              <h3 className="text-2xl font-extrabold text-slate-900">
+                Municipal Legislators
+              </h3>
+              <p className="text-xs text-slate-500">
+                Members of the Sangguniang Bayan for the current term
+              </p>
             </div>
             <span className="text-xs font-bold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">
               11th Sangguniang Council
@@ -320,8 +361,12 @@ export default function SangguniangBayan() {
                 <h4 className="font-extrabold text-slate-900 text-sm group-hover:text-emerald-600 transition-colors leading-tight">
                   {member.name}
                 </h4>
-                <p className="text-[11px] font-bold text-emerald-700 mt-0.5">{member.position}</p>
-                <p className="text-[10px] text-slate-500 mt-2 line-clamp-2">{member.committee}</p>
+                <p className="text-[11px] font-bold text-emerald-700 mt-0.5">
+                  {member.position}
+                </p>
+                <p className="text-[10px] text-slate-500 mt-2 line-clamp-2">
+                  {member.committee}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -329,10 +374,8 @@ export default function SangguniangBayan() {
 
         {/* ================= 3. LEGISLATIVE PORTAL & FILTER BAR ================= */}
         <motion.div variants={animate.itemVariants} className="space-y-8 pt-4">
-          
           {/* Controls Bar: Tabs + Search + Year Filter */}
           <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 p-4 rounded-3xl bg-white border border-slate-200/90 shadow-lg shadow-slate-200/40">
-            
             {/* Tab Selector */}
             <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-slate-100/90 border border-slate-200/80">
               <button
@@ -432,8 +475,12 @@ export default function SangguniangBayan() {
                     {/* Card Footer Info & PDF Trigger */}
                     <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
                       <div className="flex flex-col">
-                        <span className="text-[10px] uppercase font-bold text-slate-400">Main Author</span>
-                        <span className="text-xs font-semibold text-slate-700">{doc.author}</span>
+                        <span className="text-[10px] uppercase font-bold text-slate-400">
+                          Main Author
+                        </span>
+                        <span className="text-xs font-semibold text-slate-700">
+                          {doc.author}
+                        </span>
                       </div>
 
                       <button
@@ -449,7 +496,9 @@ export default function SangguniangBayan() {
               ) : (
                 <div className="col-span-full py-16 text-center text-slate-400 bg-white rounded-3xl border border-slate-200">
                   <FileText className="w-10 h-10 mx-auto text-slate-300 mb-2" />
-                  <p className="text-sm font-semibold">No legislative documents match your criteria.</p>
+                  <p className="text-sm font-semibold">
+                    No legislative documents match your criteria.
+                  </p>
                 </div>
               )}
             </AnimatePresence>
@@ -467,12 +516,18 @@ export default function SangguniangBayan() {
                 <span className="font-bold text-slate-800">
                   {Math.min(currentPage * itemsPerPage, filteredDocs.length)}
                 </span>{" "}
-                of <span className="font-bold text-slate-800">{filteredDocs.length}</span> documents
+                of{" "}
+                <span className="font-bold text-slate-800">
+                  {filteredDocs.length}
+                </span>{" "}
+                documents
               </span>
 
               <div className="flex items-center gap-2">
                 <button
-                  onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
                   disabled={currentPage === 1}
                   className="p-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
                   aria-label="Previous Page"
@@ -500,7 +555,9 @@ export default function SangguniangBayan() {
                 </div>
 
                 <button
-                  onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
                   disabled={currentPage === totalPages}
                   className="p-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
                   aria-label="Next Page"
@@ -510,7 +567,6 @@ export default function SangguniangBayan() {
               </div>
             </div>
           )}
-
         </motion.div>
       </motion.div>
 
@@ -536,8 +592,12 @@ export default function SangguniangBayan() {
                     <FileText className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-extrabold text-sm sm:text-base">{selectedPdf.number}</h3>
-                    <p className="text-xs text-slate-400 line-clamp-1">{selectedPdf.title}</p>
+                    <h3 className="font-extrabold text-sm sm:text-base">
+                      {selectedPdf.number}
+                    </h3>
+                    <p className="text-xs text-slate-400 line-clamp-1">
+                      {selectedPdf.title}
+                    </p>
                   </div>
                 </div>
 
