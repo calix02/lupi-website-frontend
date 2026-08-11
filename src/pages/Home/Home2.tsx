@@ -84,33 +84,12 @@ export default function Home2() {
     { icon: Waves, label: "Coastal Municipality, Camarines Sur" },
   ];
 
-  // Motion variants for smooth staggered load
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" as const },
-    },
-  };
-
   return (
     <section className="w-full min-h-screen relative bg-slate-50 flex flex-col justify-between items-center overflow-hidden py-12 md:py-16">
       {/* Background Decorative Patterns */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Subtle Grid Pattern Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]" />
 
         {/* Floating Glowing Orbs */}
         <motion.div
@@ -135,19 +114,16 @@ export default function Home2() {
 
       {/* Main Content Area */}
       <motion.div
-        variants={containerVariants}
+        variants={animate.containerVariants}
         initial="hidden"
         animate="visible"
         className="z-20 flex justify-center items-center flex-col text-center px-4 max-w-5xl mx-auto my-auto"
       >
         {/* Badge */}
-        <motion.div variants={itemVariants}>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-slate-900/5 border border-slate-900/10 rounded-full backdrop-blur-md lg:mb-6 md:mb-6 mb-2 shadow-xs">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-700">
+        <motion.div variants={animate.itemVariants}>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-600/20 border border-slate-900/10 rounded-full backdrop-blur-md lg:mb-6 md:mb-6 mb-2 shadow-xs">
+            <Sparkles height={15} />
+            <span className="text-xs font-semibold uppercase tracking-wider text-slate-700">
               Official Website — Municipality of Lupi
             </span>
           </div>
@@ -155,7 +131,7 @@ export default function Home2() {
 
         {/* Main Heading */}
         <motion.h1
-          variants={itemVariants}
+          variants={animate.itemVariants}
           className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-slate-800 mb-2"
         >
           Progresibong Lupi
@@ -163,7 +139,7 @@ export default function Home2() {
 
         {/* Sub-heading with Gradient */}
         <motion.h2
-          variants={itemVariants}
+          variants={animate.itemVariants}
           className="bg-linear-to-r from-emerald-600 via-teal-600 to-cyan-600 text-3xl sm:text-5xl md:text-6xl playfair bg-clip-text text-transparent font-medium lg:mb-6 md:mb-6 mb-2"
         >
           Innovation & Services
@@ -171,7 +147,7 @@ export default function Home2() {
 
         {/* Description Paragraph */}
         <motion.p
-          variants={itemVariants}
+          variants={animate.itemVariants}
           className="max-w-2xl text-center text-slate-600 text-base sm:text-lg leading-relaxed mb-6"
         >
           Discover municipal updates, public services, tourism spots, and
@@ -181,7 +157,7 @@ export default function Home2() {
 
         {/* Heritage Strip */}
         <motion.div
-          variants={itemVariants}
+          variants={animate.itemVariants}
           className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs font-semibold uppercase tracking-widest text-emerald-800/80 bg-emerald-500/10 border border-emerald-500/20 px-5 py-2.5 rounded-full backdrop-blur-md"
         >
           {heritage.map((item, idx) => {
@@ -200,7 +176,7 @@ export default function Home2() {
 
         {/* Call to Action Buttons */}
         <motion.div
-          variants={itemVariants}
+          variants={animate.itemVariants}
           className="mt-8 flex  items-center justify-center gap-4 w-full sm:w-auto"
         >
           <Link
@@ -221,7 +197,7 @@ export default function Home2() {
 
         {/* Floating Stats Cards */}
         <motion.div
-          variants={itemVariants}
+          variants={animate.itemVariants}
           className="lg:mt-10 md:mt-15 mt-5 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-4xl"
         >
           {stats.map((stat, idx) => {

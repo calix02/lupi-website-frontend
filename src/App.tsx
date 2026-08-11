@@ -26,6 +26,8 @@ function App() {
           Component: PublicLayout,
           children: [
             { index: true, Component: LupiWebsite },
+            { path: "/home", Component: LupiWebsite },
+
             { path: "/government", Component: Government },
             { path: "/sangguniangbayan", Component: SangguniangBayan },
             { path: "/officials", Component: Officials },
