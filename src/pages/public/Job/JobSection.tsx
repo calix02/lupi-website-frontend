@@ -12,7 +12,6 @@ import {
   ChevronLeft,
 } from "lucide-react";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
-import BackHomeButton from "@/components/Buttons/BackHome";
 
 // Interfaces based on CSC standard job posting form
 export interface JobVacancy {
@@ -65,7 +64,8 @@ export default function JobVacanciesSection() {
       training: "8 hours relevant training",
       experience: "2 years of relevant experience",
       eligibility: "Career Service (Professional) / Second Level Eligibility",
-      competency: "Systems Administration, Web Development, Database Management",
+      competency:
+        "Systems Administration, Web Development, Database Management",
       placeOfAssignment: "Office of the Municipal Mayor",
       companyName: "Municipality of Lupi",
       address: "Poblacion Lupi Camarines Sur",
@@ -90,7 +90,8 @@ export default function JobVacanciesSection() {
       training: "8 hours relevant training",
       experience: "2 years of relevant experience",
       eligibility: "Career Service (Professional) / Second Level Eligibility",
-      competency: "Personnel Administration, Talent Acquisition, CSC Compliance",
+      competency:
+        "Personnel Administration, Talent Acquisition, CSC Compliance",
       placeOfAssignment: "Human Resource Management Office",
       companyName: "Municipality of Lupi",
       address: "Poblacion Lupi Camarines Sur",
@@ -134,7 +135,8 @@ export default function JobVacanciesSection() {
       plantillaItemNo: "3-15",
       salaryGrade: 16,
       monthlySalary: "38,150.00",
-      education: "Bachelor's degree in Commerce/Business Administration major in Accounting",
+      education:
+        "Bachelor's degree in Commerce/Business Administration major in Accounting",
       training: "4 hours relevant training",
       experience: "1 year of relevant experience",
       eligibility: "RA 1080 (CPA)",
@@ -159,7 +161,8 @@ export default function JobVacanciesSection() {
       plantillaItemNo: "1-52",
       salaryGrade: 9,
       monthlySalary: "21,211.00",
-      education: "Completion of 2 years studies in college or High School Graduate with relevant vocational course",
+      education:
+        "Completion of 2 years studies in college or High School Graduate with relevant vocational course",
       training: "4 hours relevant training",
       experience: "1 year of relevant experience",
       eligibility: "Career Service (Subprofessional) / First Level Eligibility",
@@ -188,7 +191,7 @@ export default function JobVacanciesSection() {
         job.positionTitle.toLowerCase().includes(searchLower) ||
         job.placeOfAssignment.toLowerCase().includes(searchLower) ||
         job.plantillaItemNo.toLowerCase().includes(searchLower) ||
-        job.department.toLowerCase().includes(searchLower)
+        job.department.toLowerCase().includes(searchLower),
     );
   }, [searchTerm]);
 
@@ -209,7 +212,6 @@ export default function JobVacanciesSection() {
       id="careers"
       className="relative w-full min-h-screen py-20 sm:py-28 px-4 sm:px-8 bg-slate-50 text-slate-800 overflow-hidden flex flex-col items-center"
     >
-      <BackHomeButton/>
       {/* Background Soft Lighting Gradients */}
       <div className="absolute top-0 right-1/4 w-160 h-120 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-140 h-140 bg-teal-100/50 rounded-full blur-3xl pointer-events-none" />
@@ -239,7 +241,9 @@ export default function JobVacanciesSection() {
           </h2>
 
           <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-            Explore open public service positions and plantilla items. Become part of our municipal workforce in delivering excellence to our citizens.
+            Explore open public service positions and plantilla items. Become
+            part of our municipal workforce in delivering excellence to our
+            citizens.
           </p>
         </motion.div>
 
@@ -359,7 +363,9 @@ export default function JobVacanciesSection() {
               <strong className="text-slate-900">
                 {Math.min(currentPage * itemsPerPage, searchedJobs.length)}
               </strong>{" "}
-              of <strong className="text-slate-900">{searchedJobs.length}</strong> vacancies
+              of{" "}
+              <strong className="text-slate-900">{searchedJobs.length}</strong>{" "}
+              vacancies
             </p>
 
             <div className="flex items-center gap-2">
@@ -372,22 +378,26 @@ export default function JobVacanciesSection() {
                 <ChevronLeft className="w-4 h-4" />
               </button>
 
-              {Array.from({ length: totalPages }, (_, idx) => idx + 1).map((page) => (
-                <button
-                  key={page}
-                  onClick={() => setCurrentPage(page)}
-                  className={`w-9 h-9 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                    currentPage === page
-                      ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/30"
-                      : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 hover:text-slate-900"
-                  }`}
-                >
-                  {page}
-                </button>
-              ))}
+              {Array.from({ length: totalPages }, (_, idx) => idx + 1).map(
+                (page) => (
+                  <button
+                    key={page}
+                    onClick={() => setCurrentPage(page)}
+                    className={`w-9 h-9 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                      currentPage === page
+                        ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/30"
+                        : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ),
+              )}
 
               <button
-                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                onClick={() =>
+                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                }
                 disabled={currentPage === totalPages}
                 className="p-2.5 rounded-xl border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900 disabled:opacity-40 disabled:hover:bg-white disabled:hover:text-slate-600 transition-all cursor-pointer disabled:cursor-not-allowed"
                 title="Next Page"
@@ -425,7 +435,8 @@ export default function JobVacanciesSection() {
                       Civil Service Job Vacancy Notice
                     </h3>
                     <p className="text-xs text-slate-400">
-                      {selectedJob.companyName} • Posted {selectedJob.postedDate}
+                      {selectedJob.companyName} • Posted{" "}
+                      {selectedJob.postedDate}
                     </p>
                   </div>
                 </div>
@@ -444,30 +455,54 @@ export default function JobVacanciesSection() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-200 text-xs sm:text-sm">
                   <div className="space-y-2">
                     <p className="flex items-center gap-2">
-                      <strong className="text-slate-900 font-extrabold w-36">Company Name:</strong>
-                      <span className="text-slate-700">{selectedJob.companyName}</span>
+                      <strong className="text-slate-900 font-extrabold w-36">
+                        Company Name:
+                      </strong>
+                      <span className="text-slate-700">
+                        {selectedJob.companyName}
+                      </span>
                     </p>
                     <p className="flex items-center gap-2">
-                      <strong className="text-slate-900 font-extrabold w-36">Address:</strong>
-                      <span className="text-slate-700">{selectedJob.address}</span>
+                      <strong className="text-slate-900 font-extrabold w-36">
+                        Address:
+                      </strong>
+                      <span className="text-slate-700">
+                        {selectedJob.address}
+                      </span>
                     </p>
                     <p className="flex items-center gap-2">
-                      <strong className="text-slate-900 font-extrabold w-36">Contact Person:</strong>
-                      <span className="text-slate-700">{selectedJob.contactPerson}</span>
+                      <strong className="text-slate-900 font-extrabold w-36">
+                        Contact Person:
+                      </strong>
+                      <span className="text-slate-700">
+                        {selectedJob.contactPerson}
+                      </span>
                     </p>
                   </div>
                   <div className="space-y-2">
                     <p className="flex items-center gap-2">
-                      <strong className="text-slate-900 font-extrabold w-36">Contact Number:</strong>
-                      <span className="text-slate-700">{selectedJob.contactNumber}</span>
+                      <strong className="text-slate-900 font-extrabold w-36">
+                        Contact Number:
+                      </strong>
+                      <span className="text-slate-700">
+                        {selectedJob.contactNumber}
+                      </span>
                     </p>
                     <p className="flex items-center gap-2">
-                      <strong className="text-slate-900 font-extrabold w-36">Email Address:</strong>
-                      <span className="text-emerald-700 font-semibold">{selectedJob.emailAddress}</span>
+                      <strong className="text-slate-900 font-extrabold w-36">
+                        Email Address:
+                      </strong>
+                      <span className="text-emerald-700 font-semibold">
+                        {selectedJob.emailAddress}
+                      </span>
                     </p>
                     <p className="flex items-center gap-2">
-                      <strong className="text-slate-900 font-extrabold w-36">No. of Person Required:</strong>
-                      <span className="font-extrabold text-slate-900">{selectedJob.noOfPersonRequired}</span>
+                      <strong className="text-slate-900 font-extrabold w-36">
+                        No. of Person Required:
+                      </strong>
+                      <span className="font-extrabold text-slate-900">
+                        {selectedJob.noOfPersonRequired}
+                      </span>
                     </p>
                   </div>
                 </div>
@@ -490,7 +525,8 @@ export default function JobVacanciesSection() {
                         </td>
                         <td className="py-3.5 px-5 font-bold text-emerald-800">
                           {selectedJob.positionTitle}{" "}
-                          {selectedJob.parentheticalTitle && `(${selectedJob.parentheticalTitle})`}
+                          {selectedJob.parentheticalTitle &&
+                            `(${selectedJob.parentheticalTitle})`}
                         </td>
                       </tr>
                       <tr>
@@ -572,15 +608,22 @@ export default function JobVacanciesSection() {
                 {/* Application Instructions */}
                 <div className="space-y-4 pt-2">
                   <p className="text-xs sm:text-sm text-slate-700">
-                    Interested and qualified applicants should signify their interest in writing. Attach the following documents to the application letter and send to the address below not later than{" "}
+                    Interested and qualified applicants should signify their
+                    interest in writing. Attach the following documents to the
+                    application letter and send to the address below not later
+                    than{" "}
                     <strong className="text-slate-900 font-extrabold underline decoration-emerald-500 underline-offset-4">
                       {selectedJob.deadline}
-                    </strong>.
+                    </strong>
+                    .
                   </p>
 
                   <ol className="list-decimal list-inside space-y-2.5 text-xs sm:text-sm text-slate-700 bg-emerald-50/50 p-5 rounded-2xl border border-emerald-200/80">
                     <li>
-                      Fully accomplished <strong>Personal Data Sheet (PDS)</strong> with recent passport-sized picture (CS Form No. 212, Revised 2017) which can be downloaded at{" "}
+                      Fully accomplished{" "}
+                      <strong>Personal Data Sheet (PDS)</strong> with recent
+                      passport-sized picture (CS Form No. 212, Revised 2017)
+                      which can be downloaded at{" "}
                       <a
                         href="http://www.csc.gov.ph"
                         target="_blank"
@@ -588,10 +631,17 @@ export default function JobVacanciesSection() {
                         className="text-emerald-700 underline font-bold hover:text-emerald-800"
                       >
                         www.csc.gov.ph
-                      </a>;
+                      </a>
+                      ;
                     </li>
-                    <li>Performance rating in the last rating period (if applicable);</li>
-                    <li>Photocopy of certificate of eligibility/rating/license; and</li>
+                    <li>
+                      Performance rating in the last rating period (if
+                      applicable);
+                    </li>
+                    <li>
+                      Photocopy of certificate of eligibility/rating/license;
+                      and
+                    </li>
                     <li>Photocopy of Transcript of Records (TOR).</li>
                   </ol>
                 </div>
@@ -599,9 +649,14 @@ export default function JobVacanciesSection() {
                 {/* Email Apply CTA */}
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 rounded-2xl bg-slate-900 text-white">
                   <div>
-                    <h4 className="font-extrabold text-sm sm:text-base">Ready to Submit Your Application?</h4>
+                    <h4 className="font-extrabold text-sm sm:text-base">
+                      Ready to Submit Your Application?
+                    </h4>
                     <p className="text-xs text-slate-400">
-                      Send your complete documents to <span className="text-emerald-400">{selectedJob.emailAddress}</span>
+                      Send your complete documents to{" "}
+                      <span className="text-emerald-400">
+                        {selectedJob.emailAddress}
+                      </span>
                     </p>
                   </div>
                   <a

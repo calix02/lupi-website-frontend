@@ -412,7 +412,7 @@ export default function Announcement() {
             </div>
 
             <Link
-              to="all"
+              to="/all"
               className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-600 hover:text-emerald-700 transition-colors bg-emerald-50 hover:bg-emerald-100/80 px-4 py-2 rounded-xl"
             >
               <span>View All Bulletins</span>

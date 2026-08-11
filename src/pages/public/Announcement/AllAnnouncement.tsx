@@ -192,13 +192,6 @@ export default function AllAnnouncement() {
       id="all-announcements"
       className="relative flex min-h-screen w-full flex-col bg-white text-slate-800 overflow-hidden pt-28 pb-20 items-center justify-center"
     >
-      <Link
-        to="/"
-        className="absolute top-6 left-6 inline-flex items-center gap-2 px-3.5 py-2 text-sm font-semibold text-slate-700 hover:text-emerald-600 transition-colors rounded-xl hover:bg-slate-100"
-      >
-        <ArrowLeft className="h-4 w-4" /> Back to Home
-      </Link>
-
       {/* ================= 1. BACKGROUND PATTERN & AMBIENT GLOW ================= */}
       <div
         className="absolute inset-0 z-0 opacity-[0.06] pointer-events-none"

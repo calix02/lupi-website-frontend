@@ -1,5 +1,5 @@
-import Home from "@/pages/Home/Home2";
-import Announcement from "./Announcement/Announcement";
+import Home from "@/pages/public/Home/Home2";
+import Announcement from "./public/Announcement/Announcement";
 import { useEffect, useState } from "react";
 import SplashScreen from "@/components/SplashScreen/SplashScreen";
 import Tourism from "./Tourism/Tourism";
