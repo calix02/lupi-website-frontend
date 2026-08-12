@@ -85,7 +85,7 @@ export default function Home2() {
   ];
 
   return (
-    <section className="w-full min-h-screen relative bg-slate-50 flex flex-col justify-between items-center overflow-hidden py-12 md:py-16">
+    <section className="w-full  min-h-screen relative bg-slate-50 flex flex-col justify-between items-center overflow-hidden py-12 md:py-16">
       {/* Background Decorative Patterns */}
 
       <div className="absolute inset-0 pointer-events-none overflow-hidden">

@@ -244,11 +244,9 @@ export default function Header() {
                           setMobileMenuOpen(false);
                         }
                       }}
-                      className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-semibold transition-all cursor-pointer ${
-                        activeTab === item
-                          ? "bg-linear-to-r from-emerald-500/20 to-teal-500/20 text-emerald-400 border border-emerald-500/30"
-                          : "text-slate-200 hover:bg-white/5 hover:text-emerald-400"
-                      }`}
+                      className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-semibold transition-all cursor-pointer 
+                      text-slate-600 hover:bg-white/5 hover:text-emerald-400
+                      `}
                     >
                       <Link to={item.toLowerCase()} className="flex-1">
                         {item}
@@ -258,7 +256,7 @@ export default function Header() {
                           className={`w-4 h-4 transition-transform duration-200 ${
                             isExpanded
                               ? "rotate-180 text-emerald-400"
-                              : "text-slate-400"
+                              : "text-slate-600"
                           }`}
                         />
                       )}
@@ -282,7 +280,7 @@ export default function Header() {
                                 setMobileMenuOpen(false);
                                 setMobileExpandedItem(null);
                               }}
-                              className="flex flex-col gap-0.5 rounded-lg p-2.5 hover:bg-white/5 text-slate-300 hover:text-emerald-400 transition-colors"
+                              className="flex flex-col gap-0.5 rounded-lg p-2.5 hover:bg-white/5 text-slate-600 hover:text-emerald-400 transition-colors"
                             >
                               <span className="text-xs font-bold">
                                 {subItem.label}

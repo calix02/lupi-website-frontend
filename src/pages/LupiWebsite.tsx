@@ -5,6 +5,7 @@ import SplashScreen from "@/components/SplashScreen/SplashScreen";
 import Tourism from "./Tourism/Tourism";
 import Weather from "./Weather/Weather";
 import Header from "@/components/Header/Header";
+import PublicFigure from "./public/PublicFigure/PublicFigure";
 
 export default function LupiWebsite() {
   const [showSplash, setShowSplash] = useState(true);
@@ -24,9 +25,7 @@ export default function LupiWebsite() {
     <div className="w-screen">
       <Header />
       <Home />
-      <Announcement />
-      <Tourism />
-      <Weather />
+      <PublicFigure />
     </div>
   );
 }
