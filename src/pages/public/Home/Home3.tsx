@@ -1,18 +1,15 @@
-import HeroImage from "@/assets/logos/LGU-NEW-crop.png";
 import Pattern from "@/assets/pattern/intersecting-waves-split-white.svg";
 import {
   ArrowRight,
   Building2,
   Landmark,
   MapPin,
-  Sparkles,
   Users,
   Waves,
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
-import useInOutAnimation from "@/hooks/useInOutAnimation";
 import { useEffect, useRef, useState } from "react";
 import HeroVideo from "@/assets/LGU-Video.mp4";
 
@@ -57,7 +54,6 @@ function StatValue({ value }: { value: string }) {
 }
 
 export default function Home2() {
-  const animate = useInOutAnimation();
   const stats = [
     {
       icon: Users,
@@ -111,7 +107,7 @@ export default function Home2() {
       {/* Background Decorative Patterns */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Subtle Grid Pattern Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]" />
 
         <motion.div
           animate={{

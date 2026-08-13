@@ -18,7 +18,6 @@ import useInOutAnimation from "@/hooks/useInOutAnimation";
 
 // Import thumbnail assets
 import AssistanceImg from "@/assets/logos/LGU-NEW.png";
-import HealthMissionImg from "@/assets/logos/LGU-NEW.png";
 import RoadProjImg from "@/assets/logos/LGU-NEW.png";
 import BAdminton from "@/assets/events/badmintom.jpg";
 

@@ -13,11 +13,9 @@ import {
   Clock,
   Maximize2,
   X,
-  ArrowLeft,
   Share2,
   Check,
 } from "lucide-react";
-import { Link } from "react-router-dom";
 import Badminton from "@/assets/events/badmintom.jpg";
 
 // Announcement Data Structure Definition
