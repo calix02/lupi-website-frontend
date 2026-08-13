@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
 import {
   MapPin,
   Navigation,
@@ -12,8 +17,6 @@ import {
   Sparkles,
 } from "lucide-react";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
-import Pattern from "@/assets/pattern/intersecting-waves-split-white.svg";
-import Pattern2 from "@/assets/pattern/intersecting-curves-white.svg";
 
 // Tourist Spot Data Model for Municipality of Lupi
 export interface TouristSpot {
@@ -89,13 +92,19 @@ const TOURIST_SPOTS: TouristSpot[] = [
 
 export default function TourismSection() {
   const [spots, setSpots] = useState<TouristSpot[]>(TOURIST_SPOTS);
-  const [selectedMapSpot, setSelectedMapSpot] = useState<TouristSpot | null>(null);
+  const [selectedMapSpot, setSelectedMapSpot] = useState<TouristSpot | null>(
+    null,
+  );
   const [isPaused, setIsPaused] = useState(false);
 
   // Framer Motion Drag Offsets for Front Card
   const dragX = useMotionValue(0);
   const rotate = useTransform(dragX, [-200, 200], [-18, 18]);
-  const opacity = useTransform(dragX, [-180, -100, 0, 100, 180], [0.4, 0.9, 1, 0.9, 0.4]);
+  const opacity = useTransform(
+    dragX,
+    [-180, -100, 0, 100, 180],
+    [0.4, 0.9, 1, 0.9, 0.4],
+  );
 
   const animate = useInOutAnimation();
 
@@ -127,14 +136,6 @@ export default function TourismSection() {
       id="tourism"
       className="relative min-h-screen w-full overflow-hidden bg-slate-950 lg:py-40 py-20 text-slate-100 flex flex-col justify-center"
     >
-        <div className="absolute top-0 z-10 w-screen ">
-            <img src={Pattern} alt="Pattern" className="w-full  object-cover  " />
-            <div className="w-full  bg-slate-50"></div>
-        </div>
-        <div className="absolute bottom-0 z-10 w-screen ">
-            <img src={Pattern2} alt="Pattern" className="w-full  object-cover -scale-y-100  " />
-            <div className="w-full  bg-slate-50"></div>
-        </div>
       {/* ================= 1. CLEAR DYNAMIC BACKGROUND IMAGE ================= */}
       <AnimatePresence mode="popLayout">
         <motion.div
@@ -190,15 +191,18 @@ export default function TourismSection() {
             variants={animate.itemVariants}
             className="mt-4 max-w-2xl text-base text-slate-200 sm:text-lg drop-shadow-sm font-medium bg-slate-950/40 py-1 px-4 rounded-full backdrop-blur-sm border border-white/5"
           >
-            Drag cards to browse destinations or click the button below to launch interactive route navigation.
+            Drag cards to browse destinations or click the button below to
+            launch interactive route navigation.
           </motion.p>
         </div>
 
         {/* Section Grid: Card Stack + Destination Spotlight Panel */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
           {/* LEFT: Interactive Spot Details (5 Columns) */}
-          <motion.div variants={animate.itemVariants} className="lg:col-span-5 flex flex-col justify-center space-y-6">
+          <motion.div
+            variants={animate.itemVariants}
+            className="lg:col-span-5 flex flex-col justify-center space-y-6"
+          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeSpot.id}
@@ -285,7 +289,9 @@ export default function TourismSection() {
                       damping: 25,
                     }}
                     className={`absolute inset-0 h-105 w-full overflow-hidden rounded-3xl border border-white/20 bg-slate-900 shadow-2xl cursor-grab active:cursor-grabbing select-none transition-shadow ${
-                      isFront ? "hover:shadow-emerald-900/60 hover:border-emerald-400/60" : ""
+                      isFront
+                        ? "hover:shadow-emerald-900/60 hover:border-emerald-400/60"
+                        : ""
                     }`}
                   >
                     {/* Spot Image */}
@@ -312,10 +318,12 @@ export default function TourismSection() {
                       {isFront && (
                         <div className="mt-4 flex items-center justify-between text-xs text-emerald-400 font-semibold border-t border-slate-700/80 pt-3">
                           <span className="flex items-center gap-1">
-                            <Sparkles className="h-3.5 w-3.5" /> Drag left/right to swap
+                            <Sparkles className="h-3.5 w-3.5" /> Drag left/right
+                            to swap
                           </span>
                           <span className="flex items-center gap-1 text-slate-300">
-                            {spots.length} Destinations <ChevronRight className="h-3.5 w-3.5" />
+                            {spots.length} Destinations{" "}
+                            <ChevronRight className="h-3.5 w-3.5" />
                           </span>
                         </div>
                       )}
@@ -380,24 +388,36 @@ export default function TourismSection() {
 
                   <div className="mt-4 flex items-center gap-4 text-xs text-slate-400 bg-slate-950/50 p-3 rounded-xl border border-slate-800">
                     <div>
-                      <span className="block text-[10px] uppercase font-bold text-slate-500">Distance</span>
-                      <span className="font-semibold text-slate-200">{selectedMapSpot.distance}</span>
+                      <span className="block text-[10px] uppercase font-bold text-slate-500">
+                        Distance
+                      </span>
+                      <span className="font-semibold text-slate-200">
+                        {selectedMapSpot.distance}
+                      </span>
                     </div>
                     <div className="h-6 w-px bg-slate-800" />
                     <div>
-                      <span className="block text-[10px] uppercase font-bold text-slate-500">Est. Time</span>
-                      <span className="font-semibold text-slate-200">{selectedMapSpot.travelTime}</span>
+                      <span className="block text-[10px] uppercase font-bold text-slate-500">
+                        Est. Time
+                      </span>
+                      <span className="font-semibold text-slate-200">
+                        {selectedMapSpot.travelTime}
+                      </span>
                     </div>
                   </div>
 
                   <div className="mt-6">
                     <h4 className="text-xs font-extrabold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5 mb-3">
-                      <Navigation className="h-3.5 w-3.5" /> Directions from Town Center
+                      <Navigation className="h-3.5 w-3.5" /> Directions from
+                      Town Center
                     </h4>
 
                     <ol className="space-y-3">
                       {selectedMapSpot.routeInstructions.map((step, idx) => (
-                        <li key={idx} className="flex gap-3 text-xs text-slate-300">
+                        <li
+                          key={idx}
+                          className="flex gap-3 text-xs text-slate-300"
+                        >
                           <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-[10px] font-bold text-emerald-400">
                             {idx + 1}
                           </span>
@@ -424,7 +444,6 @@ export default function TourismSection() {
           </motion.div>
         )}
       </AnimatePresence>
-      
     </motion.section>
   );
 }
