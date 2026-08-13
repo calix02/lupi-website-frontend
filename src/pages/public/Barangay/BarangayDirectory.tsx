@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -7,25 +7,19 @@ import {
   Users,
   Award,
   Building2,
-  Calendar,
   Phone,
   Mail,
-  Globe,
   Clock,
   X,
   ChevronRight,
   ShieldCheck,
   CheckCircle2,
   RotateCcw,
-  Sparkles,
   Briefcase,
-  Layers,
-  ArrowRight,
   UserCheck,
-  Home as HomeIcon,
-  ExternalLink,
   Info,
 } from "lucide-react";
+import StatisticCard from "./components/StatisticsCard";
 
 // ==========================================
 // 1. DATA MODEL & CMS TYPES (Section 13)
@@ -410,9 +404,9 @@ export default function BarangayDirectory() {
       {/* ==========================================
           1. HERO / HEADER SECTION
       ========================================== */}
-      <div className="relative bg-gradient-to-b from-slate-900 via-slate-900 to-emerald-950 text-white pt-24 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="relative bg-linear-to-b from-slate-900 via-slate-900 to-emerald-950 text-white pt-24 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Subtle Map / Geographic Grid Pattern Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:3rem_3rem] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-size-[3rem_3rem] pointer-events-none" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10 space-y-6 text-center">
@@ -452,81 +446,30 @@ export default function BarangayDirectory() {
             2. DIRECTORY STATISTICS CARDS
         ========================================== */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-md flex items-center gap-4"
-          >
-            <div className="p-3.5 rounded-xl bg-emerald-50 text-emerald-700 shrink-0">
-              <Building2 className="w-6 h-6" />
-            </div>
-            <div>
-              <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">
-                Total Barangays
-              </p>
-              <p className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-                {totalBarangaysCount}
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-md flex items-center gap-4"
-          >
-            <div className="p-3.5 rounded-xl bg-teal-50 text-teal-700 shrink-0">
-              <Users className="w-6 h-6" />
-            </div>
-            <div>
-              <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">
-                Total Residents
-              </p>
-              <p className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-                {totalResidentsCount.toLocaleString()}
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-            className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-md flex items-center gap-4"
-          >
-            <div className="p-3.5 rounded-xl bg-amber-50 text-amber-700 shrink-0">
-              <Award className="w-6 h-6" />
-            </div>
-            <div>
-              <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">
-                Active Captains
-              </p>
-              <p className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-                {activeCaptainsCount}
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.3 }}
-            className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-md flex items-center gap-4"
-          >
-            <div className="p-3.5 rounded-xl bg-cyan-50 text-cyan-700 shrink-0">
-              <UserCheck className="w-6 h-6" />
-            </div>
-            <div>
-              <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">
-                Barangay Officials
-              </p>
-              <p className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-                {totalOfficialsCount}
-              </p>
-            </div>
-          </motion.div>
+          <StatisticCard
+            title="Total Barangays"
+            Icon={Building2}
+            value={totalBarangaysCount}
+            design={"bg-emerald-50 text-emerald-700"}
+          />
+          <StatisticCard
+            title="Total Residents"
+            Icon={Users}
+            value={totalResidentsCount}
+            design={"bg-teal-50 text-teal-700"}
+          />
+          <StatisticCard
+            title="Active Captains"
+            Icon={Award}
+            value={activeCaptainsCount}
+            design={"bg-amber-50 text-amber-700"}
+          />
+          <StatisticCard
+            title="Barangay Officials"
+            Icon={UserCheck}
+            value={totalOfficialsCount}
+            design={"bg-cyan-50 text-cyan-700"}
+          />
         </div>
 
         {/* ==========================================
@@ -632,7 +575,7 @@ export default function BarangayDirectory() {
                       alt={barangay.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-transparent to-transparent" />
 
                     <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
                       <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-[11px] font-bold text-white border border-white/20">
@@ -774,7 +717,7 @@ export default function BarangayDirectory() {
                     alt={selectedBarangayModal.name}
                     className="w-full h-full object-cover opacity-80"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/40 to-transparent" />
 
                   <div className="absolute bottom-6 left-6 right-6 text-white space-y-2">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/90 text-xs font-bold text-white shadow-md">
