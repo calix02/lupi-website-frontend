@@ -5,6 +5,7 @@ import Tourism from "./Tourism/Tourism";
 import Weather from "./Weather/Weather";
 import Header from "@/components/Header/Header";
 import PublicFigure from "./public/PublicFigure/PublicFigure";
+import BarangayDirectory from "./public/Barangay/BarangayDirectory";
 
 export default function LupiWebsite() {
   const [showSplash, setShowSplash] = useState(true);
@@ -24,6 +25,7 @@ export default function LupiWebsite() {
       <Header />
       <Home />
       <PublicFigure />
+      <BarangayDirectory />
       <Tourism />
       <Weather />
     </div>
