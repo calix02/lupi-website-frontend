@@ -6,7 +6,7 @@ import * as React from "react";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Image1 from "@/assets/gallery/imag_lupi.jpg";
 import Image2 from "@/assets/gallery/image_lupi1.jpg";
-import Image3 from "@/assets/gallery/image_lupi5.jpg";
+import Image3 from "@/assets/gallery/image_lupi.jpg";
 import Image4 from "@/assets/gallery/image_lupi7.jpg";
 import Image5 from "@/assets/gallery/image_lupi8.jpg";
 import Image6 from "@/assets/gallery/image_lupi11.jpg";
