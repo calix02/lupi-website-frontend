@@ -156,7 +156,7 @@ export default function Home() {
           variants={animate.containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ amount: 0.2, once: true }}
+          viewport={{ amount: 0.2, once: false }}
           className="flex flex-col items-center"
         >
           {/* Badge */}

@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   Search,
   Filter,
@@ -15,6 +15,7 @@ import {
 import StatisticCard from "./components/StatisticsCard";
 import BarangayCard from "./components/BarangayCard";
 import BarangayModal from "./components/BarangayModal";
+import useInOutAnimation from "@/hooks/useInOutAnimation";
 
 // ==========================================
 // 1. DATA MODEL & CMS TYPES (Section 13)
@@ -394,19 +395,28 @@ export default function BarangayDirectory() {
     setSelectedStatus("All");
   };
 
+  const animate = useInOutAnimation();
+
   return (
     <section className="w-full bg-slate-50 text-slate-900 font-sans min-h-screen pb-24">
       {/* ==========================================
           1. HERO / HEADER SECTION
       ========================================== */}
-      <div className="relative bg-linear-to-b from-slate-900 via-slate-900 to-emerald-950 text-white pt-24 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <motion.div
+        variants={animate.containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ amount: 0.2 }}
+        className="relative bg-linear-to-b from-slate-900 via-slate-900 to-emerald-950 text-white pt-24 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      >
         {/* Subtle Map / Geographic Grid Pattern Overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-size-[3rem_3rem] pointer-events-none" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10 space-y-6 text-center">
           {/* Breadcrumb Navigation */}
-          <nav
+          <motion.nav
+            variants={animate.itemVariants}
             aria-label="Breadcrumb"
             className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-slate-300 backdrop-blur-md"
           >
@@ -417,61 +427,86 @@ export default function BarangayDirectory() {
             <span className="text-slate-400">Government</span>
             <span>/</span>
             <span className="text-emerald-400">Barangay Directory</span>
-          </nav>
+          </motion.nav>
 
           {/* Title & Tagline */}
           <div className="space-y-3 max-w-3xl mx-auto">
-            <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+            <motion.h1
+              variants={animate.itemVariants}
+              className="text-3xl sm:text-5xl font-black tracking-tight leading-tight"
+            >
               Barangay{" "}
               <span className="text-emerald-400 underline decoration-amber-400 decoration-4 underline-offset-8">
                 Directory
               </span>
-            </h1>
-            <p className="text-slate-300 text-sm sm:text-base font-normal leading-relaxed">
+            </motion.h1>
+            <motion.p
+              variants={animate.itemVariants}
+              className="text-slate-300 text-sm sm:text-base font-normal leading-relaxed"
+            >
               “Know Your Barangay. Connect With Your Community.” Explore the
               barangays of Lupi and discover important information about our
               communities, local officials, population, and public services.
-            </p>
+            </motion.p>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20 space-y-12">
         {/* ==========================================
             2. DIRECTORY STATISTICS CARDS
         ========================================== */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <motion.div
+          variants={animate.containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.2 }}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
+        >
           <StatisticCard
+            variants={animate.itemVariants}
             title="Total Barangays"
             Icon={Building2}
             value={totalBarangaysCount}
             design={"bg-emerald-50 text-emerald-700"}
           />
           <StatisticCard
+            variants={animate.itemVariants}
             title="Total Residents"
             Icon={Users}
             value={totalResidentsCount}
             design={"bg-teal-50 text-teal-700"}
           />
           <StatisticCard
+            variants={animate.itemVariants}
             title="Active Captains"
             Icon={Award}
             value={activeCaptainsCount}
             design={"bg-amber-50 text-amber-700"}
           />
           <StatisticCard
+            variants={animate.itemVariants}
             title="Barangay Officials"
             Icon={UserCheck}
             value={totalOfficialsCount}
             design={"bg-cyan-50 text-cyan-700"}
           />
-        </div>
+        </motion.div>
 
         {/* ==========================================
             3. SEARCH AND FILTER SYSTEM
         ========================================== */}
-        <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4">
-          <div className="flex flex-col lg:flex-row items-center gap-4">
+        <motion.div
+          variants={animate.containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ amount: 0.2 }}
+          className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm space-y-4"
+        >
+          <motion.div
+            variants={animate.itemVariants}
+            className="flex flex-col lg:flex-row items-center gap-4"
+          >
             {/* Search Input */}
             <div className="relative w-full lg:flex-1">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -530,8 +565,8 @@ export default function BarangayDirectory() {
                 </button>
               )}
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* ==========================================
             4. BARANGAY GRID & CARDS
@@ -553,10 +588,17 @@ export default function BarangayDirectory() {
               ))}
             </div>
           ) : filteredBarangays.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <motion.div
+              variants={animate.containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ amount: 0.2 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+            >
               {filteredBarangays.map((barangay) => (
                 <>
                   <BarangayCard
+                    variants={animate.itemVariants}
                     key={barangay.id}
                     cover={barangay.coverImageUrl}
                     name={barangay.name}
@@ -571,7 +613,7 @@ export default function BarangayDirectory() {
                   />
                 </>
               ))}
-            </div>
+            </motion.div>
           ) : (
             // No Results State (Section 16)
             <div className="text-center py-16 bg-white rounded-3xl border border-slate-200 p-8 space-y-4">
@@ -596,7 +638,10 @@ export default function BarangayDirectory() {
         </div>
 
         {/* Administrative Data Verification Note (Section 14) */}
-        <div className="p-4 rounded-2xl bg-slate-100 border border-slate-200/80 flex items-start gap-3 text-xs text-slate-600">
+        <motion.div
+          variants={animate.itemVariants}
+          className="p-4 rounded-2xl bg-slate-100 border border-slate-200/80 flex items-start gap-3 text-xs text-slate-600"
+        >
           <ShieldCheck className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
           <p>
             <strong>Official Administrative Note:</strong> Information published
@@ -604,7 +649,7 @@ export default function BarangayDirectory() {
             Lupi Administrator. Population figures are based on verified
             municipal census data.
           </p>
-        </div>
+        </motion.div>
       </div>
 
       {/* ==========================================

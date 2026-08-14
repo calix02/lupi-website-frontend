@@ -1,18 +1,24 @@
+import { type Variants, motion } from "framer-motion";
 import { type LucideIcon } from "lucide-react";
 type StatisticCardProp = {
   value: number;
   title: string;
   design: string;
   Icon: LucideIcon;
+  variants: Variants;
 };
 export default function StatisticCard({
   value,
   title,
   design,
   Icon,
+  variants,
 }: StatisticCardProp) {
   return (
-    <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-md flex items-center gap-4">
+    <motion.div
+      variants={variants}
+      className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-md flex items-center gap-4"
+    >
       <div className={` ${design} p-3.5 rounded-xl shrink-0`}>
         <Icon className="w-6 h-6" />
       </div>
@@ -24,6 +30,6 @@ export default function StatisticCard({
           {value}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -1,4 +1,5 @@
 import { Award, CheckCircle2, ChevronRight, MapPin } from "lucide-react";
+import { type Variants, motion } from "framer-motion";
 
 type BarangayCardProps = {
   cover: string;
@@ -8,6 +9,7 @@ type BarangayCardProps = {
   population: number;
   officials: number;
   captain: string;
+  variants: Variants;
   setSelectedBarangay: () => void;
 };
 export default function BarangayCard({
@@ -18,10 +20,14 @@ export default function BarangayCard({
   population,
   officials,
   captain,
+  variants,
   setSelectedBarangay,
 }: BarangayCardProps) {
   return (
-    <div className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+    <motion.div
+      variants={variants}
+      className="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+    >
       {/* Card Cover & Badge */}
       <div className="relative h-48 w-full overflow-hidden bg-slate-100">
         <img
@@ -92,6 +98,6 @@ export default function BarangayCard({
           <ChevronRight className="w-4 h-4" />
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 }
