@@ -312,7 +312,7 @@ export default function Employees() {
 
   return (
     <section className="min-h-screen w-screen relative py-20 lg:px-20 px-5 flex flex-col items-center bg-slate-50">
-      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wide mb-3">
+      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mt-5 lg:mt-10 md:mt-10 bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wide mb-3">
         <Bell className="w-3.5 h-3.5 text-emerald-600 animate-bounce" />
         <span>Serving with Excellence</span>
       </div>

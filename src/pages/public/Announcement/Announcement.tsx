@@ -209,7 +209,7 @@ export default function Announcement() {
           variants={animate.itemVariants}
           className="text-center max-w-2xl mx-auto"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wide mb-3">
+          <div className="inline-flex mt-5 items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wide mb-3">
             <Bell className="w-3.5 h-3.5 text-emerald-600 animate-pulse" />
             <span>Public Updates & Events</span>
           </div>

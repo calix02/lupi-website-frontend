@@ -228,7 +228,7 @@ export default function JobVacanciesSection() {
           variants={animate.itemVariants}
           className="text-center max-w-3xl mx-auto space-y-4"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wider uppercase backdrop-blur-md shadow-xs">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 lg:mt-0 md:mt-0 mt-5 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wider uppercase backdrop-blur-md shadow-xs">
             <Briefcase className="w-4 h-4 text-emerald-600" />
             <span>Join Our Team</span>
           </div>

@@ -84,7 +84,7 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center text-center mb-16"
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-100/80 px-4 py-1.5 text-xs font-semibold text-emerald-800 shadow-sm backdrop-blur-md mb-3">
+            <div className="inline-flex items-center mt-5 gap-2 rounded-full border border-emerald-200 bg-emerald-100/80 px-4 py-1.5 text-xs font-semibold text-emerald-800 shadow-sm backdrop-blur-md mb-3">
               <MessageSquare className="h-4 w-4 text-emerald-600" />
               <span>Get In Touch</span>
             </div>

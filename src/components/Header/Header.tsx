@@ -294,7 +294,7 @@ export default function Header() {
                               <span className="text-xs font-bold">
                                 {subItem.label}
                               </span>
-                              <span className="text-[10px] text-slate-400">
+                              <span className="text-[10px] text-slate-300">
                                 {subItem.desc}
                               </span>
                             </Link>

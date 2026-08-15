@@ -239,7 +239,7 @@ export default function About() {
             initial="hidden"
             animate="visible"
             variants={staggerContainer}
-            className="relative z-20 flex flex-col items-center text-center max-w-3xl px-4 mt-20 sm:mt-28 md:mt-36"
+            className="relative z-20 flex flex-col items-center text-center max-w-3xl px-4 lg:mt-20 md:mt-25 "
           >
             {/* Top Pill Badge */}
             <motion.div variants={fadeInUp} className="mb-6">

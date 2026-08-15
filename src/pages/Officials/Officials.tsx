@@ -89,7 +89,7 @@ export default function Officials() {
         >
           <motion.div
             variants={animate.itemVariants}
-            className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-100/80 px-4 py-1.5 text-xs font-semibold text-emerald-800 shadow-sm backdrop-blur-md mb-3"
+            className="inline-flex items-center gap-2 rounded-full lg:mt-5 md:mt-5 mt-10 border border-emerald-200 bg-emerald-100/80 px-4 py-1.5 text-xs font-semibold text-emerald-800 shadow-sm backdrop-blur-md mb-3"
           >
             <Building2 className="h-4 w-4 text-emerald-600" />
             <span>Municipal Administration</span>
