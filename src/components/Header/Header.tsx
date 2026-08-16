@@ -23,6 +23,7 @@ export default function Header() {
     "Home",
     "Announcements",
     "Government",
+    "Barangays",
     "Projects",
     "Transparency",
     "About",

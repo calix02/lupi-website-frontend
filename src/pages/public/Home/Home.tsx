@@ -275,7 +275,7 @@ export default function Home() {
         className="relative z-10 pt-6"
       >
         <a
-          href="#announcements"
+          href="#publicfigure"
           className="flex flex-col items-center gap-1.5 text-xs font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
         >
           <span>Scroll Down</span>

@@ -24,7 +24,6 @@ export default function LupiWebsite() {
     <div className="w-screen">
       <Home />
       <PublicFigure />
-      <BarangayDirectory />
       <Tourism />
       <Weather />
     </div>

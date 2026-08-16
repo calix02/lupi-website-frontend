@@ -4,7 +4,10 @@ import EyeTicker from "@/components/Gallery/EyeTicker";
 
 export default function PublicFigure() {
   return (
-    <section className="relative w-full min-h-screen bg-slate-50 text-white flex items-center justify-center overflow-hidden py-16 px-4 sm:px-6 lg:px-12">
+    <section
+      id="publicfigure"
+      className="relative w-full min-h-screen bg-slate-50 text-white flex items-center justify-center overflow-hidden py-16 px-4 sm:px-6 lg:px-12"
+    >
       {/* 1. Underlying Ticker Layout (Unchanged & Preserved) */}
       <div className="absolute inset-0 w-full h-full  pointer-events-auto">
         <EyeTicker />

@@ -17,6 +17,7 @@ import Transparency from "./pages/Transparency/Transparency";
 import JobSection from "./pages/public/Job/JobSection";
 import Services from "./pages/public/Services/Services";
 import Announcement from "./pages/public/Announcement/Announcement";
+import Barangays from "@/pages/public/Barangay/BarangayDirectory";
 
 function App() {
   const router = createBrowserRouter([
@@ -31,6 +32,7 @@ function App() {
             { path: "/home", Component: LupiWebsite },
             { path: "/announcements", Component: Announcement },
             { path: "/government", Component: Government },
+            { path: "/barangays", Component: Barangays },
             { path: "/sangguniangbayan", Component: SangguniangBayan },
             { path: "/officials", Component: Officials },
             { path: "/employees", Component: Employees },
