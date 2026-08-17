@@ -11,7 +11,6 @@ import {
   Clock,
   Tag,
   Pin,
-  FileText,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
