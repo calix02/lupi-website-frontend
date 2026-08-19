@@ -4,117 +4,101 @@ import {
   Search,
   Calendar,
   Tag,
-  ArrowRight,
   Filter,
   Megaphone,
   Pin,
   ChevronLeft,
   ChevronRight,
   Clock,
-  Maximize2,
   X,
   Share2,
   Check,
+  MapPin,
+  CalendarIcon,
 } from "lucide-react";
 import Badminton from "@/assets/events/badmintom.jpg";
+import AnnouncementCard from "./components/AnnouncementCard";
+import useInOutAnimation from "@/hooks/useInOutAnimation";
 
 // Announcement Data Structure Definition
 export interface AnnouncementItem {
-  id: string;
+  id: number;
+  tag: string;
+  dateKey: string;
+  dateDisplay: string;
   title: string;
-  summary: string;
-  fullContent?: string;
   category: string;
-  date: string;
-  readTime: string;
   isPinned: boolean;
   image: string;
+  time: string;
+  location: string;
+  desc: string;
+  urgent: boolean;
+  pinnedNote: string;
 }
 
 // Sample Announcement Data
-const ANNOUNCEMENTS: AnnouncementItem[] = [
+// Announcements and Events Dataset
+const announcements: AnnouncementItem[] = [
   {
-    id: "1",
-    title: "𝟭𝘀𝘁 𝗠𝗔𝗬𝗢𝗥 𝗧𝗢𝗣𝗜 𝗕𝗔𝗗𝗠𝗜𝗡𝗧𝗢𝗡 𝗧𝗢𝗨𝗥𝗡𝗔𝗠𝗘𝗡𝗧",
-    summary:
-      "Join local leaders and fellow residents to discuss upcoming infrastructure projects, digital public services, and community budgets for the coming year.",
-    fullContent:
-      "The Municipal Government invites all residents, business owners, and civic organizers to participate in our annual Town Hall Forum. This open dialogue session will cover major municipal initiatives including road expansions, public healthcare enhancements, and transparency reporting on local budget allocations. Attending citizens will have direct opportunities to ask questions and submit civic proposals to municipal department heads.",
+    id: 1,
     category: "Events",
-    date: "Aug 15, 2026",
-    readTime: "3 min read",
+    tag: "Urgent Advisory",
+    title: "Schedule of Municipal Financial Assistance Distribution",
+    dateKey: "2026-07-28", // YYYY-MM-DD
+    dateDisplay: "July 28, 2026",
+    time: "8:00 AM - 4:00 PM",
+    location: "Lupi Covered Court",
+    desc: "All qualified beneficiaries are advised to report to the Lupi Covered Court starting at 8:00 AM. Please bring valid IDs and registration stubs.",
+    urgent: true,
     isPinned: true,
+    pinnedNote:
+      "Bring 2 valid IDs and original registration stub. Distribution starts strictly at 8:00 AM.",
     image: Badminton,
   },
   {
-    id: "2",
-    title: "Schedule of Municipal Financial Assistance Distribution",
-    summary:
-      "All qualified beneficiaries are advised to report to the Lupi Covered Court starting at 8:00 AM.",
-    fullContent:
-      "The Social Welfare and Development Office announces the official schedule for financial assistance disbursement. All pre-verified beneficiaries must present two (2) valid government-issued IDs along with their original stub. Distribution will follow strict batch scheduling to ensure safety and efficiency. Beneficiaries requiring special assistance or proxy claims must register through their respective Barangay Secretariat prior to the distribution day.",
-    category: "Advisory",
-    date: "July 28, 2026",
-    readTime: "2 min read",
-    isPinned: true,
-    image:
-      "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1000",
-  },
-  {
-    id: "3",
-    title: "Launch of the New Digital Business Permit Application Workflow",
-    summary:
-      "Business owners can now apply, submit requirements, and pay fees entirely online with automated status tracking and instant SMS updates.",
-    fullContent:
-      "Starting this month, municipal business permit renewals and new applications can be fully processed through the LGU Portal. This end-to-end digital system eliminates long queues at the Treasury and Permit offices. Key benefits include integrated e-payment gateways, automated compliance checklists, real-time SMS status alerts, and digital permit generation with verifiable QR codes.",
-    category: "Services",
-    date: "Aug 02, 2026",
-    readTime: "4 min read",
-    isPinned: false,
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000",
-  },
-  {
-    id: "4",
-    title: "Free Healthcare & Dental Mission in Barangay Napolidan",
-    summary:
-      "In partnership with the Rural Health Unit, medical checkups and basic medicine will be provided free for all registered residents.",
-    fullContent:
-      "The Municipal Health Office, in collaboration with volunteer medical professionals, is organizing a day-long health outreach program in Barangay Napolidan. Services available include general health consultations, pediatric checkups, dental extractions, diagnostic screenings, and free distribution of prescribed maintenance medicines. Registration opens at 7:30 AM at the Barangay Multi-Purpose Hall.",
+    id: 2,
+    tag: "Events",
     category: "Events",
-    date: "August 02, 2026",
-    readTime: "3 min read",
-    isPinned: false,
-    image:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1000",
+    title: "𝟭𝘀𝘁 𝗠𝗔𝗬𝗢𝗥 𝗧𝗢𝗣𝗜 𝗕𝗔𝗗𝗠𝗜𝗡𝗧𝗢𝗡 𝗧𝗢𝗨𝗥𝗡𝗔𝗠𝗘𝗡𝗧",
+    dateKey: "2026-09-17",
+    dateDisplay: "September 17-18, 2026",
+    time: "9:00 AM - 3:00 PM",
+    location:
+      "Multi-Purpose Covered Court, LGU Compound, Poblacion, Lupi, Camarines Sur",
+    desc: `✅Free registration 
+              ✅Team Tie (every team must consist 4 players) 
+              ✅Double elimination
+              ✅Slot draw before matches
+              👕𝗗𝗥𝗘𝗦𝗦 𝗖𝗢𝗗𝗘
+              𝘗𝘳𝘰𝘱𝘦𝘳 𝘴𝘱𝘰𝘳𝘵𝘴 𝘢𝘵𝘵𝘪𝘳𝘦 𝘰𝘯𝘭𝘺 (no sando or slippers)
+              🏸𝙇𝙞𝙢𝙞𝙩𝙚𝙙 𝙨𝙡𝙤𝙩𝙨 𝙤𝙣𝙡𝙮— 𝙧𝙚𝙜𝙞𝙨𝙩𝙚𝙧 𝙚𝙖𝙧𝙡𝙮!
+              📞𝗖𝗼𝗻𝘁𝗮𝗰𝘁:
+              Justine Kieth Llaneta
+              𝟶𝟿12-690-7913`,
+    urgent: false,
+    isPinned: true,
+    pinnedNote: `🏸 𝙊𝙉𝙇𝙔 20 𝙎𝙇𝙊𝙏𝙎 𝘼𝙑𝘼𝙄𝙇𝘼𝘽𝙇𝙀
+                  - 10 𝙎𝙡𝙤𝙩𝙨 𝘳𝘦𝘴𝘦𝘳𝘷𝘦𝘥 𝘧𝘰𝘳 𝘵𝘩𝘦 𝘱𝘢𝘳𝘵𝘪𝘤𝘪𝘱𝘢𝘵𝘪𝘯𝘨 𝘴𝘤𝘩𝘰𝘰𝘭𝘴
+                  - 10 𝙎𝙡𝙤𝙩𝙨 𝘰𝘱𝘦𝘯 𝘧𝘰𝘳 𝘰𝘵𝘩𝘦𝘳 𝘦𝘭𝘪𝘨𝘪𝘣𝘭𝘦 𝘓𝘶𝘱𝘪 𝘱𝘭𝘢𝘺𝘦𝘳𝘴/𝘵𝘦𝘢𝘮𝘴`,
+    image: Badminton,
   },
+
   {
-    id: "5",
+    id: 3,
+    tag: "Development",
+    category: "Events",
     title: "Public Hearing for New Infrastructure & Road Projects",
-    summary:
-      "Join us at the Session Hall as we present the upcoming farm-to-market road developments and temporarily closed main routes.",
-    fullContent:
-      "The Department of Public Works and Highways (DPWH) together with the Municipal Engineering Office will conduct a public hearing regarding scheduled road upgrades and farm-to-market bridge developments. The session aims to present project timelines, traffic rerouting schemes, and environmental impact assessments. Local commuters, transport operators, and landowners are strongly encouraged to attend.",
-    category: "Development",
-    date: "August 10, 2026",
-    readTime: "2 min read",
+    dateKey: "2026-08-10",
+    dateDisplay: "August 10, 2026",
+    time: "1:30 PM - 5:00 PM",
+    location: "Municipal Session Hall",
+    desc: "Join us at the Session Hall as we present the upcoming farm-to-market road developments and municipal infrastructure projects.",
+    urgent: false,
     isPinned: false,
-    image:
-      "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?auto=format&fit=crop&q=80&w=1000",
-  },
-  {
-    id: "6",
-    title: "Youth Tech & Coding Bootcamp Summer Registration Now Open",
-    summary:
-      "High school and college students are invited to join our intensive 2-week digital literacy and web development workshop series.",
-    fullContent:
-      "The Municipal Information and Communications Technology (ICT) Office is opening applications for the Annual Youth Tech Workshop. The 2-week course covers web design fundamentals (HTML, CSS, JavaScript), introductory Python programming, and UI/UX design concepts. Slots are limited to 40 participants per session and hardware/computers will be provided on-site at the Municipal Tech Hub.",
-    category: "General",
-    date: "Jul 12, 2026",
-    readTime: "5 min read",
-    isPinned: false,
-    image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1000",
+    pinnedNote:
+      "Open to all residents, business owners, and local transport operators.",
+    image: Badminton,
   },
 ];
 
@@ -131,6 +115,12 @@ export default function AllAnnouncement() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  // Selected date for event modal popup
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const animate = useInOutAnimation();
+  const activeEvents = announcements.filter(
+    (item) => item.dateKey === selectedDate,
+  );
 
   // State for Full Detail Card Modal
   const [activeAnnouncement, setActiveAnnouncement] =
@@ -146,12 +136,12 @@ export default function AllAnnouncement() {
   const [copied, setCopied] = useState(false);
 
   // Filtering Logic
-  const filteredAnnouncements = ANNOUNCEMENTS.filter((item) => {
+  const filteredAnnouncements = announcements.filter((item) => {
     const matchesCategory =
       selectedCategory === "All" || item.category === selectedCategory;
     const matchesQuery =
       item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.summary.toLowerCase().includes(searchQuery.toLowerCase());
+      item.desc.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesQuery;
   });
 
@@ -306,137 +296,26 @@ export default function AllAnnouncement() {
             })}
           </div>
         </motion.div>
-
-        {/* Announcements Grid */}
-        <AnimatePresence mode="wait">
-          {filteredAnnouncements.length > 0 ? (
-            <motion.div
-              key={`${selectedCategory}-${searchQuery}`}
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ amount: 0.15 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-8"
-            >
-              {filteredAnnouncements.map((item) => (
-                <motion.article
-                  key={item.id}
-                  variants={itemVariants}
-                  whileHover={{ y: -6 }}
-                  onClick={() => setActiveAnnouncement(item)}
-                  className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-xs hover:shadow-2xl hover:border-emerald-300 transition-all duration-300 cursor-pointer"
-                >
-                  <div>
-                    {/* Banner Image */}
-                    <div className="relative aspect-video w-full overflow-hidden bg-slate-100">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-linear-to-t from-slate-950/60 via-slate-950/10 to-transparent" />
-
-                      {/* Badges */}
-                      <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
-                        <span className="inline-flex items-center gap-1 rounded-md bg-white/90 backdrop-blur-md px-2.5 py-1 text-xs font-semibold text-emerald-800 shadow-xs border border-white/40">
-                          <Tag className="h-3 w-3 text-emerald-600" />
-                          {item.category}
-                        </span>
-
-                        {item.isPinned && (
-                          <span className="inline-flex items-center gap-1 rounded-md bg-rose-500/90 backdrop-blur-md px-2.5 py-1 text-xs font-semibold text-white shadow-xs">
-                            <Pin className="h-3 w-3 fill-white" />
-                            Pinned
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Poster Preview Button */}
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelectedPoster({
-                            title: item.title,
-                            image: item.image,
-                          });
-                        }}
-                        className="absolute bottom-3 right-3 flex items-center gap-1.5 rounded-lg bg-slate-900/80 backdrop-blur-md px-3 py-1.5 text-xs font-medium text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:bg-emerald-600"
-                      >
-                        <Maximize2 className="h-3.5 w-3.5" />
-                        <span>View Poster</span>
-                      </button>
-                    </div>
-
-                    {/* Content Section */}
-                    <div className="p-5 sm:p-6">
-                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 leading-snug group-hover:text-emerald-600 transition-colors">
-                        {item.title}
-                      </h3>
-
-                      <p className="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
-                        {item.summary}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Card Footer */}
-                  <div className="px-5 sm:px-6 pb-6 pt-0">
-                    <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                      <div className="flex items-center gap-3">
-                        <span className="inline-flex items-center gap-1">
-                          <Calendar className="h-3.5 w-3.5 text-slate-400" />
-                          {item.date}
-                        </span>
-                        <span className="inline-flex items-center gap-1">
-                          <Clock className="h-3.5 w-3.5 text-slate-400" />
-                          {item.readTime}
-                        </span>
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setActiveAnnouncement(item);
-                        }}
-                        className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 group-hover:text-emerald-700 transition-colors"
-                      >
-                        Read Details
-                        <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                      </button>
-                    </div>
-                  </div>
-                </motion.article>
-              ))}
-            </motion.div>
-          ) : (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-slate-300 p-12 text-center bg-slate-50/50"
-            >
-              <Megaphone className="h-12 w-12 text-slate-300 mb-4" />
-              <h3 className="text-lg font-bold text-slate-800">
-                No announcements found
-              </h3>
-              <p className="mt-1 text-sm text-slate-500 max-w-sm">
-                Try adjusting your search terms or filter selection to find what
-                you're looking for.
-              </p>
-              <button
-                type="button"
-                onClick={() => {
-                  setSelectedCategory("All");
-                  setSearchQuery("");
-                }}
-                className="mt-4 rounded-lg bg-emerald-600 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-emerald-700"
-              >
-                Reset Filters
-              </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Square Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {announcements.map((item) => (
+            <>
+              <AnnouncementCard
+                key={item.id}
+                variants={animate.itemVariants}
+                setSelectedDate={() => setSelectedDate(item.dateKey)}
+                image={item.image}
+                title={item.title}
+                urgent={item.urgent}
+                tag={item.tag}
+                isPinned={item.isPinned}
+                dateDisplay={item.dateDisplay}
+                desc={item.desc}
+                pinnedNote={item.pinnedNote}
+              />
+            </>
+          ))}
+        </div>
 
         {/* Pagination Controls */}
         {filteredAnnouncements.length > 0 && (
@@ -471,130 +350,6 @@ export default function AllAnnouncement() {
           </motion.div>
         )}
       </div>
-
-      {/* ================= 3. FULL ANNOUNCEMENT DETAILS POPUP MODAL ================= */}
-      <AnimatePresence>
-        {activeAnnouncement && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setActiveAnnouncement(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md"
-          >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0, y: 15 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 15 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white shadow-2xl border border-slate-100 flex flex-col"
-            >
-              {/* Close Button */}
-              <button
-                type="button"
-                onClick={() => setActiveAnnouncement(null)}
-                className="absolute top-4 right-4 z-20 p-2 rounded-full bg-slate-900/60 text-white backdrop-blur-md hover:bg-slate-900/90 transition-colors"
-                aria-label="Close details"
-              >
-                <X className="h-5 w-5" />
-              </button>
-
-              {/* Hero Banner Image */}
-              <div className="relative w-full h-56 sm:h-72 bg-slate-100 shrink-0">
-                <img
-                  src={activeAnnouncement.image}
-                  alt={activeAnnouncement.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
-
-                {/* Floating Meta Badges */}
-                <div className="absolute bottom-4 left-4 right-4 flex flex-wrap items-center justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1 rounded-md bg-emerald-600 px-3 py-1 text-xs font-semibold text-white shadow-sm">
-                      <Tag className="h-3 w-3" />
-                      {activeAnnouncement.category}
-                    </span>
-                    {activeAnnouncement.isPinned && (
-                      <span className="inline-flex items-center gap-1 rounded-md bg-rose-500 px-3 py-1 text-xs font-semibold text-white shadow-sm">
-                        <Pin className="h-3 w-3 fill-white" />
-                        Pinned
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Body Content */}
-              <div className="p-6 sm:p-8 space-y-6">
-                <div>
-                  <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 leading-snug">
-                    {activeAnnouncement.title}
-                  </h2>
-
-                  <div className="mt-3 flex flex-wrap items-center gap-4 text-xs font-medium text-slate-500 border-b border-slate-100 pb-4">
-                    <span className="inline-flex items-center gap-1.5">
-                      <Calendar className="h-4 w-4 text-emerald-600" />
-                      Published on {activeAnnouncement.date}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5">
-                      <Clock className="h-4 w-4 text-emerald-600" />
-                      {activeAnnouncement.readTime}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Summary Callout Box */}
-                <div className="p-4 rounded-xl bg-emerald-50/80 border border-emerald-100 text-xs sm:text-sm text-emerald-900 font-medium leading-relaxed">
-                  {activeAnnouncement.summary}
-                </div>
-
-                {/* Full Article Content */}
-                <div className="space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  <p>
-                    {activeAnnouncement.fullContent ||
-                      "For further inquiries, visit the Local Government Unit main administration office or coordinate with your local barangay official."}
-                  </p>
-                  <p>
-                    Please stay tuned to our official portal and verified
-                    municipal channels for real-time schedule updates and
-                    related public notifications.
-                  </p>
-                </div>
-
-                {/* Modal Footer Controls */}
-                <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3">
-                  <button
-                    type="button"
-                    onClick={handleShare}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-emerald-600 transition-colors"
-                  >
-                    {copied ? (
-                      <>
-                        <Check className="h-4 w-4 text-emerald-600" />
-                        <span>Link Copied</span>
-                      </>
-                    ) : (
-                      <>
-                        <Share2 className="h-4 w-4" />
-                        <span>Share Announcement</span>
-                      </>
-                    )}
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setActiveAnnouncement(null)}
-                    className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-xs sm:text-sm font-semibold text-white transition-colors shadow-md shadow-emerald-600/20"
-                  >
-                    Close & Continue
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* ================= 4. LIGHTBOX POSTER IMAGE MODAL ================= */}
       <AnimatePresence>
@@ -634,6 +389,127 @@ export default function AllAnnouncement() {
                   {selectedPoster.title}
                 </h4>
               </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      {/* ================= 3. POPUP MODAL FOR EVENT DETAILS ================= */}
+      <AnimatePresence>
+        {selectedDate && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedDate(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 10 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 10 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-3xl rounded-3xl bg-white shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedDate(null)}
+                className="absolute top-4 right-4 z-20 p-2 rounded-full text-slate-400 hover:text-slate-600 hover:bg-white/80 bg-white/60 backdrop-blur-sm transition-colors"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {activeEvents.length > 0 ? (
+                activeEvents.map((event) => (
+                  <div key={event.id} className="flex flex-col md:flex-row">
+                    {/* Image column */}
+                    <div className="relative w-full md:w-2/5 h-52 md:h-auto shrink-0 bg-slate-100">
+                      <img
+                        src={event.image}
+                        alt={event.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-linear-to-t md:bg-linear-to-r from-slate-950/50 via-transparent to-transparent" />
+                      <div className="absolute top-3 left-3 flex items-center gap-2">
+                        <span
+                          className={`text-xs font-bold px-3 py-1 rounded-full backdrop-blur-md shadow-xs ${
+                            event.urgent
+                              ? "bg-rose-500 text-white"
+                              : "bg-emerald-600 text-white"
+                          }`}
+                        >
+                          {event.tag}
+                        </span>
+                        {event.isPinned && (
+                          <span className="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-1 rounded-full bg-amber-500 text-white shadow-xs">
+                            <Pin className="w-3 h-3 fill-white" />
+                            Pinned
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Details column */}
+                    <div className="flex-1 p-6 sm:p-8 space-y-5">
+                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 leading-snug pr-8">
+                        {event.title}
+                      </h3>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                        <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 bg-slate-50 rounded-xl px-3 py-2">
+                          <CalendarIcon className="w-4 h-4 text-emerald-600 shrink-0" />
+                          <span className="font-semibold">
+                            {event.dateDisplay}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 bg-slate-50 rounded-xl px-3 py-2">
+                          <Clock className="w-4 h-4 text-emerald-600 shrink-0" />
+                          <span>{event.time}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 bg-slate-50 rounded-xl px-3 py-2">
+                          <MapPin className="w-4 h-4 text-emerald-600 shrink-0" />
+                          <span className="truncate">{event.location}</span>
+                        </div>
+                      </div>
+
+                      {/* Detailed Pinned Note inside Modal */}
+                      {event.pinnedNote && (
+                        <div className="p-3 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-start gap-2.5">
+                          <Pin className="w-4 h-4 text-amber-600 shrink-0 mt-0.5 fill-amber-600" />
+                          <div>
+                            <p className="font-bold mb-0.5">Pinned Note:</p>
+                            <p>{event.pinnedNote}</p>
+                          </div>
+                        </div>
+                      )}
+
+                      <p className="text-sm text-slate-600 leading-relaxed">
+                        {event.desc}
+                      </p>
+
+                      <div className="pt-2">
+                        <button
+                          onClick={() => setSelectedDate(null)}
+                          className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold transition-colors shadow-lg shadow-emerald-600/25"
+                        >
+                          Close & Continue
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="text-center py-12 px-6 space-y-3">
+                  <Tag className="w-10 h-10 text-slate-300 mx-auto" />
+                  <h4 className="text-lg font-bold text-slate-800">
+                    No Scheduled Events
+                  </h4>
+                  <p className="text-sm text-slate-500">
+                    There are no public announcements or events scheduled for
+                    this date.
+                  </p>
+                </div>
+              )}
             </motion.div>
           </motion.div>
         )}
