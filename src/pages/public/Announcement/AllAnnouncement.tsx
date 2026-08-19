@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
-  Calendar,
   Tag,
   Filter,
   Megaphone,
@@ -11,8 +10,6 @@ import {
   ChevronRight,
   Clock,
   X,
-  Share2,
-  Check,
   MapPin,
   CalendarIcon,
 } from "lucide-react";

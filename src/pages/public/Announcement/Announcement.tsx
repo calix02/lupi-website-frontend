@@ -11,6 +11,7 @@ import {
   Clock,
   Tag,
   Pin,
+  Phone,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
@@ -26,6 +27,8 @@ export interface AnnouncementItem {
   tag: string;
   title: string;
   dateKey: string;
+  contactPerson: string;
+  contactNumber: string;
   dateDisplay: string;
   time: string;
   location: string;
@@ -54,6 +57,8 @@ export default function Announcement() {
       tag: "Urgent Advisory",
       title: "Schedule of Municipal Financial Assistance Distribution",
       dateKey: "2026-07-28", // YYYY-MM-DD
+      contactPerson: "Moana",
+      contactNumber: "09282927482",
       dateDisplay: "July 28, 2026",
       time: "8:00 AM - 4:00 PM",
       location: "Lupi Covered Court",
@@ -69,6 +74,8 @@ export default function Announcement() {
       tag: "Events",
       title: "𝟭𝘀𝘁 𝗠𝗔𝗬𝗢𝗥 𝗧𝗢𝗣𝗜 𝗕𝗔𝗗𝗠𝗜𝗡𝗧𝗢𝗡 𝗧𝗢𝗨𝗥𝗡𝗔𝗠𝗘𝗡𝗧",
       dateKey: "2026-09-17",
+      contactPerson: "Justine Kieth Llaneta",
+      contactNumber: "𝟶𝟿12-690-7913",
       dateDisplay: "September 17-18, 2026",
       time: "9:00 AM - 3:00 PM",
       location:
@@ -80,9 +87,7 @@ export default function Announcement() {
               👕𝗗𝗥𝗘𝗦𝗦 𝗖𝗢𝗗𝗘
               𝘗𝘳𝘰𝘱𝘦𝘳 𝘴𝘱𝘰𝘳𝘵𝘴 𝘢𝘵𝘵𝘪𝘳𝘦 𝘰𝘯𝘭𝘺 (no sando or slippers)
               🏸𝙇𝙞𝙢𝙞𝙩𝙚𝙙 𝙨𝙡𝙤𝙩𝙨 𝙤𝙣𝙡𝙮— 𝙧𝙚𝙜𝙞𝙨𝙩𝙚𝙧 𝙚𝙖𝙧𝙡𝙮!
-              📞𝗖𝗼𝗻𝘁𝗮𝗰𝘁:
-              Justine Kieth Llaneta
-              𝟶𝟿12-690-7913`,
+              `,
       urgent: false,
       isPinned: true,
       pinnedNote: `🏸 𝙊𝙉𝙇𝙔 20 𝙎𝙇𝙊𝙏𝙎 𝘼𝙑𝘼𝙄𝙇𝘼𝘽𝙇𝙀
@@ -95,6 +100,8 @@ export default function Announcement() {
       id: 3,
       tag: "Development",
       title: "Public Hearing for New Infrastructure & Road Projects",
+      contactPerson: "Juan",
+      contactNumber: "0928397392",
       dateKey: "2026-08-10",
       dateDisplay: "August 10, 2026",
       time: "1:30 PM - 5:00 PM",
@@ -504,7 +511,7 @@ export default function Announcement() {
                         {event.title}
                       </h3>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                      <div className="grid grid-cols-1  gap-2.5">
                         <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 bg-slate-50 rounded-xl px-3 py-2">
                           <CalendarIcon className="w-4 h-4 text-emerald-600 shrink-0" />
                           <span className="font-semibold">
@@ -518,6 +525,10 @@ export default function Announcement() {
                         <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 bg-slate-50 rounded-xl px-3 py-2">
                           <MapPin className="w-4 h-4 text-emerald-600 shrink-0" />
                           <span className="truncate">{event.location}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 bg-slate-50 rounded-xl px-3 py-2">
+                          <Phone className="w-4 h-4 text-emerald-600 shrink-0" />
+                          <span className="truncate">{`${event.contactPerson} - ${event.contactNumber}`}</span>
                         </div>
                       </div>
 
