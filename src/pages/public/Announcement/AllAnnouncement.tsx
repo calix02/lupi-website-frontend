@@ -122,18 +122,11 @@ export default function AllAnnouncement() {
     (item) => item.dateKey === selectedDate,
   );
 
-  // State for Full Detail Card Modal
-  const [activeAnnouncement, setActiveAnnouncement] =
-    useState<AnnouncementItem | null>(null);
-
   // State for Lightbox Poster Image Only
   const [selectedPoster, setSelectedPoster] = useState<{
     title: string;
     image: string;
   } | null>(null);
-
-  // State for Share Feedback
-  const [copied, setCopied] = useState(false);
 
   // Filtering Logic
   const filteredAnnouncements = announcements.filter((item) => {
@@ -144,14 +137,6 @@ export default function AllAnnouncement() {
       item.desc.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesQuery;
   });
-
-  const handleShare = () => {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(window.location.href);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
 
   // Animation Variants
   const containerVariants = {
