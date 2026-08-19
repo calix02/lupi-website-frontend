@@ -341,7 +341,7 @@ export default function BarangayDirectory() {
   const [selectedStatus, setSelectedStatus] = useState("All");
   const [selectedBarangayModal, setSelectedBarangayModal] =
     useState<BarangayItem | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
 
   // Filter Logic
   const filteredBarangays = useMemo(() => {

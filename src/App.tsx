@@ -18,6 +18,7 @@ import JobSection from "./pages/public/Job/JobSection";
 import Services from "./pages/public/Services/Services";
 import Announcement from "./pages/public/Announcement/Announcement";
 import Barangays from "@/pages/public/Barangay/BarangayDirectory";
+import Hotlines from "./pages/public/Hotlines/Hotlines";
 
 function App() {
   const router = createBrowserRouter([
@@ -42,6 +43,8 @@ function App() {
             { path: "/services", Component: Services },
             { path: "/coming-soon", Component: ComingSoon },
             { path: "/about", Component: About },
+            { path: "/hotlines", Component: Hotlines },
+
             { path: "/all", Component: AllAnnouncements },
             { path: "/contact", Component: Contact },
           ],

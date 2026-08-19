@@ -26,6 +26,7 @@ export default function Header() {
     "Barangays",
     "Projects",
     "Transparency",
+    "Hotlines",
     "About",
     "Contact",
   ];
