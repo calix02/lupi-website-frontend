@@ -13,7 +13,7 @@ import {
   BriefcaseBusiness,
   Briefcase,
 } from "lucide-react";
-import LupiLOgo from "@/assets/logos/lupi_logo.png";
+import LupiLOgo from "@/assets/logos-webp/lupi_logo.webp";
 import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
@@ -150,7 +150,7 @@ export default function Header() {
                 >
                   <Link
                     to={targetPath}
-                    className={`relative flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold tracking-wide rounded-full transition-all duration-200 ${
+                    className={`relative ${hasDropdown && "pointer-events-none"} flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold tracking-wide rounded-full transition-all duration-200 ${
                       isActive
                         ? "text-emerald-400 bg-emerald-500/10 border border-emerald-500/20"
                         : "text-slate-200 hover:text-emerald-300 hover:bg-white/5"
@@ -252,7 +252,7 @@ export default function Header() {
                         onClick={() => {
                           if (!hasDropdown) setMobileMenuOpen(false);
                         }}
-                        className="flex-1"
+                        className={`flex-1 ${hasDropdown && "pointer-events-none"}`}
                       >
                         {item}
                       </Link>

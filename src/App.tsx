@@ -7,7 +7,6 @@ import Officials from "./pages/Officials/Officials";
 import Contact from "./pages/Contact/Contact";
 import About from "./pages/About/About";
 import SangguniangBayan from "./pages/public/SangguniangBayan/SangguniangBayan";
-import Government from "./pages/Government/Governement";
 import PublicLayout from "./layout/PublicLayout";
 import AuthLayout from "./layout/AuthLayout";
 import LogIn from "@/pages/Auth/Login";
@@ -32,7 +31,6 @@ function App() {
             { index: true, Component: LupiWebsite },
             { path: "/home", Component: LupiWebsite },
             { path: "/announcements", Component: Announcement },
-            { path: "/government", Component: Government },
             { path: "/barangays", Component: Barangays },
             { path: "/sangguniangbayan", Component: SangguniangBayan },
             { path: "/officials", Component: Officials },
@@ -41,7 +39,6 @@ function App() {
             { path: "/transparency", Component: Transparency },
             { path: "/jobs", Component: JobSection },
             { path: "/services", Component: Services },
-            { path: "/coming-soon", Component: ComingSoon },
             { path: "/about", Component: About },
             { path: "/hotlines", Component: Hotlines },
             { path: "/all", Component: AllAnnouncements },
@@ -56,6 +53,10 @@ function App() {
         {
           path: "*",
           Component: Contact,
+        },
+        {
+          path: "/coming-soon",
+          Component: ComingSoon,
         },
       ],
     },

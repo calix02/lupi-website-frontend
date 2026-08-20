@@ -2,8 +2,8 @@ import sharp from "sharp";
 import fs from "fs";
 import path from "path";
 
-const inputDir = path.resolve("src/assets/gallery");
-const outputDir = path.resolve("src/assets/gallery/webp");
+const inputDir = path.resolve("src/assets/logos");
+const outputDir = path.resolve("src/assets/logos-webp");
 
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });

@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import Logo from "@/assets/logos/lupi_logo.png";
+import Logo from "@/assets/logos-webp/lupi_logo.webp";
 import {
   Mail,
   Phone,
   MapPin,
-  
   ExternalLink,
   ChevronRight,
   ShieldCheck,
@@ -39,22 +38,28 @@ export default function Footer() {
     <footer className="relative w-full bg-linear-to-br from-emerald-950 via-emerald-900 to-teal-950 text-white overflow-hidden font-sans">
       {/* ================= 1. GRADIENT GREEN AMBIENT BACKGROUND ================= */}
       {/* Background Decorative Grid */}
-        <div className="relative top-0 w-full ">
-            <img src={Pattern} alt="Pattern" className="w-full h-full object-cover" />
-        </div>
-    
+      <div className="relative top-0 w-full ">
+        <img
+          src={Pattern}
+          alt="Pattern"
+          className="w-full h-full object-cover"
+        />
+      </div>
 
       {/* Top Gradient Highlight Bar */}
 
       {/* ================= 2. MAIN FOOTER CONTENT ================= */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-8 pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-emerald-800/60">
-          
           {/* BRAND & TOWN OVERVIEW (4 Cols) */}
           <div className="lg:col-span-4 space-y-5">
             <div className="inline-flex items-center gap-2.5">
               <div className="h-15 w-15 flex items-center justify-center ">
-                <img src={Logo} alt="Lupi Logo" className="h-full w-full object-contain" />
+                <img
+                  src={Logo}
+                  alt="Lupi Logo"
+                  className="h-full w-full object-contain"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-black tracking-tight text-white leading-none">
@@ -67,7 +72,9 @@ export default function Footer() {
             </div>
 
             <p className="text-xs sm:text-sm text-emerald-100/80 leading-relaxed font-normal">
-              Official portal of the Local Government Unit of Lupi, Camarines Sur. Empowering our community through transparent governance, sustainable growth, and dedicated public service.
+              Official portal of the Local Government Unit of Lupi, Camarines
+              Sur. Empowering our community through transparent governance,
+              sustainable growth, and dedicated public service.
             </p>
 
             {/* Facebook / Social Link Button */}
@@ -141,7 +148,10 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 text-emerald-400 shrink-0" />
-                <a href="mailto:info@lupi.gov.ph" className="hover:underline text-emerald-200">
+                <a
+                  href="mailto:info@lupi.gov.ph"
+                  className="hover:underline text-emerald-200"
+                >
                   info@lupi.gov.ph
                 </a>
               </div>
@@ -156,7 +166,9 @@ export default function Footer() {
         {/* ================= 3. BOTTOM BAR & BACK TO TOP ================= */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-300/80">
           <div className="flex flex-wrap items-center justify-center sm:justify-start gap-1 text-center">
-            <span>© {new Date().getFullYear()} LGU Municipality of Lupi. Built with</span>
+            <span>
+              © {new Date().getFullYear()} LGU Municipality of Lupi. Built with
+            </span>
             <Heart className="h-3.5 w-3.5 text-rose-400 fill-rose-400 inline mx-0.5" />
             <span>for all Lupiniangs.</span>
           </div>

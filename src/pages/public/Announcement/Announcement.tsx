@@ -17,8 +17,7 @@ import { Link } from "react-router-dom";
 import useInOutAnimation from "@/hooks/useInOutAnimation";
 
 // Import thumbnail assets
-import AssistanceImg from "@/assets/logos/LGU-NEW.png";
-import RoadProjImg from "@/assets/logos/LGU-NEW.png";
+
 import BAdminton from "@/assets/events/badmintom.jpg";
 import AnnouncementCard from "./components/AnnouncementCard";
 
@@ -67,7 +66,7 @@ export default function Announcement() {
       isPinned: true,
       pinnedNote:
         "Bring 2 valid IDs and original registration stub. Distribution starts strictly at 8:00 AM.",
-      image: AssistanceImg,
+      image: "",
     },
     {
       id: 2,
@@ -111,7 +110,7 @@ export default function Announcement() {
       isPinned: false,
       pinnedNote:
         "Open to all residents, business owners, and local transport operators.",
-      image: RoadProjImg,
+      image: "",
     },
   ];
 

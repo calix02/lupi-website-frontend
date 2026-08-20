@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import LupiLogo from "@/assets/logos/lupi_logo.png";
-import HeroImage from "@/assets/logos/LGU-NEW.png";
+import LupiLogo from "@/assets/logos-webp/lupi_logo.webp";
+import HeroImage from "@/assets/logos-webp/LGU-NEW.webp";
 
 interface SplashScreenProps {
   onFinish?: () => void;
