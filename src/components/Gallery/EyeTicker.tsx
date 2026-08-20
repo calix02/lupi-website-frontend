@@ -4,16 +4,16 @@
 
 import * as React from "react";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import Image1 from "@/assets/gallery/imag_lupi.jpg";
-import Image2 from "@/assets/gallery/image_lupi1.jpg";
-import Image3 from "@/assets/gallery/image_lupi.jpg";
-import Image4 from "@/assets/gallery/image_lupi7.jpg";
-import Image5 from "@/assets/gallery/image_lupi8.jpg";
-import Image6 from "@/assets/gallery/image_lupi11.jpg";
-import Image7 from "@/assets/gallery/image_lupi12.jpg";
-import Image8 from "@/assets/gallery/image_lupi14.jpg";
-import Image9 from "@/assets/gallery/image_lupi15.jpg";
-import Image10 from "@/assets/gallery/image_lupi33.jpg";
+import Image1 from "@/assets/gallery/webp/imag_lupi.webp";
+import Image2 from "@/assets/gallery/webp/image_lupi1.webp";
+import Image3 from "@/assets/gallery/webp/image_lupi.webp";
+import Image4 from "@/assets/gallery/webp/image_lupi7.webp";
+import Image5 from "@/assets/gallery/webp/image_lupi8.webp";
+import Image6 from "@/assets/gallery/webp/image_lupi11.webp";
+import Image7 from "@/assets/gallery/webp/image_lupi12.webp";
+import Image8 from "@/assets/gallery/webp/image_lupi14.webp";
+import Image9 from "@/assets/gallery/webp/image_lupi15.webp";
+import Image10 from "@/assets/gallery/webp/image_lupi33.webp";
 
 type Direction = "left" | "right";
 type Fit = "cover" | "contain";
