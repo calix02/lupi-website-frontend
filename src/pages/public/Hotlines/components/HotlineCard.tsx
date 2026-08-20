@@ -76,7 +76,7 @@ export default function HotlineCard({
             <button
               onClick={handleCopy}
               title="Copy Number"
-              className="p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-200/60 transition-colors"
+              className="p-2 rounded-xl cursor-pointer text-slate-500 hover:text-slate-900 hover:bg-slate-200/60 transition-colors"
             >
               {copiedNumber === number ? (
                 <Check className="w-4 h-4 text-emerald-600" />
@@ -86,13 +86,10 @@ export default function HotlineCard({
             </button>
 
             {/* Direct Call Button */}
-            <a
-              href={`tel:${number.replace(/[^0-9+]/g, "")}`}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-xs transition-all"
-            >
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-xs transition-all">
               <PhoneCall className="w-3.5 h-3.5" />
               <span>Call</span>
-            </a>
+            </div>
           </div>
         </div>
 
@@ -100,12 +97,9 @@ export default function HotlineCard({
         {altNumber && (
           <div className="flex items-center justify-between px-3 py-1.5 text-xs text-slate-500">
             <span>Landline / Alt:</span>
-            <a
-              href={`tel:${altNumber.replace(/[^0-9+]/g, "")}`}
-              className="font-semibold text-slate-700 hover:text-emerald-600 underline transition-colors"
-            >
+            <p className="font-semibold text-slate-700 hover:text-emerald-600 underline transition-colors">
               {altNumber}
-            </a>
+            </p>
           </div>
         )}
       </div>

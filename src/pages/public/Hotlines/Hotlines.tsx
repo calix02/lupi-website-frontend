@@ -7,10 +7,7 @@ import {
   Flame,
   Siren,
   Building2,
-  Copy,
-  Check,
   Search,
-  Clock,
 } from "lucide-react";
 import HotlineCard from "./components/HotlineCard";
 
@@ -50,7 +47,7 @@ export default function Hotlines() {
       id: "mdrrmo-1",
       name: "MDRRMO Rescue Hotline",
       agency: "Municipal Disaster Risk Reduction & Management Office",
-      number: "0912-345-6789",
+      number: "0909-8214054",
       altNumber: "(054) 881-1234",
       category: "Disaster & Emergency",
       icon: ShieldAlert,
@@ -76,7 +73,7 @@ export default function Hotlines() {
       id: "police-1",
       name: "Lupi Municipal Police Station",
       agency: "Philippine National Police (PNP)",
-      number: "0920-111-2222",
+      number: "0912-725-5318",
       altNumber: "117",
       category: "Police & Security",
       icon: Siren,

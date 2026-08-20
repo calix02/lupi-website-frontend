@@ -44,7 +44,6 @@ function App() {
             { path: "/coming-soon", Component: ComingSoon },
             { path: "/about", Component: About },
             { path: "/hotlines", Component: Hotlines },
-
             { path: "/all", Component: AllAnnouncements },
             { path: "/contact", Component: Contact },
           ],
